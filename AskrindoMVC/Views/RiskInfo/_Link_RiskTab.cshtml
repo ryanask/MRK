@@ -1,0 +1,19 @@
+﻿@*<div style="padding-bottom: 12px">
+    @Html.ActionLink("Data Risiko", "Details", new { id = ViewData["RiskId"] }, null) |
+    @Html.ActionLink("Probabilitas", "Probability", new { id = ViewData["RiskId"] }, null) |
+    @Html.ActionLink("Dampak", "Impact", new { id = ViewData["RiskId"] }, null) |
+    @Html.ActionLink("Approval", "Approvals", new { id = ViewData["RiskId"] }, null) |
+    @Html.ActionLink("Mitigasi", "Mitigations", new { id = ViewData["RiskId"] }, null) |
+    @Html.ActionLink("Sejarah Status Risiko", "RiskStates", new { id = ViewData["RiskId"] }, null) |
+    @Html.ActionLink("Attachment", "Attachments", new { id = ViewData["RiskId"] }, null)
+</div>*@
+
+<ul id="tabmenu">
+    <li>@Html.ActionLink("Data Risiko", "Details", new { id = ViewData["RiskId"] }, null)</li>
+    <li>@Html.ActionLink("Probabilitas", "Probability", new { id = ViewData["RiskId"] }, null)</li>
+    <li>@Html.ActionLink("Dampak", "Impact", new { id = ViewData["RiskId"] }, null)</li>
+    <li>@Html.ActionLink("Approval", "Approvals", new { id = ViewData["RiskId"] }, null)</li>
+    <li>@Html.ActionLink("Mitigasi", "Mitigations", new { id = ViewData["RiskId"] }, null)</li>
+    <li>@Html.ActionLink("Sejarah Status Risiko", "RiskStates", new { id = ViewData["RiskId"] }, null)</li>
+    <li>@Html.ActionLink("Attachments", "Attachments", new { id = ViewData["RiskId"] }, null)</li>
+</ul>

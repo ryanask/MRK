@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Data Master";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="sidebar">
+    <div class="title">
+        Data Master
+    </div>
+    <ul id="sidemenu">
+        <li>@Html.ActionLink("Struktur Organisasi", "DeptList", "OrgStruct", new { area = "RefData" }, null)</li>
+        <li>@Html.ActionLink("Sebab Risiko", "CauseGroupList", "RiskCause", new { area = "RefData" }, null)</li>
+        <li>@Html.ActionLink("Akibat Risiko", "EffectGroupList", "RiskEffect", new { area = "RefData" }, null)</li>
+        <li>@Html.ActionLink("Klasifikasi Risiko", "RiskCatList", "RiskClass", new { area = "RefData" }, null)</li>
+        <li>@Html.ActionLink("Tingkat Probabilitas", "Index", "ProbLevel", new { area = "RefData" }, null)</li>
+        <li>@Html.ActionLink("Tingkat Dampak Keuangan", "Index", "ImpactLevel", new { area = "RefData" }, null)</li>
+        <li>@Html.ActionLink("Dampak Non Keuangan", "ImpactCatList", "NonMoneyImpact", new { area = "RefData" }, null)</li>
+        <li>@Html.ActionLink("Pengelompokan Mitigasi", "MitigationCatList", "Mitigation", new { area = "RefData" }, null)</li>
+        <li>@Html.ActionLink("Tingkat Risiko", "Index", "RiskLevel", new { area = "RefData" }, null)</li>
+        <li>@Html.ActionLink("Peristiwa Risiko", "Index", "RiskEvent", new { area = "RefData" }, null)</li>
+    </ul>
+</div>
+
+<div id="content_container">
+    <div id="content">
+        @RenderBody()
+    </div>
+</div>
+<div style="clear: both"></div>

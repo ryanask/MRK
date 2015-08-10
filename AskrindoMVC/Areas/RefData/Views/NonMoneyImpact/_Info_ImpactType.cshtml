@@ -1,0 +1,21 @@
+﻿@model AskrindoMVC.Models.ImpactType
+
+<div style="padding-bottom: 12px">
+    <table class="layout">
+        <tr>
+            <td>Kriteria Dampak</td>
+            <td style="width: 1em; text-align: center">:</td>
+            <td>
+                @Model.ImpactCat.ImpactCatName (@Model.ImpactCatId)
+            </td>
+        </tr>
+        <tr>
+            <td>Dampak</td>
+            <td style="text-align: center">:</td>
+            <td>
+                @Model.ImpactTypeName (@Model.ImpactTypeId)
+            </td>
+        </tr>
+    </table>
+</div>
+

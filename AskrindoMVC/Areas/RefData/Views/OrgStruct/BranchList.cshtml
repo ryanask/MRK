@@ -1,0 +1,65 @@
+﻿@model IEnumerable<AskrindoMVC.Models.Branch>
+
+@{
+    ViewBag.Title = "BranchList";
+    Layout = "~/Areas/RefData/Views/Shared/_orgstruct.cshtml";
+    
+    var dept = ViewBag.Dept as AskrindoMVC.Models.Dept;
+    var canModify = (bool)ViewBag.CanModify;
+}
+
+<h3 style="padding-bottom: 0; margin-bottom: 0">Daftar Cabang</h3>
+@Html.Partial("_Info_Dept", dept)
+
+@if (canModify)
+{ 
+<div style="padding-bottom: 12px">
+    @Html.ActionLink("Cabang Baru", "BranchNew", new { deptId = dept.DeptId })
+</div>
+}
+
+<table class="list">
+    <tr>
+        <th>ID</th>
+        <th>Nama Cabang</th>
+        <th>Kelas</th>
+        <th>Kode Kantor</th>
+        <th>Supporting Unit</th>
+        @if (canModify)
+        { 
+        <th></th>
+        }
+        <th></th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.BranchId)</td>
+        <td>@Html.DisplayFor(modelItem => item.BranchName)</td>
+        <td align="center">@Html.DisplayFor(modelItem => item.BranchClass.ClassName)</td>
+        <td align="center">@Html.DisplayFor(modelItem => item.BranchCode)</td>
+        <td align="center">@Html.DisplayFor(modelItem => item.IsSupporting)</td>
+        @if (canModify)
+        { 
+        <td>
+            @Html.ActionLink("Edit", "BranchEdit", new { id = item.BranchId }) |
+            @Html.ActionLink("Hapus", "BranchDelete", new { id = item.BranchId })
+        </td>
+        }
+        <td>
+            @if (item.ClassId == 1)
+            {
+                @Html.ActionLink("Bagian (" + item.SubBranches.Count + ")", "SubBranchList", new { branchId = item.BranchId }, null)
+            }
+        </td>
+        <td>
+            @Html.ActionLink("KUP (" + item.BizUnits.Count + ")", "BizUnitList", new { branchId = item.BranchId }, null)
+        </td>
+    </tr>
+}
+</table>
+
+<div style="padding-top: 12px">
+    @Html.ActionLink("Daftar Direktorat", "DeptList")
+</div>

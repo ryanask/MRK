@@ -1,0 +1,52 @@
+﻿@model AskrindoMVC.Areas.RefData.Models.RiskClass.RiskGroupViewModel
+
+@{
+    ViewBag.Title = "RiskGroupList";
+    Layout = "~/Areas/RefData/Views/Shared/_RiskClass.cshtml";
+
+    var canModify = (bool)ViewBag.CanModify;
+}
+
+<h3 style="padding-bottom: 0; margin-bottom: 0">Daftar Kelompok Risiko</h3>
+@Html.Partial("_Info_RiskCat", Model.RiskCat)
+
+@if (canModify)
+{ 
+<div style="padding-bottom: 12px">
+    @Html.ActionLink("Kelompok Risiko Baru", "RiskGroupNew", new { catId = @Model.RiskCat.RiskCatId }, null)
+</div>
+}
+
+<table class="list">
+    <tr>
+        <th>ID</th>
+        <th>Nama Kelompok Risiko</th>
+        @if (canModify)
+        { 
+        <th></th>
+        }
+        <th></th>
+    </tr>
+@foreach (var group in Model.RiskCat.RiskGroups) { 
+    <tr>
+        <td>
+            @group.RiskGroupId
+        </td>
+        <td>
+            @group.RiskGroupName
+        </td>
+        @if (canModify)
+        { 
+        <td>
+            @Html.ActionLink("Edit", "RiskGroupEdit", new { id = group.RiskGroupId }, null) |
+            @Html.ActionLink("Hapus", "RiskGroupDelete", new { id = group.RiskGroupId }, null)
+        </td>
+        }
+        <td>
+            @Html.ActionLink("Jenis Risiko (" + group.RiskTypes.Count + ")", "RiskTypeList", new { groupId = group.RiskGroupId }, null)
+        </td>
+    </tr>
+}
+</table>
+
+@Html.Partial("_Link_RiskCatList", @Model.RiskCat)

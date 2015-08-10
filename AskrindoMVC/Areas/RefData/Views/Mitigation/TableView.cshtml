@@ -1,0 +1,35 @@
+﻿@model IEnumerable<AskrindoMVC.Models.MitigationType>
+
+@{
+    ViewBag.Title = "TableView";
+    Layout = "~/Areas/RefData/Views/Shared/_Mitigation.cshtml";
+
+    var catId = 0;
+    var newcatId = 0;
+}
+
+<h3>Table View</h3>
+
+<table class="list">
+    <tr>
+        <th>Kelompok Mitigasi</th>
+        <th>Jenis Mitigasi</th>
+    </tr>
+@foreach(var type in Model) {
+    <tr>
+    @{
+    newcatId = type.MitigationCatId;
+    if (catId != newcatId)
+    {
+        catId = newcatId;
+        <td>@type.MitigationCatId. @type.MitigationCat.MitigationCatName</td>
+        <td>@type.MitigationTypeId. @type.MitigationTypeName</td>
+    }
+    else { 
+        <td></td>
+        <td>@type.MitigationTypeId. @type.MitigationTypeName</td>
+    }
+    }
+    </tr>
+}
+</table>

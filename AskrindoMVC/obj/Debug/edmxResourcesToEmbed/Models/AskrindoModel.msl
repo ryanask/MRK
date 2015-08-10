@@ -1,0 +1,584 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AskrindoMVCModelStoreContainer" CdmEntityContainer="AskrindoMVCEntities">
+    <EntitySetMapping Name="aspnet_User">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.aspnet_User">
+        <MappingFragment StoreEntitySet="aspnet_Users">
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="LoweredUserName" ColumnName="LoweredUserName" />
+          <ScalarProperty Name="MobileAlias" ColumnName="MobileAlias" />
+          <ScalarProperty Name="IsAnonymous" ColumnName="IsAnonymous" />
+          <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CauseGroups">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.CauseGroup">
+        <MappingFragment StoreEntitySet="CauseGroups">
+          <ScalarProperty Name="CauseGroupId" ColumnName="CauseGroupId" />
+          <ScalarProperty Name="CauseGroupName" ColumnName="CauseGroupName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Causes">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.Cause">
+        <MappingFragment StoreEntitySet="Causes">
+          <ScalarProperty Name="CauseId" ColumnName="CauseId" />
+          <ScalarProperty Name="CauseTypeId" ColumnName="CauseTypeId" />
+          <ScalarProperty Name="CauseName" ColumnName="CauseName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CauseTypes">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.CauseType">
+        <MappingFragment StoreEntitySet="CauseTypes">
+          <ScalarProperty Name="CauseTypeId" ColumnName="CauseTypeId" />
+          <ScalarProperty Name="CauseGroupId" ColumnName="CauseGroupId" />
+          <ScalarProperty Name="CauseTypeName" ColumnName="CauseTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EffectGroups">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.EffectGroup">
+        <MappingFragment StoreEntitySet="EffectGroups">
+          <ScalarProperty Name="EffectGroupId" ColumnName="EffectGroupId" />
+          <ScalarProperty Name="EffectGroupName" ColumnName="EffectGroupName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Effects">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.Effect">
+        <MappingFragment StoreEntitySet="Effects">
+          <ScalarProperty Name="EffectId" ColumnName="EffectId" />
+          <ScalarProperty Name="EffectTypeId" ColumnName="EffectTypeId" />
+          <ScalarProperty Name="EffectName" ColumnName="EffectName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EffectTypes">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.EffectType">
+        <MappingFragment StoreEntitySet="EffectTypes">
+          <ScalarProperty Name="EffectTypeId" ColumnName="EffectTypeId" />
+          <ScalarProperty Name="EffectGroupId" ColumnName="EffectGroupId" />
+          <ScalarProperty Name="EffectTypeName" ColumnName="EffectTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RiskCats">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.RiskCat">
+        <MappingFragment StoreEntitySet="RiskCats">
+          <ScalarProperty Name="RiskCatId" ColumnName="RiskCatId" />
+          <ScalarProperty Name="RiskCatName" ColumnName="RiskCatName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RiskGroups">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.RiskGroup">
+        <MappingFragment StoreEntitySet="RiskGroups">
+          <ScalarProperty Name="RiskGroupId" ColumnName="RiskGroupId" />
+          <ScalarProperty Name="RiskCatId" ColumnName="RiskCatId" />
+          <ScalarProperty Name="RiskGroupName" ColumnName="RiskGroupName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RiskTypes">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.RiskType">
+        <MappingFragment StoreEntitySet="RiskTypes">
+          <ScalarProperty Name="RiskTypeId" ColumnName="RiskTypeId" />
+          <ScalarProperty Name="RiskGroupId" ColumnName="RiskGroupId" />
+          <ScalarProperty Name="RiskTypeName" ColumnName="RiskTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Depts">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.Dept">
+        <MappingFragment StoreEntitySet="Depts">
+          <ScalarProperty Name="DeptName" ColumnName="DeptName" />
+          <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BranchClasses">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.BranchClass">
+        <MappingFragment StoreEntitySet="BranchClasses">
+          <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+          <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProbLevels">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.ProbLevel">
+        <MappingFragment StoreEntitySet="ProbLevels">
+          <ScalarProperty Name="DescriptionProject" ColumnName="DescriptionProject" />
+          <ScalarProperty Name="DescriptionGeneral" ColumnName="DescriptionGeneral" />
+          <ScalarProperty Name="PctMax" ColumnName="PctMax" />
+          <ScalarProperty Name="PctMin" ColumnName="PctMin" />
+          <ScalarProperty Name="ProbLevelName" ColumnName="ProbLevelName" />
+          <ScalarProperty Name="ProbLevelId" ColumnName="ProbLevelId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ImpactLevels">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.ImpactLevel">
+        <MappingFragment StoreEntitySet="ImpactLevels">
+          <ScalarProperty Name="MoneyMax" ColumnName="MoneyMax" />
+          <ScalarProperty Name="MoneyMin" ColumnName="MoneyMin" />
+          <ScalarProperty Name="PctMax" ColumnName="PctMax" />
+          <ScalarProperty Name="PctMin" ColumnName="PctMin" />
+          <ScalarProperty Name="ImpactLevelName" ColumnName="ImpactLevelName" />
+          <ScalarProperty Name="ImpactLevelId" ColumnName="ImpactLevelId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ImpactCats">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.ImpactCat">
+        <MappingFragment StoreEntitySet="ImpactCats">
+          <ScalarProperty Name="ImpactCatName" ColumnName="ImpactCatName" />
+          <ScalarProperty Name="ImpactCatId" ColumnName="ImpactCatId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ImpactDetails">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.ImpactDetail">
+        <MappingFragment StoreEntitySet="ImpactDetails">
+          <ScalarProperty Name="ImpactDetailName" ColumnName="ImpactDetailName" />
+          <ScalarProperty Name="ImpactLevelId" ColumnName="ImpactLevelId" />
+          <ScalarProperty Name="ImpactTypeId" ColumnName="ImpactTypeId" />
+          <ScalarProperty Name="ImpactDetailId" ColumnName="ImpactDetailId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ImpactTypes">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.ImpactType">
+        <MappingFragment StoreEntitySet="ImpactTypes">
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="ImpactTypeName" ColumnName="ImpactTypeName" />
+          <ScalarProperty Name="ImpactCatId" ColumnName="ImpactCatId" />
+          <ScalarProperty Name="ImpactTypeId" ColumnName="ImpactTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MitigationCats">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.MitigationCat">
+        <MappingFragment StoreEntitySet="MitigationCats">
+          <ScalarProperty Name="MitigationCatName" ColumnName="MitigationCatName" />
+          <ScalarProperty Name="MitigationCatId" ColumnName="MitigationCatId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MitigationTypes">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.MitigationType">
+        <MappingFragment StoreEntitySet="MitigationTypes">
+          <ScalarProperty Name="MitigationTypeName" ColumnName="MitigationTypeName" />
+          <ScalarProperty Name="MitigationCatId" ColumnName="MitigationCatId" />
+          <ScalarProperty Name="MitigationTypeId" ColumnName="MitigationTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserInfos">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.UserInfo">
+        <MappingFragment StoreEntitySet="UserInfos">
+          <ScalarProperty Name="StsPC" ColumnName="StsPC" />
+          <ScalarProperty Name="OrgPos" ColumnName="OrgPos" />
+          <ScalarProperty Name="BizUnitId" ColumnName="BizUnitId" />
+          <ScalarProperty Name="SubBranchId" ColumnName="SubBranchId" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="SubDivId" ColumnName="SubDivId" />
+          <ScalarProperty Name="DivisionId" ColumnName="DivisionId" />
+          <ScalarProperty Name="SubDeptId" ColumnName="SubDeptId" />
+          <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+          <ScalarProperty Name="IsRiskOwner" ColumnName="IsRiskOwner" />
+          <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="aspnet_Membership">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.aspnet_Membership">
+        <MappingFragment StoreEntitySet="aspnet_Membership">
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="FailedPasswordAnswerAttemptWindowStart" ColumnName="FailedPasswordAnswerAttemptWindowStart" />
+          <ScalarProperty Name="FailedPasswordAnswerAttemptCount" ColumnName="FailedPasswordAnswerAttemptCount" />
+          <ScalarProperty Name="FailedPasswordAttemptWindowStart" ColumnName="FailedPasswordAttemptWindowStart" />
+          <ScalarProperty Name="FailedPasswordAttemptCount" ColumnName="FailedPasswordAttemptCount" />
+          <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
+          <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
+          <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+          <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+          <ScalarProperty Name="PasswordAnswer" ColumnName="PasswordAnswer" />
+          <ScalarProperty Name="PasswordQuestion" ColumnName="PasswordQuestion" />
+          <ScalarProperty Name="LoweredEmail" ColumnName="LoweredEmail" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="MobilePIN" ColumnName="MobilePIN" />
+          <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+          <ScalarProperty Name="PasswordFormat" ColumnName="PasswordFormat" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SerialNumbers">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.SerialNumber">
+        <MappingFragment StoreEntitySet="SerialNumbers">
+          <ScalarProperty Name="SN" ColumnName="SN" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Freqs">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.Freq">
+        <MappingFragment StoreEntitySet="Freqs">
+          <ScalarProperty Name="FreqName" ColumnName="FreqName" />
+          <ScalarProperty Name="FreqId" ColumnName="FreqId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RiskProbs">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.RiskProb">
+        <MappingFragment StoreEntitySet="RiskProbs">
+          <ScalarProperty Name="ProbLevelId" ColumnName="ProbLevelId" />
+          <ScalarProperty Name="ProbValue" ColumnName="ProbValue" />
+          <ScalarProperty Name="FreqId" ColumnName="FreqId" />
+          <ScalarProperty Name="Compare" ColumnName="Compare" />
+          <ScalarProperty Name="Approx3" ColumnName="Approx3" />
+          <ScalarProperty Name="Approx2" ColumnName="Approx2" />
+          <ScalarProperty Name="Approx1" ColumnName="Approx1" />
+          <ScalarProperty Name="Binom2" ColumnName="Binom2" />
+          <ScalarProperty Name="Binom1" ColumnName="Binom1" />
+          <ScalarProperty Name="Poisson2" ColumnName="Poisson2" />
+          <ScalarProperty Name="Poisson1" ColumnName="Poisson1" />
+          <ScalarProperty Name="ProbOption" ColumnName="ProbOption" />
+          <ScalarProperty Name="RiskId" ColumnName="RiskId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RiskImpacts">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.RiskImpact">
+        <MappingFragment StoreEntitySet="RiskImpacts">
+          <ScalarProperty Name="ImpactLevelId" ColumnName="ImpactLevelId" />
+          <ScalarProperty Name="MoneyIndirect" ColumnName="MoneyIndirect" />
+          <ScalarProperty Name="MoneyDirect" ColumnName="MoneyDirect" />
+          <ScalarProperty Name="IsMoneyImpact" ColumnName="IsMoneyImpact" />
+          <ScalarProperty Name="RiskId" ColumnName="RiskId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RiskNonMoneyImpacts">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.RiskNonMoneyImpact">
+        <MappingFragment StoreEntitySet="RiskNonMoneyImpacts">
+          <ScalarProperty Name="ImpactLevelId" ColumnName="ImpactLevelId" />
+          <ScalarProperty Name="ImpactTypeId" ColumnName="ImpactTypeId" />
+          <ScalarProperty Name="ImpactDetailId" ColumnName="ImpactDetailId" />
+          <ScalarProperty Name="RiskId" ColumnName="RiskId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RiskAttachments">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.RiskAttachment">
+        <MappingFragment StoreEntitySet="RiskAttachments">
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="ContentLength" ColumnName="ContentLength" />
+          <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+          <ScalarProperty Name="Filename" ColumnName="Filename" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="AttachName" ColumnName="AttachName" />
+          <ScalarProperty Name="RiskId" ColumnName="RiskId" />
+          <ScalarProperty Name="AttachId" ColumnName="AttachId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RiskApprovals">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.RiskApproval">
+        <MappingFragment StoreEntitySet="RiskApprovals">
+          <ScalarProperty Name="IsReadOnly" ColumnName="IsReadOnly" />
+          <ScalarProperty Name="LastApproval" ColumnName="LastApproval" />
+          <ScalarProperty Name="LimitDate" ColumnName="LimitDate" />
+          <ScalarProperty Name="ApprovalDate" ColumnName="ApprovalDate" />
+          <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="OrgName" ColumnName="OrgName" />
+          <ScalarProperty Name="BizUnitId" ColumnName="BizUnitId" />
+          <ScalarProperty Name="SubBranchId" ColumnName="SubBranchId" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="SubDivId" ColumnName="SubDivId" />
+          <ScalarProperty Name="DivisionId" ColumnName="DivisionId" />
+          <ScalarProperty Name="SubDeptId" ColumnName="SubDeptId" />
+          <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+          <ScalarProperty Name="OrgPos" ColumnName="OrgPos" />
+          <ScalarProperty Name="RiskId" ColumnName="RiskId" />
+          <ScalarProperty Name="ApprovalId" ColumnName="ApprovalId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Risks">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.Risk">
+        <MappingFragment StoreEntitySet="Risks">
+          <ScalarProperty Name="IsReadOnly" ColumnName="IsReadOnly" />
+          <ScalarProperty Name="CloseDate" ColumnName="CloseDate" />
+          <ScalarProperty Name="ApprovalDate" ColumnName="ApprovalDate" />
+          <ScalarProperty Name="RiskLevel" ColumnName="RiskLevel" />
+          <ScalarProperty Name="ImpactMoney" ColumnName="ImpactMoney" />
+          <ScalarProperty Name="ImpactLevelId" ColumnName="ImpactLevelId" />
+          <ScalarProperty Name="ProbLevelId" ColumnName="ProbLevelId" />
+          <ScalarProperty Name="ProbValue" ColumnName="ProbValue" />
+          <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+          <ScalarProperty Name="RiskTypeId" ColumnName="RiskTypeId" />
+          <ScalarProperty Name="RiskGroupId" ColumnName="RiskGroupId" />
+          <ScalarProperty Name="RiskCatId" ColumnName="RiskCatId" />
+          <ScalarProperty Name="EffectId" ColumnName="EffectId" />
+          <ScalarProperty Name="EffectTypeId" ColumnName="EffectTypeId" />
+          <ScalarProperty Name="EffectGroupId" ColumnName="EffectGroupId" />
+          <ScalarProperty Name="CauseId" ColumnName="CauseId" />
+          <ScalarProperty Name="CauseTypeId" ColumnName="CauseTypeId" />
+          <ScalarProperty Name="CauseGroupId" ColumnName="CauseGroupId" />
+          <ScalarProperty Name="BizUnitId" ColumnName="BizUnitId" />
+          <ScalarProperty Name="SubBranchId" ColumnName="SubBranchId" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="SubDivId" ColumnName="SubDivId" />
+          <ScalarProperty Name="DivisionId" ColumnName="DivisionId" />
+          <ScalarProperty Name="SubDeptId" ColumnName="SubDeptId" />
+          <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+          <ScalarProperty Name="OrgPos" ColumnName="OrgPos" />
+          <ScalarProperty Name="RiskDate" ColumnName="RiskDate" />
+          <ScalarProperty Name="RiskName" ColumnName="RiskName" />
+          <ScalarProperty Name="RiskCode" ColumnName="RiskCode" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RiskId" ColumnName="RiskId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MitigationAttachments">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.MitigationAttachment">
+        <MappingFragment StoreEntitySet="MitigationAttachments">
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="ContentLength" ColumnName="ContentLength" />
+          <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+          <ScalarProperty Name="Filename" ColumnName="Filename" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="AttachName" ColumnName="AttachName" />
+          <ScalarProperty Name="MitigationId" ColumnName="MitigationId" />
+          <ScalarProperty Name="AttachId" ColumnName="AttachId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubDepts">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.SubDept">
+        <MappingFragment StoreEntitySet="SubDepts">
+          <ScalarProperty Name="IsSupporting" ColumnName="IsSupporting" />
+          <ScalarProperty Name="SubDeptName" ColumnName="SubDeptName" />
+          <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+          <ScalarProperty Name="SubDeptId" ColumnName="SubDeptId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Divisions">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.Division">
+        <MappingFragment StoreEntitySet="Divisions">
+          <ScalarProperty Name="IsSupporting" ColumnName="IsSupporting" />
+          <ScalarProperty Name="DivisionName" ColumnName="DivisionName" />
+          <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+          <ScalarProperty Name="DivisionId" ColumnName="DivisionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubDivs">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.SubDiv">
+        <MappingFragment StoreEntitySet="SubDivs">
+          <ScalarProperty Name="IsSupporting" ColumnName="IsSupporting" />
+          <ScalarProperty Name="SubDivName" ColumnName="SubDivName" />
+          <ScalarProperty Name="DivisionId" ColumnName="DivisionId" />
+          <ScalarProperty Name="SubDivId" ColumnName="SubDivId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Branches">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.Branch">
+        <MappingFragment StoreEntitySet="Branches">
+          <ScalarProperty Name="IsSupporting" ColumnName="IsSupporting" />
+          <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
+          <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+          <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+          <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubBranches">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.SubBranch">
+        <MappingFragment StoreEntitySet="SubBranches">
+          <ScalarProperty Name="IsSupporting" ColumnName="IsSupporting" />
+          <ScalarProperty Name="SubBranchName" ColumnName="SubBranchName" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="SubBranchId" ColumnName="SubBranchId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BizUnits">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.BizUnit">
+        <MappingFragment StoreEntitySet="BizUnits">
+          <ScalarProperty Name="statusf" ColumnName="statusf" />
+          <ScalarProperty Name="IsSupporting" ColumnName="IsSupporting" />
+          <ScalarProperty Name="BizUnitCode" ColumnName="BizUnitCode" />
+          <ScalarProperty Name="BizUnitName" ColumnName="BizUnitName" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="BizUnitId" ColumnName="BizUnitId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ImpactRefs">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.ImpactRef">
+        <MappingFragment StoreEntitySet="ImpactRefs">
+          <ScalarProperty Name="SupportingBizUnitPct" ColumnName="SupportingBizUnitPct" />
+          <ScalarProperty Name="SupportingBranchPct" ColumnName="SupportingBranchPct" />
+          <ScalarProperty Name="SupportingHQPct" ColumnName="SupportingHQPct" />
+          <ScalarProperty Name="BizUnitPct" ColumnName="BizUnitPct" />
+          <ScalarProperty Name="Branch3Pct" ColumnName="Branch3Pct" />
+          <ScalarProperty Name="Branch2Pct" ColumnName="Branch2Pct" />
+          <ScalarProperty Name="Branch1Pct" ColumnName="Branch1Pct" />
+          <ScalarProperty Name="HQPct" ColumnName="HQPct" />
+          <ScalarProperty Name="MaxMoney" ColumnName="MaxMoney" />
+          <ScalarProperty Name="ImpactRefId" ColumnName="ImpactRefId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RiskStates">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.RiskState">
+        <MappingFragment StoreEntitySet="RiskStates">
+          <ScalarProperty Name="RiskLevel" ColumnName="RiskLevel" />
+          <ScalarProperty Name="ImpactLevelId" ColumnName="ImpactLevelId" />
+          <ScalarProperty Name="ProbLevelId" ColumnName="ProbLevelId" />
+          <ScalarProperty Name="StateDate" ColumnName="StateDate" />
+          <ScalarProperty Name="MitigationId" ColumnName="MitigationId" />
+          <ScalarProperty Name="RiskId" ColumnName="RiskId" />
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RiskLevels">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.RiskLevel">
+        <MappingFragment StoreEntitySet="RiskLevels">
+          <ScalarProperty Name="ForeColor" ColumnName="ForeColor" />
+          <ScalarProperty Name="BackColor" ColumnName="BackColor" />
+          <ScalarProperty Name="Action" ColumnName="Action" />
+          <ScalarProperty Name="MaxValue" ColumnName="MaxValue" />
+          <ScalarProperty Name="MinValue" ColumnName="MinValue" />
+          <ScalarProperty Name="LevelName" ColumnName="LevelName" />
+          <ScalarProperty Name="LevelId" ColumnName="LevelId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MitigationApprovals">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.MitigationApproval">
+        <MappingFragment StoreEntitySet="MitigationApprovals">
+          <ScalarProperty Name="IsReadOnly" ColumnName="IsReadOnly" />
+          <ScalarProperty Name="LastApproval" ColumnName="LastApproval" />
+          <ScalarProperty Name="LimitDate" ColumnName="LimitDate" />
+          <ScalarProperty Name="ApprovalDate" ColumnName="ApprovalDate" />
+          <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="OrgName" ColumnName="OrgName" />
+          <ScalarProperty Name="BizUnitId" ColumnName="BizUnitId" />
+          <ScalarProperty Name="SubBranchId" ColumnName="SubBranchId" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="SubDivId" ColumnName="SubDivId" />
+          <ScalarProperty Name="DivisionId" ColumnName="DivisionId" />
+          <ScalarProperty Name="SubDeptId" ColumnName="SubDeptId" />
+          <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+          <ScalarProperty Name="OrgPos" ColumnName="OrgPos" />
+          <ScalarProperty Name="MitigationId" ColumnName="MitigationId" />
+          <ScalarProperty Name="ApprovalId" ColumnName="ApprovalId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RiskMitigations">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.RiskMitigation">
+        <MappingFragment StoreEntitySet="RiskMitigations">
+          <ScalarProperty Name="IsReadOnly" ColumnName="IsReadOnly" />
+          <ScalarProperty Name="BizUnitId" ColumnName="BizUnitId" />
+          <ScalarProperty Name="SubBranchId" ColumnName="SubBranchId" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="SubDivId" ColumnName="SubDivId" />
+          <ScalarProperty Name="DivisionId" ColumnName="DivisionId" />
+          <ScalarProperty Name="SubDeptId" ColumnName="SubDeptId" />
+          <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+          <ScalarProperty Name="OrgPos" ColumnName="OrgPos" />
+          <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ApprovalDate" ColumnName="ApprovalDate" />
+          <ScalarProperty Name="LimitDate" ColumnName="LimitDate" />
+          <ScalarProperty Name="RiskLevel" ColumnName="RiskLevel" />
+          <ScalarProperty Name="ImpactLevelId" ColumnName="ImpactLevelId" />
+          <ScalarProperty Name="ProbLevelId" ColumnName="ProbLevelId" />
+          <ScalarProperty Name="MitigationTypeId" ColumnName="MitigationTypeId" />
+          <ScalarProperty Name="MitigationCatId" ColumnName="MitigationCatId" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="MitigationDate" ColumnName="MitigationDate" />
+          <ScalarProperty Name="InputDate" ColumnName="InputDate" />
+          <ScalarProperty Name="MitigationName" ColumnName="MitigationName" />
+          <ScalarProperty Name="MitigationCode" ColumnName="MitigationCode" />
+          <ScalarProperty Name="RiskId" ColumnName="RiskId" />
+          <ScalarProperty Name="MitigationId" ColumnName="MitigationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HelpDocs">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.HelpDoc">
+        <MappingFragment StoreEntitySet="HelpDocs">
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="ContentLength" ColumnName="ContentLength" />
+          <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+          <ScalarProperty Name="Filename" ColumnName="Filename" />
+          <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+          <ScalarProperty Name="DocInfo" ColumnName="DocInfo" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DocName" ColumnName="DocName" />
+          <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+          <ScalarProperty Name="DocId" ColumnName="DocId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HelpMenus">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.HelpMenu">
+        <MappingFragment StoreEntitySet="HelpMenus">
+          <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+          <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RiskEvents">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.RiskEvent">
+        <MappingFragment StoreEntitySet="RiskEvent">
+          <ScalarProperty Name="RiskEvent1" ColumnName="RiskEvent" />
+          <ScalarProperty Name="RiskEventID" ColumnName="RiskEventID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserGroups">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.UserGroup">
+        <MappingFragment StoreEntitySet="UserGroup">
+          <ScalarProperty Name="UserGroup1" ColumnName="UserGroup" />
+          <ScalarProperty Name="UserGroupID" ColumnName="UserGroupID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MitigationUnits">
+      <EntityTypeMapping TypeName="AskrindoMVCModel.MitigationUnit">
+        <MappingFragment StoreEntitySet="MitigationUnit">
+          <ScalarProperty Name="DivisionId" ColumnName="DivisionId" />
+          <ScalarProperty Name="MitigationId" ColumnName="MitigationId" />
+          <ScalarProperty Name="MitigationUnitId" ColumnName="MitigationUnitId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

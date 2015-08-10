@@ -1,0 +1,58 @@
+﻿@model AskrindoMVC.Areas.RefData.Models.RiskEffect.EffectViewModel
+
+@{
+    ViewBag.Title = "EffectEdit";
+    Layout = "~/Areas/RefData/Views/Shared/_RiskEffect.cshtml";
+}
+
+<h3 style="padding-bottom: 0; margin-bottom: 0">Edit Akibat</h3>
+<div style="padding-bottom: 12px">
+    <table class="layout">
+        <tr>
+            <td>Kelompok Akibat</td>
+            <td style="width: 10px">:</td>
+            <td>
+                @Model.Effect.EffectType.EffectGroup.EffectGroupName (@Model.Effect.EffectType.EffectGroupId)
+            </td>
+        </tr>
+        <tr>
+            <td>Jenis Akibat</td>
+            <td style="width: 10px">:</td>
+            <td>
+                @Model.Effect.EffectType.EffectTypeName (@Model.Effect.EffectTypeId)
+            </td>
+        </tr>
+    </table>
+</div>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.Effect.EffectTypeId)
+    @Html.HiddenFor(model => model.Effect.EffectId)
+    <table class="edit">
+        <tr>
+            <td>ID</td>
+            <td>
+                @Html.DisplayFor(model => model.Effect.EffectId)
+            </td>
+        </tr>
+        <tr>
+            <td>Nama Akibat</td>
+            <td>
+                @Html.EditorFor(model => model.Effect.EffectName)
+                @Html.ValidationMessageFor(model => model.Effect.EffectName)
+            </td>
+        </tr>
+    </table>
+    
+    <p>
+        <input type="submit" value="Update" />
+    </p>
+}
+
+<div>
+    @Html.ActionLink("Daftar Akibat", "EffectList", new { typeId = @Model.Effect.EffectTypeId }, null)
+</div>

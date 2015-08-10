@@ -1,0 +1,39 @@
+﻿@model AskrindoMVC.Models.ImpactCat
+
+@{
+    ViewBag.Title = "ImpactCatDelete";
+    Layout = "~/Areas/RefData/Views/Shared/_NonMoneyImpact.cshtml";
+}
+
+<h3>Hapus Kriteria Dampak</h3>
+
+<div style="padding-bottom: 12px" class="warning">
+    Kriteria Dampak berikut akan dihapus. Lanjutkan?
+</div>
+
+<table class="warning">
+    <tr>
+        <td>ID</td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(model => model.ImpactCatId)
+        </td>
+    </tr>
+    <tr>
+        <td>Nama Kriteria Dampak</td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(model => model.ImpactCatName)
+        </td>
+    </tr>
+</table>
+
+@using (Html.BeginForm()) {
+    <div style="padding-top: 12px">
+        <input type="submit" value="Hapus" />
+    </div>
+}
+
+<div style="padding-top: 12px">
+    @Html.ActionLink("Daftar Kriteria Dampak", "ImpactCatList")
+</div>

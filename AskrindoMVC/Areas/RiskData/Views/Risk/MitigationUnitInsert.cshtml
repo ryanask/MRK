@@ -1,0 +1,27 @@
+﻿@model AskrindoMVC.Areas.RiskData.Models.RiskData.RiskMitigationViewModel
+
+@using AskrindoMVC.Helpers
+
+@{
+    ViewBag.Title = "MintigationUnitInsert";
+    Layout = "~/Areas/RiskData/Views/Shared/_MitigationUnit.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(m => m.MitigationUnits.MitigationId)
+
+    <table class="edit">
+        <tr>
+            <td align=center>@Html.Label("Pilih Unit Kerja")</td>
+        </tr>
+        <tr>
+            <td>@Html.DropDownListFor(m => m.division.DivisionId, Model.divisions)</td>
+        </tr>
+    </table>
+
+    <div style="padding-top: 12px">
+        <input type="Submit" value="Update" />
+    </div>
+}

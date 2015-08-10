@@ -1,0 +1,35 @@
+﻿@model IEnumerable<AskrindoMVC.Models.RiskCat>
+
+@{
+    ViewBag.Title = "TreeView";
+    Layout = "~/Areas/RefData/Views/Shared/_RiskClass.cshtml";
+}
+
+<h3>TreeView</h3>
+
+<table class="list">
+@foreach (var cat in Model) { 
+    <tr>
+        <td colspan="3">
+            @cat.RiskCatId. @cat.RiskCatName
+        </td>
+    </tr>
+    foreach (var group in cat.RiskGroups) { 
+        <tr>
+            <td style="width: 20px"></td>
+            <td colspan="2">
+                @group.RiskGroupId. @group.RiskGroupName
+            </td>
+        </tr>
+        foreach (var type in group.RiskTypes) { 
+            <tr>
+                <td></td>
+                <td style="width: 20px"></td>
+                <td>
+                    @type.RiskTypeId. @type.RiskTypeName
+                </td>
+            </tr>
+        }
+    }
+}
+</table>

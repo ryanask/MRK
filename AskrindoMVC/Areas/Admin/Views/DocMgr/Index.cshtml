@@ -1,0 +1,37 @@
+﻿@model IEnumerable<AskrindoMVC.Models.HelpMenu>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_DocMgr.cshtml";
+}
+
+<h3>Daftar Menu</h3>
+
+<div style="padding-bottom: 12px">
+    @Html.ActionLink("Menu Baru", "MenuNew")
+</div>
+
+<table class="list">
+    <tr>
+        <th>ID</th>
+        <th>Menu</th>
+        <th>Keterangan</th>
+        <th>Visible?</th>
+        <th></th>
+        <th></th>
+    </tr>
+@foreach (var m in Model)
+{ 
+    <tr>
+        <td>@Html.DisplayFor(modelItem => m.MenuId)</td>
+        <td>@Html.DisplayFor(modelItem => m.MenuName)</td>
+        <td>@Html.DisplayFor(modelItem => m.Description)</td>
+        <td align="center">@Html.DisplayFor(modelItem => m.IsVisible)</td>
+        <td>
+            @Html.ActionLink("Edit", "MenuEdit", new { id = m.MenuId }, null) |
+            @Html.ActionLink("Hapus", "MenuDelete", new { id = m.MenuId }, null)
+        </td>
+        <td>@Html.ActionLink("Dokumen (" + m.HelpDocs.Count + ")", "DocList", new { id = m.MenuId }, null)</td>
+    </tr>
+}
+</table>

@@ -1,0 +1,42 @@
+﻿@model AskrindoMVC.Areas.RiskData.Models.RiskData.RiskImpactModelView
+
+@{
+    ViewBag.Title = "ImpactNonMoneyList";
+    Layout = "~/Areas/RiskData/Views/Shared/_Risk.cshtml";
+}
+
+@Html.Partial("_Info_Risk", Model.RiskImpact.Risk)
+
+<div style="padding-top: 12px">
+@Html.Partial("_Link_RiskTab", new ViewDataDictionary { { "Id", Model.RiskImpact.RiskId } })
+</div>
+
+<h3>Dampak Non Keuangan</h3>
+
+<table class="list">
+    <tr>
+        <th>Dampak</th>
+        <th>Tingkat Dampak</th>
+        <th></th>
+    </tr>
+@foreach (var item in Model.RiskNonMoneyImpacts) { 
+    <tr>
+        <td>
+            @item.ImpactDetail.ImpactType.ImpactTypeName
+        </td>
+        <td>
+            @item.ImpactDetail.ImpactLevelId - @item.ImpactDetail.ImpactLevel.ImpactLevelName
+            <br />
+            <span style="font-size:.8em">@item.ImpactDetail.ImpactDetailName</span>
+        </td>
+        <td>
+            @Html.ActionLink("Hapus", "ImpactNonMoneyDelete", new { id = item.Id }, null)
+        </td>
+    </tr>
+}
+</table>
+
+<div style="padding-Top: 12px">
+    @Html.ActionLink("Dampak Baru", "ImpactNonMoneySelect", new { id = Model.RiskImpact.RiskId }, null) |
+    @Html.ActionLink("Selesai", "ImpactDetail", new { id = Model.RiskImpact.RiskId }, null)
+</div>

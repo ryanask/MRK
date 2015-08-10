@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Dokumentasi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="sidebar">
+    <div class="title">
+        Dokumentasi
+    </div>
+    @*<ul id="sidemenu">
+        <li>@Html.ActionLink("Pengaturan User", "Index", "UserMgr", new { area = "Admin" }, null)</li>
+        <li>@Html.ActionLink("Pemeliharaan User", "Index", "UserMaintenance", new { area = "Admin" }, null)</li>
+        <li>@Html.ActionLink("Pengaturan Dokumentasi", "Index", "DocMgr", new { area = "Admin" }, null)</li>
+    </ul>*@
+    @RenderSection("docmenu", false)
+</div>
+
+<div id="content_container">
+    <div id="content">
+        @RenderBody()
+    </div>
+</div>
+<div style="clear: both"></div>

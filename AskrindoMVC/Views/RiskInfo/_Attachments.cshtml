@@ -1,0 +1,42 @@
+﻿@model IEnumerable<AskrindoMVC.Models.RiskAttachment>
+
+@using System.Web.Helpers
+@using AskrindoMVC.Helpers
+
+@{
+    var grid = new WebGrid(Model, canSort: false);
+}
+
+@grid.GetHtml(tableStyle: "list",
+    columns: grid.Columns(
+        grid.Column("AttachName", 
+            header: "Attachment", 
+            format: @<text> @Html.ActionLink((string)item.AttachName, "DownloadAttachment", new { id = item.AttachId }, null) </text>),
+        grid.Column("Notes", 
+            header: "Keterangan"),
+        grid.Column("ContentLength", 
+            header: "Ukuran", 
+            style: "text-align-right", 
+            format: (item) => @Utils.GetByteSizeAsText((int)item.ContentLength)))    
+)
+
+@*<table class="list">
+    <tr>
+        <th>Nama</th>
+        <th>Keterangan</th>
+        <th>Ukuran (byte)</th>
+    </tr>
+@foreach (var item in Model) { 
+    <tr>
+        <td>
+            @Html.ActionLink(item.AttachName, "DownloadAttachment", new { id = item.AttachId }, null)
+        </td>
+        <td>
+            @item.Notes
+        </td>
+        <td align="right">
+            @Html.DisplayFor(modelItem => item.ContentLength)
+        </td>
+    </tr>
+}
+</table>*@

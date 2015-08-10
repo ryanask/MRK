@@ -1,0 +1,49 @@
+﻿@model AskrindoMVC.Areas.RefData.Models.Mitigation.MitigationTypeViewModel
+
+@{
+    ViewBag.Title = "MitigationTypeList";
+    Layout = "~/Areas/RefData/Views/Shared/_Mitigation.cshtml";
+
+    var canModify = (bool)ViewBag.CanModify;
+}
+
+<h3 style="padding-bottom: 0; margin-bottom: 0">Daftar Jenis Mitigasi</h3>
+@Html.Partial("_Info_MitigationCat", Model.MitigationCat)
+
+@if (canModify)
+{ 
+<div style="padding-bottom: 12px">
+    @Html.ActionLink("Jenis Mitigasi Baru", "MitigationTypeNew", new { catId = Model.MitigationCat.MitigationCatId }, null)
+</div>
+}
+
+<table class="list">
+    <tr>
+        <th>ID</th>
+        <th>Nama Jenis Mitigasi</th>
+        @if (canModify)
+        { 
+        <th></th>
+        }
+    </tr>
+@foreach (var type in Model.MitigationTypes) { 
+    <tr>
+        <td>
+            @type.MitigationTypeId
+        </td>
+        <td>
+            @type.MitigationTypeName
+        </td>
+        @if (canModify)
+        { 
+        <td>
+            @Html.ActionLink("Edit", "MitigationTypeEdit", new { id = type.MitigationTypeId }, null) |
+            @Html.ActionLink("Hapus", "MitigationTypeDelete", new { id = type.MitigationTypeId }, null)
+        </td>
+        }
+    </tr>
+}
+</table>
+
+
+@Html.Partial("_Link_MitigationCatList")

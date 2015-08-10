@@ -1,0 +1,17 @@
+﻿@model AskrindoMVC.Models.RiskMitigation
+
+@{
+    ViewBag.Title = "MitigationDetail";
+    Layout = "~/Areas/RiskData/Views/Shared/_Risk.cshtml";
+}
+
+@Html.Partial("~/Views/RiskInfo/_RiskHeaderLink.cshtml", Model.Risk)
+
+<h3>Detail Mitigasi Risiko</h3>
+
+@Html.Partial("~/Views/RiskInfo/_MitigationDetail.cshtml", Model)
+
+<div style="padding-top: 12px">
+    @Html.ActionLink("Daftar Mitigasi", "MitigationList", new { id = Model.RiskId, approved = false }, null)
+</div>
+

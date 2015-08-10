@@ -1,0 +1,19 @@
+﻿@model IEnumerable<AskrindoMVC.Models.ImpactDetail>
+
+<table class="list">
+    <tr>
+        <th>Dampak</th>
+        <th>Tingkat Dampak</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImpactLevelId) - @Html.DisplayFor(modelItem => item.ImpactLevel.ImpactLevelName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImpactDetailName)
+        </td>
+    </tr>
+}
+</table>

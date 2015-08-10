@@ -1,0 +1,110 @@
+﻿@model AskrindoMVC.Models.RiskProb
+
+@using AskrindoMVC.Helpers
+
+<table class="display">
+    <tr>
+        <td>Penghitungan Probabilitas</td>
+        <td>:</td>
+        <td>
+            <strong>@Utils.GetProbOptionName(Model.ProbOption)</strong>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3" style="height: .3em"><hr /></td>
+    </tr>
+@if (Model.ProbOption == Utils.PROBOPTION_POISSON) { 
+    <tr>
+        <td>Banyaknya kejadian risiko</td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(m => m.Poisson1)
+        </td>
+    </tr>
+    <tr>
+        <td>Rentang waktu</td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(m => m.Poisson2)
+        </td>
+    </tr>
+}
+else if (Model.ProbOption == Utils.PROBOPTION_BINOMIAL)
+{ 
+    <tr>
+        <td>Kemungkinan berhasil atau gagal</td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(m => m.Binom1)
+        </td>
+    </tr>
+    <tr>
+        <td>Frekuensi banyaknya kejadian</td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(m => m.Binom2)
+        </td>
+    </tr>
+}
+else if (Model.ProbOption == Utils.PROBOPTION_APPROXIMATION)
+{ 
+    <tr>
+        <td>Aproksimasi pesimis (%)</td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(m => m.Approx1)
+        </td>
+    </tr>
+    <tr>
+        <td>Aproksimasi moderat (%)</td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(m => m.Approx2)
+        </td>
+    </tr>
+    <tr>
+        <td>Aproksimasi optimis (%)</td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(m => m.Approx3)
+        </td>
+    </tr>
+}
+else if (Model.ProbOption == Utils.PROBOPTION_COMPARISON)
+{ 
+    <tr>
+        <td>Pembanding (%)</td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(m => m.Compare)
+        </td>
+    </tr>
+}
+else
+{ 
+    <tr>
+        <td>Frekuensi</td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(m => m.Freq.FreqName)
+        </td>
+    </tr>
+}
+    <tr>
+        <td style="height: .3em"></td>
+    </tr>
+    <tr>
+        <td>Nilai Probabilitas (%)</td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(m => m.ProbValue)
+        </td>
+    </tr>
+    <tr>
+        <td>Tingkat Probabilitas</td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(m => m.ProbLevelId) - @Html.DisplayFor(m => m.ProbLevel.ProbLevelName)
+        </td>
+    </tr>
+</table>

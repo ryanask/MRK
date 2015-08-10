@@ -1,0 +1,41 @@
+﻿@model AskrindoMVC.Areas.RefData.Models.NonMoneyImpact.ImpactDetailViewModel
+
+@{
+    ViewBag.Title = "ImpactDetailList";
+    Layout = "~/Areas/RefData/Views/Shared/_NonMoneyImpact.cshtml";
+
+    var canModify = (bool)ViewBag.CanModify;
+}
+
+<h3 style="padding-bottom: 0; margin-bottom: 0">Tingkat Dampak</h3>
+@Html.Partial("_Info_ImpactType", Model.ImpactType)
+
+<table class="list">
+    <tr>
+        <th>Level</th>
+        <th>Keterangan</th>
+        @if (canModify)
+        { 
+        <th></th>
+        }
+    </tr>
+@foreach (var item in Model.ImpactDetails) { 
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImpactLevelId) -
+            @Html.DisplayFor(modelItem => item.ImpactLevel.ImpactLevelName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImpactDetailName)
+        </td>
+        @if (canModify)
+        { 
+        <td>
+            @Html.ActionLink("Edit", "ImpactDetailEdit", new { id = item.ImpactDetailId }, null)
+        </td>
+        }
+    </tr>
+}
+</table>
+
+@Html.Partial("_Link_ImpactTypeList", new ViewDataDictionary { { "CatId", Model.ImpactType.ImpactCatId } })

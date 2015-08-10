@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Data Risiko";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="sidebar">
+    <div class="title">
+        Data Risiko
+    </div>
+    <ul id="sidemenu">
+        <li>@Html.ActionLink("Risiko Baru", "RiskNew", "Risk", new { area = "RiskData" }, null)</li>
+        <li>@Html.ActionLink("Daftar Risiko", "RiskList", "Risk", new { area = "RiskData" }, null)</li>
+        <li>@Html.ActionLink("Mitigasi Risiko", "MitigationList", "Mitigation", new { area = "RiskData" }, null)</li>
+    </ul>
+</div>
+
+<div id="content_container">
+    <div id="content">
+        @RenderBody()
+    </div>
+</div>
+<div style="clear: both"></div>

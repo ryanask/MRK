@@ -1,0 +1,13 @@
+﻿@*<div style="padding-bottom: 12px">
+    @Html.ActionLink("Data Risiko", "RiskDetail", new { id = ViewData["Id"] }, null) |
+    @Html.ActionLink("Probabilitas", "ProbDetail", new { id = ViewData["Id"] }, null) |
+    @Html.ActionLink("Dampak", "ImpactDetail", new { id = ViewData["Id"] }, null) |
+    @Html.ActionLink("Attachment", "AttachmentList", new { id = ViewData["Id"] }, null)
+</div>*@
+
+<ul id="tabmenu">
+    <li>@Html.ActionLink("Data Risiko", "RiskDetail", new { id = ViewData["Id"] }, null)</li>
+    <li>@Html.ActionLink("Probabilitas", "ProbDetail", new { id = ViewData["Id"] }, null)</li>
+    <li>@Html.ActionLink("Dampak", "ImpactDetail", new { id = ViewData["Id"] }, null)</li>
+    <li>@Html.ActionLink("Attachment", "AttachmentList", new { id = ViewData["Id"] }, null)</li>
+</ul>

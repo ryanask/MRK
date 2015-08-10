@@ -1,0 +1,28 @@
+﻿@using AskrindoMVC.Helpers
+
+@if(Request.IsAuthenticated) {
+    UserData data = Utils.LoadUserDataFromSession();
+    <text>
+    <strong>@data.FullName</strong>
+    <div style="font-size: .8em; line-height: 1.1em">
+        @if (!string.IsNullOrEmpty(data.JobTitle))
+        { 
+            @data.JobTitle
+            if (data.IsRiskOwner) { 
+               @:- RCP
+            }
+            <br />
+        }
+        @if (!string.IsNullOrEmpty(data.OrgPosName))
+        { 
+            @data.OrgPosName;
+        }
+    </div>
+    @Html.ActionLink("Ubah Password", "ChangePassword", "Account", new { area = "" }, null) |
+    @Html.ActionLink("Logout", "Logout", "Account", new { area = "" }, null)
+    </text>
+}
+else
+{
+    @:@Html.ActionLink("Login", "Login", "Account", new { area = "" }, null)
+}

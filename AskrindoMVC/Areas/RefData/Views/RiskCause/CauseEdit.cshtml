@@ -1,0 +1,57 @@
+﻿@model AskrindoMVC.Areas.RefData.Models.RiskCause.CauseViewModel
+
+@{
+    ViewBag.Title = "CauseEdit";
+    Layout = "~/Areas/RefData/Views/Shared/_riskcause.cshtml";
+}
+
+<h3 style="padding-bottom: 0; margin-bottom: 0">Edit Sebab</h3>
+<div style="padding-bottom: 12px">
+    <table class="layout">
+        <tr>
+            <td>Kelompok Sebab</td>
+            <td style="width: 10px">:</td>
+            <td>
+                @Model.Cause.CauseType.CauseGroup.CauseGroupName (@Model.Cause.CauseType.CauseGroupId)
+            </td>
+        </tr>
+        <tr>
+            <td>Jenis Sebab</td>
+            <td style="width: 10px">:</td>
+            <td>
+                @Model.Cause.CauseType.CauseTypeName (@Model.Cause.CauseType.CauseTypeId)
+            </td>
+        </tr>
+    </table>
+</div>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.Cause.CauseId)
+    @Html.HiddenFor(model => model.Cause.CauseTypeId)
+    <table class="edit">
+        <tr>
+            <td>ID</td>
+            <td>
+                @Model.Cause.CauseId
+            </td>
+        </tr>
+        <tr>
+            <td>Nama Sebab</td>
+            <td>
+                @Html.EditorFor(model => model.Cause.CauseName)
+                @Html.ValidationMessageFor(model => model.Cause.CauseName)
+            </td>
+        </tr>
+    </table>
+    <p>
+        <input type="submit" value="Update" />
+    </p>
+}
+
+<div>
+    @Html.ActionLink("Daftar Sebab", "CauseList", new { typeId = @Model.Cause.CauseTypeId }, null)
+</div>

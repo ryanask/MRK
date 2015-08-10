@@ -1,0 +1,181 @@
+﻿@model AskrindoMVC.Models.Risk
+
+@using AskrindoMVC.Models
+@using AskrindoMVC.Helpers
+
+@{
+    AskrindoMVCEntities db = new AskrindoMVCEntities();
+    var orgList = Utils.GetOrgPosNames(Model.UserInfo, db);
+}
+
+<table class="display">
+    <tr>
+        <td style="width: 150px">Kode Risiko</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.RiskCode)</td>
+    </tr>
+    <tr>
+        <td>Peristiwa Risiko</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.RiskName)</td>
+    </tr>
+    <tr>
+        <td>Tanggal</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.RiskDate)</td>
+    </tr>
+    <tr>
+        <td colspan="3" style="height: .3em"></td>
+    </tr>
+
+@foreach (var data in orgList)
+{ 
+    <tr>
+        <td>@data.Key</td>
+        <td>:</td>
+        <td>@data.Value</td>
+    </tr>
+}
+    <tr>
+        <td colspan="3" style="height: .3em"></td>
+    </tr>
+
+    <tr>
+        <td>Risk Owner</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.UserInfo.FullName)</td>
+    </tr>
+    <tr>
+        <td>Jabatan</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.JobTitle)</td>
+    </tr>
+    <tr>
+        <td colspan="3" style="height: .3em"></td>
+    </tr>
+
+    <tr style="color: Olive">
+        <td></td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.CauseGroup.CauseGroupName)</td>
+    </tr>
+    <tr style="color: Olive">
+        <td>Sebab Risiko</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.CauseType.CauseTypeName)</td>
+    </tr>
+    <tr style="color: Olive">
+        <td></td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.Cause.CauseName)</td>
+    </tr>
+    <tr>
+        <td colspan="3" style="height: .3em"></td>
+    </tr>
+
+    <tr style="color: Green">
+        <td></td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.EffectGroup.EffectGroupName)</td>
+    </tr>
+    <tr style="color: Green">
+        <td>Akibat Risiko</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.EffectType.EffectTypeName)</td>
+    </tr>
+    <tr style="color: Green">
+        <td></td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.Effect.EffectName)</td>
+    </tr>
+    <tr>
+        <td colspan="3" style="height: .3em"></td>
+    </tr>
+
+    <tr style="color: Navy">
+        <td></td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.RiskCat.RiskCatName)</td>
+    </tr>
+    <tr style="color: Navy">
+        <td>Klasifikasi Risiko</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.RiskGroup.RiskGroupName)</td>
+    </tr>
+    <tr style="color: Navy">
+        <td></td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.RiskType.RiskTypeName)</td>
+    </tr>
+    <tr>
+        <td colspan="3" style="height: .3em"></td>
+    </tr>
+
+    <tr>
+        <td>Nilai Prababilitas (%)</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.ProbValue)</td>
+    </tr>
+    <tr>
+        <td>Tingkat Prababilitas</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.ProbLevelId) - @Html.DisplayFor(m => m.ProbLevel.ProbLevelName)</td>
+    </tr>
+    <tr>
+        <td colspan="3" style="height: .3em"></td>
+    </tr>
+
+    <tr>
+        <td>Dampak Keuangan (Rp)</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.ImpactMoney)</td>
+    </tr>
+    <tr>
+        <td>Tingkat Dampak</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.ImpactLevelId) - @Html.DisplayFor(m => m.ImpactLevel.ImpactLevelName)</td>
+    </tr>
+    <tr>
+        <td colspan="3" style="height: .3em"></td>
+    </tr>
+
+    <tr>
+        <td>Tingkat Risiko</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.RiskLevel)</td>
+    </tr>
+
+    <tr>
+        <td colspan="3" style="height: .3em"></td>
+    </tr>
+    <tr>
+        <td>Approve MR?</td>
+        <td>:</td>
+        <td>@(Model.ApprovalDate != null? "Ya" : "Tidak")</td>
+    </tr>
+    @if (Model.ApprovalDate != null)
+    { 
+        <tr>
+            <td>Tanggal Approve</td>
+            <td>:</td>
+            <td>@Html.DisplayFor(m => m.ApprovalDate)</td>
+        </tr>
+    }
+    
+    <tr>
+        <td colspan="3" style="height: .3em"></td>
+    </tr>
+    <tr>
+        <td>Tutup?</td>
+        <td>:</td>
+        <td>@(Model.CloseDate != null? "Ya" : "Tidak")</td>
+    </tr>
+    @if (Model.CloseDate != null)
+    { 
+        <tr>
+            <td>Tanggal Penutupan</td>
+            <td>:</td>
+            <td>@Html.DisplayFor(m => m.CloseDate)</td>
+        </tr>
+    }
+</table>

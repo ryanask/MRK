@@ -1,0 +1,57 @@
+﻿@model AskrindoMVC.Models.Risk
+
+<table class="display">
+    <tr>
+        <td style="width: 100px">Kode Risiko</td>
+        <td style="width: 0px">:</td>
+        <td>@Html.DisplayFor(m => m.RiskCode)</td>
+    </tr>
+    <tr>
+        <td>Peristiwa Risiko</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.RiskName)</td>
+    </tr>
+    <tr>
+        <td>Tanggal</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.RiskDate)</td>
+    </tr>
+    @if (Model.CloseDate != null)
+    { 
+    <tr>
+        <td>Ditutup Tanggal</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.CloseDate)</td>
+    </tr>
+    }
+    @if (Model.RiskStates.Count > 0)
+    { 
+    <tr>
+        <td colspan="3" style="height: .3em"><hr /></td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <div style="padding-bottom: 6px">
+                <b>Sejarah Status Risiko</b>
+            </div>
+            <table class="list">
+                <tr>
+                    <th>Tanggal</th>
+                    <th>Tingkat Probabilitas</th>
+                    <th>Tingkat Dampak</th>
+                    <th>Tingkat Risiko</th>
+                </tr>
+            @foreach (var rs in Model.RiskStates)
+            { 
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => rs.StateDate)</td>
+                    <td align="center">@Html.DisplayFor(modelItem => rs.ProbLevelId)</td>
+                    <td align="center">@Html.DisplayFor(modelItem => rs.ImpactLevelId)</td>
+                    <td align="center">@Html.DisplayFor(modelItem => rs.RiskLevel)</td>
+                </tr>
+            }
+            </table>
+        </td>
+    </tr>
+    }
+</table>

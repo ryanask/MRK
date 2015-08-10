@@ -1,0 +1,212 @@
+﻿@model IEnumerable<AskrindoMVC.Models.Risk>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="list">
+    <tr>
+        <th>
+            UserId
+        </th>
+        <th>
+            RiskId
+        </th>
+        <th>
+            RiskCode
+        </th>
+        <th>
+            RiskName
+        </th>
+        <th>
+            RiskDate
+        </th>
+        @*<th>
+            OrgPos
+        </th>
+        <th>
+            DeptId
+        </th>
+        <th>
+            SubDeptId
+        </th>
+        <th>
+            DivisionId
+        </th>
+        <th>
+            SubDivId
+        </th>
+        <th>
+            BranchId
+        </th>
+        <th>
+            SubBranchId
+        </th>
+        <th>
+            BizUnitId
+        </th>
+        <th>
+            CauseGroupId
+        </th>
+        <th>
+            CauseTypeId
+        </th>
+        <th>
+            CauseId
+        </th>
+        <th>
+            EffectGroupId
+        </th>
+        <th>
+            EffectTypeId
+        </th>
+        <th>
+            EffectId
+        </th>
+        <th>
+            RiskCatId
+        </th>
+        <th>
+            RiskGroupId
+        </th>
+        <th>
+            RiskTypeId
+        </th>
+        <th>
+            JobTitle
+        </th>
+        <th>
+            ProbValue
+        </th>
+        <th>
+            ProbLevelId
+        </th>
+        <th>
+            ImpactLevelId
+        </th>
+        <th>
+            ImpactMoney
+        </th>
+        <th>
+            RiskLevel
+        </th>*@
+        <th>
+            ApprovalDate
+        </th>
+        <th>
+            CloseDate
+        </th>
+        <th>
+            IsReadOnly
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserInfo.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RiskId)
+        </td>
+        <td>
+            @Html.ActionLink(item.RiskCode, "Details", new { id = item.RiskId }, new { target = "_blank" })
+        </td>
+        <td>
+            
+            @Html.DisplayFor(modelItem => item.RiskName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RiskDate)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.OrgPos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeptId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubDeptId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DivisionId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubDivId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BranchId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubBranchId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BizUnitId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CauseGroupId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CauseTypeId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CauseId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EffectGroupId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EffectTypeId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EffectId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RiskCatId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RiskGroupId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RiskTypeId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProbValue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProbLevelId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImpactLevelId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImpactMoney)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RiskLevel)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.ApprovalDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CloseDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsReadOnly)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.RiskId }, new { target = "_blank" })
+        </td>
+    </tr>
+}
+
+</table>

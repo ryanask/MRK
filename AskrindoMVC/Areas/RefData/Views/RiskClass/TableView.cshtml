@@ -1,0 +1,57 @@
+﻿@model IEnumerable<AskrindoMVC.Models.RiskType>
+
+@{
+    ViewBag.Title = "TableView";
+    Layout = "~/Areas/RefData/Views/Shared/_RiskClass.cshtml";
+
+    var groupId = 0;
+    var catId = 0;
+    var newGroupId = 0;
+    var newCatId = 0;
+}
+
+<h3>Table View</h3>
+
+<table class="list">
+    <tr>
+        <th>Kategori Risiko</th>
+        <th>Kelompok Risiko</th>
+        <th>Jenis Risiko</th>
+    </tr>
+@foreach (var type in Model)
+{
+    <tr>
+        @{
+        newCatId = type.RiskGroup.RiskCatId;
+        newGroupId = type.RiskGroupId;
+        if (catId != newCatId)
+        {
+            catId = newCatId;
+            groupId = newGroupId;
+            <td>
+                @type.RiskGroup.RiskCatId. @type.RiskGroup.RiskCat.RiskCatName
+            </td>
+            <td>
+                @type.RiskGroupId. @type.RiskGroup.RiskGroupName
+            </td>
+        }
+        else { 
+            <td></td>
+            if (groupId != newGroupId)
+            {
+                groupId = newGroupId;
+                <td>
+                    @type.RiskGroupId. @type.RiskGroup.RiskGroupName
+                </td>
+            }
+            else { 
+                <td></td>
+            }
+        }
+        }
+        <td>
+            @type.RiskTypeId. @type.RiskTypeName
+        </td>
+    </tr>
+}
+</table>

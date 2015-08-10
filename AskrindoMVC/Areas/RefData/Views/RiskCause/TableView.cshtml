@@ -1,0 +1,49 @@
+﻿@model IEnumerable<AskrindoMVC.Models.Cause>
+
+@{
+    ViewBag.Title = "TableView";
+    Layout = "~/Areas/RefData/Views/Shared/_RiskCause.cshtml";
+
+    var groupId = 0;
+    var typeId = 0;
+    var newGroupId = 0;
+    var newTypeId = 0;
+}
+
+<h3>Table View</h3>
+
+<table class="list">
+    <tr>
+        <th>Kelompok Sebab</th>
+        <th>Jenis Sebab</th>
+        <th>Sebab</th>
+    </tr>
+@foreach (var cause in Model)
+{ 
+    <tr>
+    @{
+    newGroupId = cause.CauseType.CauseGroupId;
+    newTypeId = cause.CauseTypeId;
+    if (groupId != newGroupId)
+    {
+        groupId = newGroupId;
+        typeId = newTypeId;
+        <td>@cause.CauseType.CauseGroupId. @cause.CauseType.CauseGroup.CauseGroupName</td>
+        <td>@cause.CauseTypeId. @cause.CauseType.CauseTypeName</td>
+    }
+    else { 
+        <td></td>
+        if (typeId != newTypeId)
+        {
+            typeId = newTypeId;
+            <td>@cause.CauseTypeId. @cause.CauseType.CauseTypeName</td>
+        }
+        else { 
+            <td></td>
+        }
+    }
+    }
+        <td>@cause.CauseId. @cause.CauseName</td>
+    </tr>
+}
+</table>

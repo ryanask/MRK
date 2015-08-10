@@ -1,0 +1,58 @@
+﻿@model AskrindoMVC.Areas.RefData.Models.NonMoneyImpact.ImpactTypeViewModel
+
+@{
+    ViewBag.Title = "ImpactTypeList";
+    Layout = "~/Areas/RefData/Views/Shared/_NonMoneyImpact.cshtml";
+
+    var canModify = (bool)ViewBag.CanModify;
+}
+
+<h3 style="padding-bottom: 0; margin-bottom: 0">Dampak</h3>
+@Html.Partial("_Info_ImpactCat", Model.ImpactCat)
+
+@if (canModify)
+{ 
+<div style="padding-bottom: 12px">
+    @Html.ActionLink("Dampak Baru", "ImpactTypeNew", new { catId = Model.ImpactCat.ImpactCatId }, null)
+</div>
+}
+
+<table class="list">
+    <tr>
+        <th>ID</th>
+        <th>Dampak</th>
+        <th>Ket.</th>
+        @if (canModify)
+        { 
+        <th></th>
+        }
+        <th></th>
+    </tr>
+@foreach (var item in Model.ImpactTypes) { 
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImpactTypeId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImpactTypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Notes)
+        </td>
+        @if (canModify)
+        { 
+        <td>
+            @Html.ActionLink("Edit", "ImpactTypeEdit", new { id = item.ImpactTypeId }, null) |
+            @Html.ActionLink("Hapus", "ImpactTypeDelete", new { id = item.ImpactTypeId }, null)
+        </td>
+        }
+        <td>
+            @Html.ActionLink("Tingkat Dampak", "ImpactDetailList", new { typeId = item.ImpactTypeId }, null)
+        </td>
+    </tr>
+}
+</table>
+
+<div style="padding-top: 12px">
+    @Html.ActionLink("Daftar Kriteria Dampak", "ImpactCatList")
+</div>

@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Laporan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="sidebar">
+    <div class="title">
+        Laporan
+    </div>
+    <ul id="sidemenu">
+        <li>@Html.ActionLink("Peta Risiko", "Index", "RiskMap", new { area = "Report" }, null)</li>
+        <li>@Html.ActionLink("Top Ten Risks", "Index", "TopTenRisk", new { area = "Report" }, null)</li>
+        <li>@Html.ActionLink("Risk Register", "Index", "RiskRegister", new { area = "Report" }, null)</li>
+        <li>@Html.ActionLink("Grafik Risiko", "Index", "RiskChart", new { area = "Report" }, null)</li>
+        <li>@Html.ActionLink("Tabel Risiko", "Index", "RiskTable", new { area = "Report" }, null)</li>
+    </ul>
+</div>
+
+<div id="content_container">
+    <div id="content">
+        @RenderBody()
+    </div>
+</div>
+<div style="clear: both"></div>

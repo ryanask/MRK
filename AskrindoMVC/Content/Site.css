@@ -1,0 +1,683 @@
+﻿/*----------------------------------------------------------
+The base color for this template is #5c87b2. If you'd like
+to use a different color start by replacing all instances of
+#5c87b2 with your new color.
+----------------------------------------------------------*/
+body
+{
+    /*background-color: #5c87b2;*/
+    background-color: #1E5B92;
+    font-size: .8em;
+    font-family: Tahoma, "Trebuchet MS" , Verdana, Helvetica, Sans-Serif;
+    margin: 0;
+    padding: 0; /*color: #696969;*/
+    color: #222;
+    background-image: url('Images/web_bk.jpg');
+    background-attachment: fixed;
+    background-repeat: repeat-x;
+}
+
+a:link {
+    color: #034af3;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: #505abc;
+}
+
+a:hover {
+    color: #1d60ff;
+    text-decoration: none;
+}
+
+a:active {
+    color: #12eb87;
+}
+
+p, ul {
+    margin-bottom: 20px;
+    line-height: 1.6em;
+}
+
+header,
+footer,
+nav,
+section {
+    display: block;
+}
+
+/* HEADINGS   
+----------------------------------------------------------*/
+h1, h2, h3, h4, h5, h6 {
+    font-size: 1.5em;
+    color: #000;
+}
+
+h1 {
+    font-size: 2em;
+    padding: 0;
+    margin: 0;
+}
+
+h2 {
+    padding: 0;
+    margin: 0;
+    /*border-bottom: 1px solid #ddd;*/
+}
+
+h3 {
+    font-size: 1.2em;
+}
+
+h4 {
+    font-size: 1.1em;
+}
+
+h5, h6 {
+    font-size: 1em;
+}
+
+/* PRIMARY LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+
+/* you can specify a greater or lesser percentage for the 
+page width. Or, you can specify an exact pixel width. */
+.page {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header, #header {
+    position: relative;
+    margin-bottom: 0px;
+    color: #000;
+    padding: 0;
+    /*background-color: Black;*/
+    /*border: 1px solid black;*/
+}
+
+header h1, #header h1 {
+    font-weight: bold;
+    padding: 5px 0;
+    margin: 0;
+    color: #fff;
+    border: none;
+    line-height: 2em;
+    font-size: 32px !important;
+    text-shadow: 1px 1px 2px #111;
+}
+
+#main {
+    padding: 30px 30px 15px 30px;
+    background-color: #fff;
+    border-radius: 4px 0 0 0;
+    -webkit-border-radius: 4px 0 0 0;
+    -moz-border-radius: 4px 0 0 0;
+}
+
+#main_nomenu {
+    padding: 30px 30px 15px 30px;
+    background-color: #fff;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+}
+
+footer, 
+#footer {
+    background-color: #fff;
+    color: #999;
+    padding: 10px 0;
+    text-align: center;
+    line-height: normal;
+    margin: 0 0 30px 0;
+    font-size: .9em;
+    border-radius: 0 0 4px 4px;
+    -webkit-border-radius: 0 0 4px 4px;
+    -moz-border-radius: 0 0 4px 4px;
+}
+
+/* TAB MENU   
+----------------------------------------------------------*/
+ul#menu {
+    border-bottom: 1px #459272 solid;
+    padding: 0 0 2px;
+    position: relative;
+    margin: 0;
+    text-align: right;
+}
+
+ul#menu li {
+    display: inline;
+    list-style: none;
+}
+
+ul#menu li#greeting {
+    padding: 10px 20px;
+    font-weight: bold;
+    text-decoration: none;
+    line-height: 2.8em;
+    color: #fff;
+}
+
+ul#menu li a {
+    padding: 10px 20px;
+    font-weight: bold;
+    text-decoration: none;
+    line-height: 2.8em;
+    background-color: #e8eef4;
+    /*color: #034af3;*/
+    color: #3C8773;
+    border-radius: 4px 4px 0 0;
+    -webkit-border-radius: 4px 4px 0 0;
+    -moz-border-radius: 4px 4px 0 0;
+}
+
+ul#menu li a:hover {
+    background-color: #fff;
+    text-decoration: none;
+}
+
+ul#menu li a:active {
+    background-color: #a6e2a6;
+    text-decoration: none;
+}
+
+ul#menu li.selected a {
+    background-color: #fff;
+    color: #000;
+}
+
+/* RISK MENU   
+----------------------------------------------------------*/
+ul#riskmenu {
+    padding: 0;
+    margin: 0;
+    padding-top: 12px;
+    
+}
+
+ul#riskmenu li
+{
+    list-style: none;
+    display: inline;
+}
+
+ul#riskmenu li a
+{
+    padding: 6px 6px;
+    background-color: #e8eef4;
+    text-decoration: none;
+}
+
+ul#riskmenu li a:hover
+{
+    padding: 4px 4xp;
+    background-color: #D6E0EB;
+}
+
+/* id TAB MENU   
+----------------------------------------------------------*/
+ul#tabmenu {
+    padding: 2px 0;
+    margin: 0;
+}
+
+ul#tabmenu li
+{
+    list-style: none;
+    display: inline;
+}
+
+ul#tabmenu li a
+{
+    padding: 4px 6px;
+    background-color: #e8eef4;
+    border: 1px solid #D8E2ED;
+    text-decoration: none;
+}
+
+ul#tabmenu li a:hover
+{
+    background-color: #D6E0EB;
+}
+
+/* class TAB MENU   
+----------------------------------------------------------*/
+ul.tabmenu {
+    padding: 2px 0;
+    margin: 0;
+}
+
+ul.tabmenu li
+{
+    list-style: none;
+    display: inline;
+}
+
+ul.tabmenu li a
+{
+    padding: 4px 6px;
+    background-color: #e8eef4;
+    border: 1px solid #D8E2ED;
+    text-decoration: none;
+}
+
+ul.tabmenu li a:hover
+{
+    background-color: #D6E0EB;
+}
+
+/* FORM LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+
+fieldset {
+    border: 1px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+}
+
+legend {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+textarea {
+    min-height: 60px;
+    border: 1px solid #ccc;
+    width: 200px;
+    font: inherit;
+}
+
+input[type="text"], 
+input[type="password"] {
+    border: 1px solid #ccc;
+    padding: 2px;
+    font-size: 1em;
+    color: #444;
+    width: 200px;
+    font: inherit;
+}
+
+select {
+    border: 1px solid #ccc;
+    padding: 2px;
+    font-size: 1em;
+    color: #444;
+    width: 200px;
+    font: inherit;
+}
+
+input[type="submit"] {
+    font-size: 1em;
+    padding: 3px;
+}
+
+/* TABLE
+----------------------------------------------------------*/
+
+/*table {
+    border: solid 1px #e8eef4;
+    border-collapse: collapse;
+}
+
+table td {
+    padding: 5px;
+    border: solid 1px #e8eef4;
+}
+
+table th {
+    padding: 6px 5px;
+    text-align: left;
+    background-color: #e8eef4;
+    border: solid 1px #e8eef4;
+}*/
+
+/* table.list */
+/*--------------------------------------------------------*/
+
+table.list {
+    border: solid 1px #ccc;
+    border-collapse: collapse;
+    background-color: #fff;
+}
+
+table.list td {
+    padding: 5px;
+    border: solid 1px #ccc;
+}
+
+table.list th {
+    padding: 6px 5px;
+    text-align: left;
+    background-color: #eee;
+    border: solid 1px #ccc;
+}
+
+table.list tr:hover 
+{
+    background-color: #FFFFCC;
+}
+
+/* table.noborder */
+/*--------------------------------------------------------*/
+
+table.noborder {
+    /*border: solid 1px #fff;*/
+    border-collapse: collapse;
+}
+
+table.noborder td {
+    padding: 5px;
+    /*border: solid 1px #ccc;*/
+}
+
+table.noborder th {
+    padding: 6px 5px;
+    text-align: left;
+    background-color: #eee;
+}
+
+/* table.edit */
+/*--------------------------------------------------------*/
+
+table.edit 
+{
+    border: solid 1px #ddd;
+    background-color: #eee;
+    padding: 10px;
+}
+
+table.edit td
+{
+    border-width: 0;
+    padding: 4px;
+}
+
+/* table.display */
+/*--------------------------------------------------------*/
+
+table.display 
+{
+    border: solid 1px #ddd;
+    background-color: #eee;
+    padding: 10px;
+}
+
+table.display td
+{
+    border-width: 0;
+    padding: 4px;
+    vertical-align: top;
+}
+
+/* table.warning */
+/*--------------------------------------------------------*/
+
+table.warning 
+{
+    border: solid 1px #ddd;
+    background-color: #FFFFCC;
+    padding: 10px;
+}
+
+table.warning td
+{
+    border-width: 0;
+    padding: 4px;
+    vertical-align: top;
+}
+
+/* table.layout */
+/*--------------------------------------------------------*/
+
+table.layout
+{
+    background-color: #fff;
+    border-width: 0;
+}
+
+table.layout td
+{
+    border-width: 0;
+    padding: 0;
+}
+
+/* MISC  
+----------------------------------------------------------*/
+.clear {
+    clear: both;
+}
+
+.error {
+    color: Red;
+}
+
+nav, 
+#menucontainer {
+    margin-top: 10px;
+    /*background-color: Maroon;*/
+}
+
+div#title {
+    display: block;
+    float: left;
+    text-align: left;
+    /*background-color: Red;*/
+}
+
+#logindisplay {
+    font-size: 1.1em;
+    display: block;
+    text-align: right;
+    margin-top: 10px;
+    color: White;
+    /*background-color: Navy;*/
+    height: 64px;
+}
+
+#logindisplay a:link {
+    color: white;
+    text-decoration: underline;
+}
+
+#logindisplay a:visited {
+    color: white;
+    text-decoration: underline;
+}
+
+#logindisplay a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    color: #ff0000;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+/* Styles for editor and display helpers
+----------------------------------------------------------*/
+.display-label, 
+.editor-label {
+    margin: 1em 0 0 0;
+}
+
+.display-field, 
+.editor-field {
+    margin: 0.5em 0 0 0;
+}
+
+.text-box {
+    width: 30em;
+}
+
+.text-box.multi-line {
+    height: 6.5em;
+}
+
+.tri-state {
+    width: 6em;
+}
+
+/* SIDE BAR   
+----------------------------------------------------------*/
+#sidebar
+{
+    float: left; 
+    width: 200px; 
+    background-color: #fff;
+}
+
+#sidebar .title
+{
+    font-weight: bold; 
+    font-size: 1.2em; 
+    padding-bottom: 3px;
+}
+
+/* CONTENT   
+----------------------------------------------------------*/
+
+#content_container
+{
+    margin-left: 200px; 
+    padding-left: 16px; 
+}
+
+#content
+{
+    background-color: #fff;
+}
+
+/* SIDE MENU   
+----------------------------------------------------------*/
+ul#sidemenu 
+{
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid #ccc;
+}
+
+ul#sidemenu a
+{
+    display: block;
+    padding: 4px 8px;
+    text-decoration: none;
+}
+
+ul#sidemenu a:hover 
+{
+    display: block;
+    background-color: #e8eef4;
+    padding: 4px 8px;
+}
+
+ul#sidemenu li
+{
+    border-bottom: 1px solid #ccc;
+}
+
+/* OTHERS   
+----------------------------------------------------------*/
+.pagetitle
+{
+    background-color: #fff; 
+    padding-bottom: 12px; 
+    margin-bottom: 12px; 
+    border-bottom: 1px solid #ddd;
+}
+
+.warning 
+{
+    color: Red;
+}
+
+.text-align-right
+{
+    text-align: right;
+}
+
+.text-align-center
+{
+    text-align: center;
+}
+
+.error_message
+{
+    padding: 24px;
+    font-size: larger;
+    font-weight: bold;
+    color: Red;
+    text-align: center;
+}
+
+.info_message
+{
+    padding: 24px;
+    font-size: larger;
+    font-weight: bold;
+    color: Green;
+    text-align: center;
+}
+
+table.riskmap a
+{
+    color: Black;
+    text-decoration: none;
+}
+
+table.riskmap td.probaxis
+{
+    width: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+table.riskmap td.impactaxis
+{
+    padding-top: 4px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+table.riskmap td.prob
+{
+    padding-right: 8px;
+    text-align: right;
+    width: 80px;
+    height: 46px;
+    font-size: .85em;
+}
+
+table.riskmap td.impact
+{
+    padding-top: 4px;
+    text-align: center;
+    vertical-align: top;
+    width: 80px;
+    font-size: .85em;
+}

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<AskrindoMVC.Models.ImpactCat>
+
+@{
+    ViewBag.Title = "ImpactCatList";
+    Layout = "~/Areas/RefData/Views/Shared/_NonMoneyImpact.cshtml";
+
+    var canModify = (bool)ViewBag.CanModify;
+}
+
+<h3>Daftar Kriteria Dampak</h3>
+
+@if (canModify)
+{ 
+<div style="padding-bottom: 12px">
+    @Html.ActionLink("Kriteria Dampak Baru", "ImpactCatNew")
+</div>
+}
+
+<table class="list">
+    <tr>
+        <th>ID</th>
+        <th>Nama Kriteria Dampak</th>
+        @if (canModify)
+        { 
+        <th></th>
+        }
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImpactCatId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImpactCatName)
+        </td>
+        @if (canModify)
+        { 
+        <td>
+            @Html.ActionLink("Edit", "ImpactCatEdit", new { id = item.ImpactCatId }) |
+            @Html.ActionLink("Hapus", "ImpactCatDelete", new { id = item.ImpactCatId })
+        </td>
+        }
+        <td>
+            @Html.ActionLink("Dampak " + item.ImpactTypes.Count + ")", "ImpactTypeList", new { catId = item.ImpactCatId })
+        </td>
+    </tr>
+}
+
+</table>

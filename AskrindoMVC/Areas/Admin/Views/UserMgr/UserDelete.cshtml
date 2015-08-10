@@ -1,0 +1,83 @@
+﻿@model AskrindoMVC.Areas.Admin.Models.UserMgr.DeleteUserModel
+
+@{
+    ViewBag.Title = "UserDelete";
+    Layout = "~/Areas/Admin/Views/Shared/_UserMgr.cshtml";
+
+    var orgList = ViewBag.OrgList as List<KeyValuePair<string, string>>;
+}
+
+<h3>Hapus User</h3>
+
+@Html.ValidationSummary(true)
+
+<div style="padding-bottom: 12px" class="warning">
+    User berikut akan dihapus. Lanjutkan?
+</div>
+
+<table class="warning">
+@foreach (var data in orgList)
+{ 
+    <tr>
+        <td>
+            @data.Key
+        </td>
+        <td>:</td>
+        <td>
+            @data.Value
+        </td>
+    </tr>
+}
+    <tr>
+        <td>
+            @Html.LabelFor(model => model.UserName)
+        </td>
+        <td>:</td>
+        <td>
+            <strong>@Html.DisplayFor(model => model.UserName)</strong>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(model => model.FullName)
+        </td>
+        <td>:</td>
+        <td>
+            <strong>@Html.DisplayFor(model => model.FullName)</strong>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(model => model.JobTitle)
+        </td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(model => model.JobTitle)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(model => model.Email)
+        </td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(model => model.Email)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(model => model.IsRCP)
+        </td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(model => model.IsRCP)
+        </td>
+    </tr>
+</table>
+
+@using (Html.BeginForm()) {
+    <div style="padding-top: 12px">
+        <input type="submit" value="Hapus" /> |
+        @Html.ActionLink("Batal", "Index")
+    </div>
+}

@@ -1,0 +1,43 @@
+﻿@model AskrindoMVC.Areas.RefData.Models.RiskEffect.EffectTypeViewModel
+
+@{
+    ViewBag.Title = "EffectTypeEdit";
+    Layout = "~/Areas/RefData/Views/Shared/_RiskEffect.cshtml";
+}
+
+<h3 style="padding-bottom: 0; margin-bottom: 0">Edit Jenis Akibat</h3>
+<div style="padding-bottom: 12px">
+    Kelompok Akibat: @Model.EffectType.EffectGroup.EffectGroupName (@Model.EffectType.EffectGroupId)
+</div>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.EffectType.EffectGroupId)
+    @Html.HiddenFor(model => model.EffectType.EffectTypeId)
+    <table class="edit">
+        <tr>
+            <td>ID</td>
+            <td>
+                @Html.DisplayFor(model => model.EffectType.EffectTypeId)
+            </td>
+        </tr>
+        <tr>
+            <td>Nama Jenis Akibat</td>
+            <td>
+                @Html.EditorFor(model => model.EffectType.EffectTypeName)
+                @Html.ValidationMessageFor(model => model.EffectType.EffectTypeName)
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        <input type="submit" value="Update" />
+    </p>
+}
+
+<div>
+    @Html.ActionLink("Daftar Jenis Akibat", "EffectTypeList", new { groupId = @Model.EffectType.EffectGroupId }, null)
+</div>

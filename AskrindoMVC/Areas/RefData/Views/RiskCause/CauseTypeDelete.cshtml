@@ -1,0 +1,42 @@
+﻿@model AskrindoMVC.Areas.RefData.Models.RiskCause.CauseTypeViewModel
+
+@{
+    ViewBag.Title = "CauseTypeDelete";
+    Layout = "~/Areas/RefData/Views/Shared/_riskcause.cshtml";
+}
+
+<h3 style="padding-bottom: 0; margin-bottom: 0">Hapus Jenis Sebab</h3>
+<div style="padding-bottom: 12px">
+    Kelompok Sebab: @Model.CauseType.CauseGroup.CauseGroupName (@Model.CauseType.CauseGroupId)
+</div>
+
+<div style="padding-bottom: 12px">
+    Jenis Sebab berikut akan dihapus. Lanjutkan?
+</div>
+
+<table class="edit">
+    <tr>
+        <td>ID</td>
+        <td style="width: 10px">:</td>
+        <td>
+            @Model.CauseType.CauseTypeId
+        </td>
+    </tr>
+    <tr>
+        <td>Nama Jenis Sebab</td>
+        <td>:</td>
+        <td>
+            @Model.CauseType.CauseTypeName
+        </td>
+    </tr>
+</table>
+
+@using (Html.BeginForm())
+{
+    <p>
+        <input type="submit" value="Hapus" />
+    </p>
+    <div>
+        @Html.ActionLink("Daftar Jenis Sebab", "CauseTypeList", new { groupId = @Model.CauseType.CauseGroupId }, null)
+    </div>
+}

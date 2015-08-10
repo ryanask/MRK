@@ -1,0 +1,50 @@
+﻿@model AskrindoMVC.Models.ImpactLevel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/RefData/Views/Shared/_ImpactLevel.cshtml";
+}
+
+<h3>Edit Tingkat Dampak Keuangan</h3>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.ImpactLevelId)
+    <table class="edit">
+        <tr>
+            <td>Level</td>
+            <td>
+                @Html.DisplayFor(model => model.ImpactLevelId)
+            </td>
+        </tr>
+        <tr>
+            <td>Keterangan</td>
+            <td>
+                @Html.EditorFor(model => model.ImpactLevelName)
+                @Html.ValidationMessageFor(model => model.ImpactLevelName)
+            </td>
+        </tr>
+        <tr>
+            <td>% Min</td>
+            <td>
+                @Html.EditorFor(model => model.PctMin)
+                @Html.ValidationMessageFor(model => model.PctMin)
+            </td>
+        </tr>
+        <tr>
+            <td>% Maks</td>
+            <td>
+                @Html.EditorFor(model => model.PctMax)
+                @Html.ValidationMessageFor(model => model.PctMax)                
+            </td>
+        </tr>
+    </table>
+    
+    <div style="padding-top: 12px">
+        <input type="submit" value="Update" /> |
+        @Html.ActionLink("Batal", "Index")
+    </div>
+}

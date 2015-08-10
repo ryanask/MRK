@@ -1,0 +1,38 @@
+﻿@model AskrindoMVC.Areas.RefData.Models.Mitigation.MitigationTypeViewModel
+
+@{
+    ViewBag.Title = "MitigationTypeDelete";
+    Layout = "~/Areas/RefData/Views/Shared/_Mitigation.cshtml";
+}
+
+<h3 style="padding-bottom: 0; margin-bottom: 0">Edit Jenis Mitigasi</h3>
+@Html.Partial("_Info_MitigationCat", Model.MitigationType.MitigationCat)
+
+<div style="padding-bottom: 12px" class="warning">
+    Jenis Mitigasi berikut akan dihapus. Lanjutkan?
+</div>
+
+<table class="warning">
+    <tr>
+        <td>ID</td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(model => model.MitigationType.MitigationTypeId)
+        </td>
+    </tr>
+    <tr>
+        <td>Nama Jenis Mitigasi</td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(model => model.MitigationType.MitigationTypeName)
+        </td>
+    </tr>
+</table>
+
+@using (Html.BeginForm()) {
+    <div style="padding-top: 12px">
+        <input type="submit" value="Hapus" />
+    </div>
+}
+
+@Html.Partial("_Link_MitigationTypeList", new ViewDataDictionary { { "CatId", Model.MitigationType.MitigationCatId } })

@@ -1,0 +1,54 @@
+﻿@model AskrindoMVC.Models.RiskApproval
+
+<table class="display">
+    <tr>
+        <td style="width: 150px">Kode Risiko</td>
+        <td>:</td>
+        <td>@Html.ActionLink(Model.Risk.RiskCode, "Details", 
+            new { id = Model.RiskId, area = "", controller = "RiskInfo" }, 
+            new { target = "_blank" })</td>
+    </tr>
+    <tr>
+        <td>Peristiwa Risiko</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.Risk.RiskName)</td>
+    </tr>
+    <tr>
+        <td>Tanggal</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.Risk.RiskDate)</td>
+    </tr>
+    <tr>
+        <td>Tingkat Probabilitas</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.Risk.ProbLevelId) - @Html.DisplayFor(m => m.Risk.ProbLevel.ProbLevelName)</td>
+    </tr>
+    <tr>
+        <td>Tingkat Dampak</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.Risk.ImpactLevelId) - @Html.DisplayFor(m => m.Risk.ImpactLevel.ImpactLevelName)</td>
+    </tr>
+    <tr>
+        <td>Tingkat Risiko</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.Risk.RiskLevel)</td>
+    </tr>
+    <tr>
+        <td colspan="3">&nbsp;</td>
+    </tr>
+    <tr>
+        <td>Di-approve oleh</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.UserInfo.FullName)</td>
+    </tr>
+    <tr>
+        <td>Jabatan</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.JobTitle)</td>
+    </tr>
+    <tr>
+        <td>Tanggal Approval</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.ApprovalDate)</td>
+    </tr>
+</table>

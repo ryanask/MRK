@@ -1,0 +1,111 @@
+﻿@model AskrindoMVC.Areas.RiskData.Models.RiskData.ImpactSelectViewModel
+
+@using AskrindoMVC.Helpers
+
+@{
+    ViewBag.Title = "ImpactNonMoneySelect";
+    Layout = "~/Areas/RiskData/Views/Shared/_Risk.cshtml";
+}
+
+@Html.Partial("_Info_Risk", Model.Risk)
+
+<div style="padding-top: 12px">
+@Html.Partial("_Link_RiskTab", new ViewDataDictionary { { "Id", Model.RiskId } })
+</div>
+
+<h3>Dampak Non Keuangan - Pilih Dampak</h3>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#ImpactTypeId").change(function () {
+            var selectedValue = $(this).val();
+            $.ajax({
+                type: "GET",
+                url: "/RiskData/Risk/LoadImpactDetails?impactTypeid=" + selectedValue,
+                dataType: "html",
+                success: function (result) {
+                    $("#divImpactDetail").html(result);
+                }
+            });
+        });
+    });
+</script>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <table class="display" width="100%">
+        <tr>
+            <td>
+                Dampak:<br />
+
+                <select id="ImpactTypeId" name="ImpactTypeId" style="width: 100%">
+                    <option value=""></option>
+                    @foreach (var cat in Model.ImpactCats)
+                    { 
+                        <optgroup label="@cat.ImpactCatName">
+                            @foreach (var type in cat.ImpactTypes)
+                            {
+                                if (type.ImpactTypeId == Model.ImpactTypeId)
+                                { 
+                                <option value="@type.ImpactTypeId" selected="selected">@type.ImpactTypeName</option>
+                                }
+                                else
+                                { 
+                                <option value="@type.ImpactTypeId">@type.ImpactTypeName</option>
+                                }
+                            }
+                        </optgroup>
+                    }
+                </select>
+                @*@Html.ValidationMessageFor(m => m.ImpactTypeId)*@
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Tingkat Dampak:<br />
+                <div id="divImpactDetail">
+                    <table class="list">
+                        <tr>
+                            <th colspan="2">Level</th>
+                            <th>Keterangan</th>
+                        </tr>
+                    @foreach (var item in Model.ImpactDetails) { 
+                        <tr>
+                            <td style="width: 18px">@item.ImpactLevelId -</td>
+                            <td>@item.ImpactLevel.ImpactLevelName</td>
+                            <td>@item.ImpactDetailName</td>
+                        </tr>
+                    }
+                    </table>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="height: .3em"><hr /></td>
+        </tr>
+        <tr>
+            <td>Pilih Tingkat Dampak:</td>
+        </tr>
+        <tr>
+            <td>
+                <table width="100%" cellspacing="0">
+                    <tr>
+                    @foreach (var item in Model.ImpactLevels)
+                    { 
+                        <td>
+                            @Html.RadioButtonFor(m => m.ImpactLeveliId, item.ImpactLevelId)
+                            @item.ImpactLevelId - @item.ImpactLevelName
+                        </td>
+                    }
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    
+    <div style="padding-top: 12px">
+        <input type="submit" value="OK" /> |
+        @Html.ActionLink("Batal", "ImpactNonMoneyList", new { id = Model.RiskId }, null)
+    </div>
+}

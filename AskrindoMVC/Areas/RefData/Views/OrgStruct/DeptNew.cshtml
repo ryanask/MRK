@@ -1,0 +1,37 @@
+﻿@model AskrindoMVC.Models.Dept
+
+@{
+    ViewBag.Title = "DeptNew";
+    Layout = "~/Areas/RefData/Views/Shared/_orgstruct.cshtml";
+}
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+<h3>Direktorat Baru</h3>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <table class="edit">
+        <tr>
+            <td>ID</td>
+            <td>
+                @Html.EditorFor(model => model.DeptId)
+                @Html.ValidationMessageFor(model => model.DeptId)
+            </td>
+        </tr>
+        <tr>
+            <td>Nama Direktorat</td>
+            <td>
+                @Html.EditorFor(model => model.DeptName)
+                @Html.ValidationMessageFor(model => model.DeptName)
+            </td>
+        </tr>
+    </table>
+
+    <div style="padding-top: 12px">
+        <input type="submit" value="Simpan" /> |
+        @Html.ActionLink("Batal", "DeptList")
+    </div>
+}

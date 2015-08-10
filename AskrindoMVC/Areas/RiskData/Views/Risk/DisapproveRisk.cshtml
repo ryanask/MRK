@@ -1,0 +1,22 @@
+﻿@model AskrindoMVC.Models.RiskApproval
+
+@{
+    ViewBag.Title = "DisapproveRisk";
+    Layout = "~/Areas/RiskData/Views/Shared/_Risk.cshtml";
+}
+
+<h3>Pembatalan Approve Data Risiko</h3>
+
+<div style="padding-bottom: 12px" class="warning">
+    Approve data Peristiwa Risiko berikut akan dibatalkan. Lanjutkan?
+</div>
+
+@Html.Partial("~/Views/RiskInfo/_RiskApproval.cshtml", Model)
+
+@using (Html.BeginForm())
+{ 
+    <div style="padding-top: 12px">
+        <input type="submit" value="Batalkan Approve" /> |
+        @Html.ActionLink("Batal", "RiskListNonRO", new { approved = true }, null)
+    </div>
+}

@@ -1,0 +1,50 @@
+﻿@model IEnumerable<AskrindoMVC.Models.RiskCat>
+
+@{
+    ViewBag.Title = "RiskCatList";
+    Layout = "~/Areas/RefData/Views/Shared/_RiskClass.cshtml";
+
+    var canModify = (bool)ViewBag.CanModify;
+}
+
+<h3>Daftar Kategori Risiko</h3>
+
+@if (canModify)
+{ 
+<div style="padding-bottom: 12px">
+    @Html.ActionLink("Kategori Risiko Baru", "RiskCatNew")
+</div>
+}
+
+<table class="list">
+    <tr>
+        <th>ID</th>
+        <th>Nama Kategori Risiko</th>
+        @if (canModify)
+        { 
+        <th></th>
+        }
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RiskCatId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RiskCatName)
+        </td>
+        @if (canModify)
+        { 
+        <td>
+            @Html.ActionLink("Edit", "RiskCatEdit", new { id = item.RiskCatId }) |
+            @Html.ActionLink("Hapus", "RiskCatDelete", new { id = item.RiskCatId })
+        </td>
+        }
+        <td>
+            @Html.ActionLink("Kelompok Risiko (" + item.RiskGroups.Count + ")", "RiskGroupList", new { catId = item.RiskCatId }, null)
+        </td>
+    </tr>
+}
+</table>

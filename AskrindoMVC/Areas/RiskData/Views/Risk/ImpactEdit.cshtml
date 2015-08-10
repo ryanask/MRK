@@ -1,0 +1,92 @@
+﻿@model AskrindoMVC.Models.RiskImpact
+
+@{
+    ViewBag.Title = "ImpactEdit";
+    Layout = "~/Areas/RiskData/Views/Shared/_Risk.cshtml";
+}
+
+@Html.Partial("_Info_Risk", Model.Risk)
+
+<div style="padding-top: 12px">
+@Html.Partial("_Link_RiskTab", new ViewDataDictionary { { "Id", Model.RiskId } })
+</div>
+
+<h3>Dampak</h3>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(m => m.RiskId)
+    @Html.HiddenFor(m => m.MoneyDirect)
+    @Html.HiddenFor(m => m.MoneyIndirect)
+    @Html.HiddenFor(m => m.ImpactLevelId)
+    <table class="edit">
+        <tr>
+            <td>Jenis Dampak:</td>
+        </tr>
+        <tr>
+            <td>
+                @Html.RadioButtonFor(m => m.IsMoneyImpact, true, new { id = "rbtMoney" })
+                Dampak Keuangan
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.RadioButtonFor(m => m.IsMoneyImpact, false, new { id = "rbtNonMoney" })
+                Dampak Non Keuangan
+            </td>
+        </tr>
+    </table>
+    
+    <div style="padding-top: 12px">
+        <input type="submit" value="OK" /> |
+        @Html.ActionLink("Batal", "ImpactDetail", new { id = Model.RiskId }, null)
+    </div>
+    @*<fieldset>
+        <legend>RiskImpact</legend>
+
+        @Html.HiddenFor(model => model.RiskId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IsMoneyImpact)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsMoneyImpact)
+            @Html.ValidationMessageFor(model => model.IsMoneyImpact)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MoneyDirect)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MoneyDirect)
+            @Html.ValidationMessageFor(model => model.MoneyDirect)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MoneyIndirect)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MoneyIndirect)
+            @Html.ValidationMessageFor(model => model.MoneyIndirect)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ImpactLevelId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ImpactLevelId)
+            @Html.ValidationMessageFor(model => model.ImpactLevelId)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>*@
+}
+
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@

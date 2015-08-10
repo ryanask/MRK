@@ -1,0 +1,189 @@
+﻿@model AskrindoMVC.Models.RiskProb
+
+@using AskrindoMVC.Helpers
+
+@{
+    ViewBag.Title = "ProbEdit";
+    Layout = "~/Areas/RiskData/Views/Shared/_Risk.cshtml";
+}
+
+
+@Html.Partial("_Info_Risk", Model.Risk)
+
+<div style="padding-top: 12px">
+@Html.Partial("_Link_RiskTab", new ViewDataDictionary { { "Id", Model.RiskId } })
+</div>
+
+<h3>Probabilitas</h3>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@*<script type="text/javascript">
+    function GetCheckedOptionValue(id) {
+        var radio = document.getElementsByName(id);
+        for (var i = 0; i < radio.length; i++) {
+            if (radio[i].checked)
+                return radio[i].value;
+        }
+        retun 0;
+    }
+</script>*@
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(m => m.RiskId)
+    <table class="edit">
+        <tr>
+            <td colspan="3">Penghitungan Probabilitas</td>
+        </tr>
+        <tr>
+            <td style="height: .3em"></td>
+        </tr>
+
+        @*poisson*@
+
+        <tr>
+            <td style="width: 12px">
+                @Html.RadioButtonFor(m => m.ProbOption, Utils.PROBOPTION_POISSON, new { id = "rbtPoisson" })
+            </td>
+            <td colspan="2">
+                <strong>@Utils.GetProbOptionName(Utils.PROBOPTION_POISSON)</strong>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td style="width: 212px">&#8226; Banyaknya kejadian risiko</td>
+            <td>
+                @Html.EditorFor(m => m.Poisson1)
+                @Html.ValidationMessageFor(m => m.Poisson1)
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>&#8226; Rentang waktu</td>
+            <td>
+                @Html.EditorFor(m => m.Poisson2)
+                @Html.ValidationMessageFor(m => m.Poisson2)
+            </td>
+        </tr>
+        <tr>
+            <td style="height: .3em"></td>
+        </tr>
+
+        @*binomial*@
+
+        <tr>
+            <td>
+                @Html.RadioButtonFor(m => m.ProbOption, Utils.PROBOPTION_BINOMIAL, new { id = "rbtBinomial" })
+            </td>
+            <td colspan="2">
+                <strong>@Utils.GetProbOptionName(Utils.PROBOPTION_BINOMIAL)</strong>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>&#8226; Kemungkinan berhasil atau gagal</td>
+            <td>
+                @Html.EditorFor(m => m.Binom1)
+                @Html.ValidationMessageFor(m => m.Binom1)
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>&#8226; Frekuensi banyaknya kejadian</td>
+            <td>
+                @Html.EditorFor(m => m.Binom2)
+                @Html.ValidationMessageFor(m => m.Binom2)
+            </td>
+        </tr>
+        <tr>
+            <td style="height: .3em"></td>
+        </tr>
+
+        @*approximation*@
+
+        <tr>
+            <td>
+                @Html.RadioButtonFor(m => m.ProbOption, Utils.PROBOPTION_APPROXIMATION, new { id = "rbtApproximation" })
+            </td>
+            <td colspan="2">
+                <strong>@Utils.GetProbOptionName(Utils.PROBOPTION_APPROXIMATION)</strong>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>&#8226; Aproksimasi pesimis (%)</td>
+            <td>
+                @Html.EditorFor(m => m.Approx1)
+                @Html.ValidationMessageFor(m => m.Approx1)
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>&#8226; Aproksimasi moderat (%)</td>
+            <td>
+                @Html.EditorFor(m => m.Approx2)
+                @Html.ValidationMessageFor(m => m.Approx2)
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>&#8226; Aproksimasi optimis (%)</td>
+            <td>
+                @Html.EditorFor(m => m.Approx3)
+                @Html.ValidationMessageFor(m => m.Approx3)
+            </td>
+        </tr>
+        <tr>
+            <td style="height: .3em"></td>
+        </tr>
+
+        @*comparison*@
+
+        <tr>
+            <td>
+                @Html.RadioButtonFor(m => m.ProbOption, Utils.PROBOPTION_COMPARISON, new { id = "rbtComparison" })
+            </td>
+            <td colspan="2">
+                <strong>@Utils.GetProbOptionName(Utils.PROBOPTION_COMPARISON)</strong>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>&#8226; Pembanding (%)</td>
+            <td>
+                @Html.EditorFor(m => m.Compare)
+                @Html.ValidationMessageFor(m => m.Compare)
+            </td>
+        </tr>
+        <tr>
+            <td style="height: .3em"></td>
+        </tr>
+
+        @*frequency*@
+
+        <tr>
+            <td>
+                @Html.RadioButtonFor(m => m.ProbOption, Utils.PROBOPTION_FREQUENCY, new { id = "rbtFrequency" })
+            </td>
+            <td colspan="2">
+                <strong>@Utils.GetProbOptionName(Utils.PROBOPTION_FREQUENCY)</strong>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>&#8226; Frekuensi</td>
+            <td>
+                @Html.DropDownListFor(m => m.FreqId, ViewBag.Freqs as SelectList, "")
+                @Html.ValidationMessageFor(m => m.FreqId)
+            </td>
+        </tr>
+    </table>
+    
+    <div style="padding-top: 12px">
+        <input type="submit" value="Update" /> |
+        @Html.ActionLink("Batal", "ProbDetail", new { id = Model.RiskId }, null)
+    </div>
+}

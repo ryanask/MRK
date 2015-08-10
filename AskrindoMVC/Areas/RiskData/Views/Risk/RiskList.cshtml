@@ -1,0 +1,173 @@
+﻿@model IEnumerable<AskrindoMVC.Models.Risk>
+
+@{
+    ViewBag.Title = "RiskList";
+    Layout = "~/Areas/RiskData/Views/Shared/_Risk.cshtml";
+}
+
+<h2>RiskList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="list">
+    <tr>
+        <th>UserId</th>
+        <th>RiskCode</th>
+        <th>RiskName</th>
+        <th>RiskDate</th>
+        @*<th>
+            OrgPos
+        </th>
+        <th>
+            DeptId
+        </th>
+        <th>
+            SubDeptId
+        </th>
+        <th>
+            DivisionId
+        </th>
+        <th>
+            SubDivId
+        </th>
+        <th>
+            BranchId
+        </th>
+        <th>
+            SubBranchId
+        </th>
+        <th>
+            BizUnitId
+        </th>
+        <th>
+            CauseGroupId
+        </th>
+        <th>
+            CauseTypeId
+        </th>
+        <th>
+            CauseId
+        </th>
+        <th>
+            EffectGroupId
+        </th>
+        <th>
+            EffectTypeId
+        </th>
+        <th>
+            EffectId
+        </th>
+        <th>
+            RiskCatId
+        </th>
+        <th>
+            RiskGroupId
+        </th>
+        <th>
+            RiskTypeId
+        </th>
+        <th>
+            JobTitle
+        </th>
+        <th>
+            ProbValue
+        </th>
+        <th>
+            ProbLevelId
+        </th>
+        <th>
+            ImpactLevelId
+        </th>
+        <th>
+            ImpactMoney
+        </th>
+        <th>
+            RiskLevel
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.UserInfo.FullName)</td>
+        <td>@Html.DisplayFor(modelItem => item.RiskCode)</td>
+        <td>@Html.DisplayFor(modelItem => item.RiskName)</td>
+        <td>@Html.DisplayFor(modelItem => item.RiskDate)</td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.OrgPos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dept.DeptName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubDept.SubDeptName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Division.DivisionName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubDiv.SubDivName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Branch.BranchName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubBranch.SubBranchName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BizUnit.BizUnitName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CauseGroup.CauseGroupName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CauseType.CauseTypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cause.CauseName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EffectGroup.EffectGroupName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EffectType.EffectTypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Effect.EffectName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RiskCat.RiskCatName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RiskGroup.RiskGroupName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RiskType.RiskTypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProbValue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProbLevelId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImpactLevelId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImpactMoney)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RiskLevel)
+        </td>*@
+        <td>
+            @Html.ActionLink("Details", "Details", new { id=item.RiskId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RiskId })
+        </td>
+    </tr>
+}
+
+</table>

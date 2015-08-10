@@ -1,0 +1,6 @@
+﻿<div style="padding-top: 12px">
+    @Html.ActionLink("Daftar Bagian", "SubDeptList", new { deptId = ViewData["DeptId"] }, null)
+</div>
+
+@*caller:*@
+@*@Html.Partial("_Link_SubDeptList", new ViewDataDictionary { { "DeptId", Model.Dept.DeptId } })*@

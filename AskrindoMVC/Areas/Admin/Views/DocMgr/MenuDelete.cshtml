@@ -1,0 +1,43 @@
+﻿@model AskrindoMVC.Models.HelpMenu
+
+@{
+    ViewBag.Title = "MenuDelete";
+    Layout = "~/Areas/Admin/Views/Shared/_DocMgr.cshtml";
+}
+
+<h3>Hapus Menu</h3>
+
+<div style="padding-bottom: 12px" class="warning">
+    Menu berikut akan dihapus. Lanjutkan?
+</div>
+
+<table class="warning">
+    <tr>
+        <td>ID</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.MenuId)</td>
+    </tr>
+    <tr>
+        <td>Menu</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.MenuName)</td>
+    </tr>
+    <tr>
+        <td>Keterangan</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.Description)</td>
+    </tr>
+    <tr>
+        <td>Visible?</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.IsVisible)</td>
+    </tr>
+</table>
+
+@using (Html.BeginForm())
+{ 
+    <div style="padding-top: 12px">
+        <input type="submit" value="Hapus Menu" /> |
+        @Html.ActionLink("Batal", "Index")
+    </div>
+}

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<AskrindoMVC.Models.MitigationCat>
+
+@{
+    ViewBag.Title = "MitigationCatList";
+    Layout = "~/Areas/RefData/Views/Shared/_Mitigation.cshtml";
+
+    var canModify = (bool)ViewBag.CanModify;
+}
+
+<h3>Daftar Kelompok Mitigasi</h3>
+
+@if (canModify)
+{ 
+<div style="padding-bottom: 12px">
+    @Html.ActionLink("Kelompok Mitigasi Baru", "MitigationCatNew")
+</div>
+}
+
+<table class="list">
+    <tr>
+        <th>ID</th>
+        <th>Nama Kelompok Mitigasi</th>
+        @if (canModify)
+        { 
+        <th></th>
+        }
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MitigationCatId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MitigationCatName)
+        </td>
+        @if (canModify)
+        { 
+        <td>
+            @Html.ActionLink("Edit", "MitigationCatEdit", new { id = item.MitigationCatId }) |
+            @Html.ActionLink("Hapus", "MitigationCatDelete", new { id = item.MitigationCatId })
+        </td>
+        }
+        <td>
+            @Html.ActionLink("Jenis Mitigasi (" + item.MitigationTypes.Count + ")", "MitigationTypeList", new { catId = item.MitigationCatId })
+        </td>
+    </tr>
+}
+
+</table>

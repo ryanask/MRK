@@ -1,0 +1,24 @@
+﻿@model AskrindoMVC.Models.RiskEvent
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/RefData/Views/Shared/_RiskReference.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <table class="edit">
+        <tr>
+            <td>ID</td>
+            <td>@Html.TextBoxFor(m => m.RiskEventID)</td>
+        </tr>
+        <tr>
+            <td>Peristiwa Resiko</td>
+            <td>@Html.TextAreaFor(m => m.RiskEvent1)</td>
+        </tr>
+    </table>
+    <div style="padding-top: 12px">
+        <input type="Submit" value="Hapus"/>
+        <input type="Button" value="Batal" onclick="location.href='@Url.Action("index","RiskEvent")';return false;"/>
+    </div>
+}

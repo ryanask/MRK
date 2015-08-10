@@ -1,0 +1,28 @@
+﻿@model AskrindoMVC.Models.Risk
+
+@using AskrindoMVC.Models
+@using AskrindoMVC.Helpers
+
+@{
+    ViewBag.Title = "CloseRisk";
+    Layout = "~/Areas/RiskData/Views/Shared/_Risk.cshtml";
+
+    AskrindoMVCEntities db = new AskrindoMVCEntities();
+    var orgList = Utils.GetOrgPosNames(Model.UserInfo, db);
+}
+
+<h3>Penutupan Risiko</h3>
+
+<div style="padding-bottom: 12px">
+    Data peristiwa risiko berikut akan ditutup.Lanjutkan?
+</div>
+
+@Html.Partial("_RiskState", Model)
+
+@using (Html.BeginForm())
+{ 
+    <div style="padding-top: 12px">
+        <input type="submit" value="Tutup Risiko" /> |
+        @Html.ActionLink("Batal", "RiskListAdmin")
+    </div>
+}

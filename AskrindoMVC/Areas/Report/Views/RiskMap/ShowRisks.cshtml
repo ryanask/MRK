@@ -1,0 +1,84 @@
+﻿@model IEnumerable<AskrindoMVC.Models.Risk>
+
+@using AskrindoMVC.Helpers
+
+@{
+    ViewBag.Title = "ShowRisks";
+    Layout = "~/Areas/Report/Views/Shared/_RiskMap.cshtml";
+
+    var grid = new WebGrid(Model, canSort: false);
+    var prob = Convert.ToInt32(Request.QueryString["prob"]);
+    var impact = Convert.ToInt32(Request.QueryString["impact"]);
+    int posId = Convert.ToInt32(Request.QueryString["posId"]);
+    int branchId = Convert.ToInt32(Request.QueryString["branchId"]);
+    DateTime dt = Convert.ToDateTime(Request.QueryString["mapDate"]);
+    bool isApproved = Convert.ToBoolean(Request.QueryString["isApproved"]);
+    
+}
+
+<h3>Daftar Peristiwa Risiko</h3>
+
+<table class="display">
+@if (posId != 0)
+{ 
+    <tr>
+        <td>Lokasi</td>
+        <td>:</td>
+    @if (posId == 1)
+    {
+        <td>Kantor Pusat</td>
+    }
+    else
+    {
+        <td>Cabang</td>
+    }
+    </tr>
+}
+
+@if (posId == 2 && branchId != 0)
+{ 
+    <tr>
+        <td>Cabang</td>
+        <td>:</td>
+        <td>@Utils.GetBranchName(branchId)</td>
+    </tr>
+}
+
+    <tr>
+        <td>Tanggal</td>
+        <td>:</td>
+        <td>@string.Format("{0:d}", dt)</td>
+    </tr>
+    <tr>
+        <td>Approved?</td>
+        <td>:</td>
+        <td>@(isApproved? "Ya": "Tidak")</td>
+    </tr>
+    <tr>
+        <td>Tingkat Probabilitas</td>
+        <td>:</td>
+        <td>@prob</td>
+    </tr>
+    <tr>
+        <td>Tingkat Dampak</td>
+        <td>:</td>
+        <td>@impact</td>
+    </tr>
+    <tr>
+        <td>Tingkat Risiko</td>
+        <td>:</td>
+        <td>@(prob * impact)</td>
+    </tr>
+</table>
+
+<div style="padding-top: 12px">
+@grid.GetHtml(tableStyle: "list",
+columns: grid.Columns(
+    grid.Column(header: "Kode Risiko", format: (item) => @Html.ActionLink((string)item.RiskCode, "Details", new { id = item.RiskId, controller = "RiskInfo", area = "" }, new { target = "_blank" })),
+    grid.Column("RiskName", header: " Peristiwa Risiko"),
+    grid.Column("RiskDate", header: "Tanggal", format: (item) => string.Format("{0:dd-MM-yyyy}", item.RiskDate)),
+    grid.Column("ProbLevelId", header: "Tk. Prob", style: "text-align-center"),
+    grid.Column("ImpactLevelId", header: "Tk. Dampak", style: "text-align-center"),
+    grid.Column("RiskLevel", header: "Tk. Risiko", style: "text-align-center")
+))
+</div>

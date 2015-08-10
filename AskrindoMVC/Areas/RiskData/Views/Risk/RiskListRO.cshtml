@@ -1,0 +1,86 @@
+﻿@model IEnumerable<AskrindoMVC.Models.Risk>
+
+@{
+    ViewBag.Title = "RiskListRO";
+    Layout = "~/Areas/RiskData/Views/Shared/_Risk.cshtml";
+    var status = Request.QueryString["status"];
+    if (!string.IsNullOrEmpty(status))
+    {
+        status = status.ToLower();
+    }
+}
+
+<table width="100%" class="layout">
+    <tr>
+        <td><h3 style="margin-top: 0">Daftar Risiko</h3></td>
+        <td align="right" valign="top">
+            Status: 
+            @if (string.IsNullOrEmpty(status)) 
+            { 
+                @:<b>Belum di-approve</b>
+            }
+            else
+            {
+                @Html.ActionLink("Belum di-approve", "RiskListRO") 
+            }
+            |
+            @if (status == "readonly")
+            {
+                @:<b>Dalam proses approval</b>
+            }
+            else
+            {     
+                @Html.ActionLink("Dalam proses approval", "RiskListRO", new { status = "readonly" }, null)
+            }
+            |
+            @if (status == "approved")
+            {
+                @:<b>Approved</b>
+            }
+            else
+            { 
+                @Html.ActionLink("Approved", "RiskListRO", new { status = "approved" }, null) 
+            }
+            |
+            @if (status == "closed")
+            { 
+                @:<b>Tutup</b>
+            }
+            else
+            { 
+                @Html.ActionLink("Tutup", "RiskListRO", new { status = "closed" }, null)
+            }
+        </td>
+    </tr>
+</table>
+
+<table class="list">
+    <tr>
+        <th>Kode Risiko</th>
+        <th>Peristiwa Risiko</th>
+        <th>Tanggal</th>
+        <th></th>
+        <th></th>
+    </tr>
+@foreach (var r in Model)
+{ 
+    <tr>
+        <td>@Html.ActionLink(r.RiskCode, "Details", new { controller = "RiskInfo", id = r.RiskId, area = "" }, new { target = "_blank" })</td>
+        <td>@Html.DisplayFor(modelItem => r.RiskName)</td>
+        <td>@Html.DisplayFor(modelItem => r.RiskDate)</td>
+        <td>
+            @Html.ActionLink("Detail", "RiskDetail", new { id = r.RiskId }, null)
+            @{
+    if (!r.IsReadOnly)
+    { 
+                @:|
+                @Html.ActionLink("Hapus", "RiskDelete", new { id = r.RiskId }, null)
+    }
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Mitigasi", "MitigationList", new { id = r.RiskId, approved = false }, null)
+        </td>
+    </tr>
+}
+</table>

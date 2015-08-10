@@ -1,0 +1,54 @@
+﻿@model IEnumerable<AskrindoMVC.Models.RiskState>
+
+@using AskrindoMVC.Models
+
+@{
+    ViewBag.Title = "RiskState";
+    Layout = "~/Views/Shared/_RiskInfo.cshtml";
+}
+
+@Html.Partial("_RiskHeader", ViewBag.Risk as Risk)
+
+<div style="padding-top: 12px">    
+@Html.Partial("_Link_RiskTab", new ViewDataDictionary { { "RiskId", (ViewBag.Risk as Risk).RiskId } })
+</div>
+
+<h3>Sejarah Status Risiko</h3>
+
+@if (Model.Count() == 0)
+{ 
+    <p>
+        (Tidak ada data)
+    </p>
+}
+else
+{ 
+<table class="list">
+    <tr>
+        <th>Tanggal</th>
+        <th>Tk.Prob</th>
+        <th>Tk. Dampak</th>
+        <th>Tk. Risiko</th>
+        <th>Keterangan</th>
+    </tr>
+@foreach (var m in Model)
+{ 
+    <tr>
+        <td>@Html.DisplayFor(modelItem => m.StateDate)</td>
+        <td>@Html.DisplayFor(modelItem => m.ProbLevelId)</td>
+        <td>@Html.DisplayFor(modelItem => m.ImpactLevelId)</td>
+        <td>@Html.DisplayFor(modelItem => m.RiskLevel)</td>
+        <td>
+        @if (m.MitigationId == null)
+        {
+            @:Input data
+        }
+        else
+        {
+            @:Mitigasi
+        }
+        </td>
+    </tr>
+}
+</table>
+}

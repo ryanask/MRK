@@ -1,0 +1,86 @@
+﻿@model AskrindoMVC.Models.RiskInfo.RiskMitigationViewModel
+
+@{
+    ViewBag.Title = "Mitigations";
+    Layout = "~/Views/Shared/_RiskInfo.cshtml";
+}
+
+@Html.Partial("_RiskHeader", Model.Risk)
+
+<div style="padding-top: 12px">
+@Html.Partial("_Link_RiskTab", new ViewDataDictionary { { "RiskId", Model.Risk.RiskId } })
+</div>
+
+<h3>Mitigasi Risiko</h3>
+
+@if (Model.ApprovedMitigations.Count() == 0 && Model.PlannedMitigations.Count() == 0)
+{ 
+    <p>
+        (Tidak ada data mitigasi)
+    </p>
+}
+
+@if (Model.ApprovedMitigations.Count() > 0)
+{
+    <div style="padding-bottom: 12px; font-weight: bold">
+        Daftar Mitigasi yang Sudah Dilakukan
+    </div>
+    <table class="list">
+        <tr>
+            <th>Kode Mitigasi</th>
+            <th>Uraian</th>
+            <th>Tanggal</th>
+            <th>Kelompok Mitigasi</th>
+            <th>Jenis Mitigasi</th>
+            <th>Tk. Prob.</th>
+            <th>Tk. Dampak</th>
+            <th>Tk. Risiko</th>
+        </tr>
+    @foreach (var m in Model.ApprovedMitigations) 
+    { 
+        <tr>
+            <td>@Html.DisplayFor(modelItem => m.MitigationCode)</td>
+            <td>@Html.DisplayFor(modelItem => m.MitigationName)</td>
+            <td>@Html.DisplayFor(modelItem => m.MitigationDate)</td>
+            <td>@Html.DisplayFor(modelItem => m.MitigationCat.MitigationCatName)</td>
+            <td>@Html.DisplayFor(modelItem => m.MitigationType.MitigationTypeName)</td>
+            <td>@Html.DisplayFor(modelItem => m.ProbLevelId) - @Html.DisplayFor(modelItem => m.ProbLevel.ProbLevelName)</td>
+            <td>@Html.DisplayFor(modelItem => m.ImpactLevelId) - @Html.DisplayFor(modelItem => m.ImpactLevel.ImpactLevelName)</td>
+            <td align="center">@Html.DisplayFor(modelItem => m.RiskLevel)</td>
+        </tr>
+    }
+    </table>
+    <div style="height: 24px"></div>
+}
+
+@if (Model.PlannedMitigations.Count() > 0)
+{
+    <div style="padding-bottom: 12px; font-weight: bold">
+        Daftar Rencana Mitigasi
+    </div>
+    <table class="list">
+        <tr>
+            <th>Kode Mitigasi</th>
+            <th>Uraian</th>
+            <th>Tanggal</th>
+            <th>Kelompok Mitigasi</th>
+            <th>Jenis Mitigasi</th>
+            <th>Tk. Prob.</th>
+            <th>Tk. Dampak</th>
+            <th>Tk. Risiko</th>
+        </tr>
+    @foreach (var m in Model.PlannedMitigations)
+    { 
+        <tr>
+            <td>@Html.DisplayFor(modelItem => m.MitigationCode)</td>
+            <td>@Html.DisplayFor(modelItem => m.MitigationName)</td>
+            <td>@Html.DisplayFor(modelItem => m.MitigationDate)</td>
+            <td>@Html.DisplayFor(modelItem => m.MitigationCat.MitigationCatName)</td>
+            <td>@Html.DisplayFor(modelItem => m.MitigationType.MitigationTypeName)</td>
+            <td>@Html.DisplayFor(modelItem => m.ProbLevelId) - @Html.DisplayFor(modelItem => m.ProbLevel.ProbLevelName)</td>
+            <td>@Html.DisplayFor(modelItem => m.ImpactLevelId) - @Html.DisplayFor(modelItem => m.ImpactLevel.ImpactLevelName)</td>
+            <td align="center">@Html.DisplayFor(modelItem => m.RiskLevel)</td>
+        </tr>
+    }
+    </table>
+}

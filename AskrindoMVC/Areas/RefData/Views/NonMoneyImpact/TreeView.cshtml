@@ -1,0 +1,38 @@
+﻿@model IEnumerable<AskrindoMVC.Models.ImpactCat>
+
+@{
+    ViewBag.Title = "TreeView";
+    Layout = "~/Areas/RefData/Views/Shared/_NonMoneyImpact.cshtml";
+}
+
+<h3>Tree View</h3>
+
+<div>
+    <table class="list">
+        @foreach (var cat in Model) { 
+            <tr>
+                <td colspan="3">
+                    @cat.ImpactCatName
+                </td>
+            </tr>
+            foreach (var typ in cat.ImpactTypes) { 
+                <tr>
+                    <td style="width: 20px"></td>
+                    <td colspan="2">
+                        @typ.ImpactTypeName
+                    </td>
+                </tr>
+                foreach (var detail in typ.ImpactDetails) { 
+                    <tr>
+                        <td></td>
+                        <td style="width: 20px"></td>
+                        <td>
+                            @detail.ImpactLevelId - @detail.ImpactLevel.ImpactLevelName<br />
+                            @detail.ImpactDetailName
+                        </td>
+                    </tr>
+                }
+            }
+        }
+    </table>
+</div>

@@ -1,0 +1,35 @@
+﻿@model AskrindoMVC.Areas.RiskData.Models.RiskData.RiskMitigationViewModel
+
+@using AskrindoMVC.Helpers
+
+@{
+    ViewBag.Title = "MitigationUnit";
+    Layout = "~/Areas/RiskData/Views/Shared/_MitigationUnit.cshtml";
+}
+
+<h3>Kode Mitigasi : @Html.DisplayFor(m => m.RiskMitigation.MitigationCode)</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    
+    <table class="list">
+        <tr>
+            <th>ID</th>
+            <th>Unit Kerja</th>
+        </tr>
+        @foreach (var m in Model.DivisionTable)
+        {
+        <tr>
+            <td>@Html.DisplayFor( item => m.DivisionId)</td>
+            <td>@Html.DisplayFor( item => m.DivisionName)</td>
+            <td>@Html.ActionLink("Hapus", "MitigationUnitDelete", new { id = m.MitigationUnitId, MitigationId = m.MitigationId} )</td>
+        </tr>
+        }
+    </table>
+    
+    <div style="padding-top: 12px">
+        @Html.ActionLink("Tambah", "MitigationUnitInsert", new { id = Model.RiskMitigation.MitigationId }, null) |
+        @Html.ActionLink("Kembali", "MitigationEdit", new { id = Model.RiskMitigation.MitigationId }, null)
+    </div>
+}

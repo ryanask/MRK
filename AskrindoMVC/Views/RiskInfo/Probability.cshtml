@@ -1,0 +1,16 @@
+﻿@model AskrindoMVC.Models.RiskProb
+
+@{
+    ViewBag.Title = "Probability";
+    Layout = "~/Views/Shared/_RiskInfo.cshtml";
+}
+
+@Html.Partial("_RiskHeader", Model.Risk)
+
+<div style="padding-top: 12px">
+@Html.Partial("_Link_RiskTab", new ViewDataDictionary { { "RiskId", Model.RiskId } })
+</div>
+
+<h3>Probabilitas</h3>
+
+@Html.Partial("_Probability", Model)

@@ -1,0 +1,56 @@
+﻿@model AskrindoMVC.Areas.RefData.Models.RiskEffect.EffectTypeViewModel
+
+@{
+    ViewBag.Title = "EffectTypeList";
+    Layout = "~/Areas/RefData/Views/Shared/_RiskEffect.cshtml";
+
+    var canModify = (bool)ViewBag.CanModify;
+}
+
+<h3 style="padding-bottom: 0; margin-bottom: 0">Daftar Jenis Akibat</h3>
+<div style="padding-bottom: 12px">
+    Kelompok Akibat: @Model.EffectGroup.EffectGroupName (@Model.EffectGroup.EffectGroupId)
+</div>
+
+@if (canModify)
+{ 
+<div style="padding-bottom: 12px">
+    @Html.ActionLink("Jenis Akibat Baru", "EffectTypeNew", new { groupId = @Model.EffectGroup.EffectGroupId })
+</div>
+}
+
+<table class="list">
+    <tr>
+        <th>ID</th>
+        <th>Nama Jenis Akibat</th>
+        @if (canModify)
+        { 
+        <th></th>
+        }
+        <th></th>
+    </tr>
+@foreach (var type in Model.EffectTypes) { 
+    <tr>
+        <td>
+            @type.EffectTypeId
+        </td>
+        <td>
+            @type.EffectTypeName
+        </td>
+        @if (canModify)
+        { 
+        <td>
+            @Html.ActionLink("Edit", "EffectTypeEdit", new { id = type.EffectTypeId }, null) |
+            @Html.ActionLink("Hapus", "EffectTypeDelete", new { id = type.EffectTypeId }, null)
+        </td>
+        }
+        <td>
+            @Html.ActionLink("Akibat (" + type.Effects.Count + ")", "EffectList", new { typeId = type.EffectTypeId }, null)
+        </td>
+    </tr>
+}
+</table>
+
+<div style="padding-top: 12px">
+    @Html.ActionLink("Daftar Kelompok Akibat", "EffectGroupList", new { groupId = @Model.EffectGroup.EffectGroupId }, null)
+</div>

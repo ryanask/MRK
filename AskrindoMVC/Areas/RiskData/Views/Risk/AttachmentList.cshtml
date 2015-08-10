@@ -1,0 +1,58 @@
+﻿@model AskrindoMVC.Areas.RiskData.Models.RiskData.RiskAttachmentViewModel
+
+@using AskrindoMVC.Helpers
+
+@{
+    ViewBag.Title = "AttachmentList";
+    Layout = "~/Areas/RiskData/Views/Shared/_Risk.cshtml";
+
+    var isReadOnly = Model.Risk.IsReadOnly;
+}
+
+@Html.Partial("_Info_Risk", Model.Risk)
+
+<div style="padding-top: 12px">
+@Html.Partial("_Link_RiskTab", new ViewDataDictionary { { "Id", Model.Risk.RiskId } })
+</div>
+
+<h3>Attachment</h3>
+
+<table class="list">
+    <tr>
+        <th>Nama</th>
+        <th>Keterangan</th>
+        <th style="width: 80px">Ukuran</th>
+        @if (!isReadOnly)
+        { 
+        <th></th>
+        }
+    </tr>
+@foreach (var item in Model.RiskAttachments) { 
+    <tr>
+        <td>
+            @Html.ActionLink(item.AttachName, "AttachmentDownload", new { id = item.AttachId }, null)
+        </td>
+        <td>
+            @item.Notes
+        </td>
+        <td align="right">
+            @Utils.GetByteSizeAsText((int)item.ContentLength)
+            @*@Html.DisplayFor(modelItem => item.ContentLength)*@
+        </td>
+        @if (!isReadOnly)
+        { 
+        <td>
+            @Html.ActionLink("Edit", "AttachmentEdit", new { id = item.AttachId }, null) |
+            @Html.ActionLink("Hapus", "AttachmentDelete", new { id = item.AttachId }, null)
+        </td>
+        }
+    </tr>
+}
+</table>
+
+@if (!isReadOnly)
+{ 
+<div style="padding-top: 12px">
+    @Html.ActionLink("Attachment Baru", "AttachmentNew", new { id = Model.Risk.RiskId }, null)
+</div>
+}

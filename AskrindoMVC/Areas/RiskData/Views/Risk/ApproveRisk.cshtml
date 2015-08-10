@@ -1,0 +1,79 @@
+﻿@model AskrindoMVC.Models.RiskApproval
+
+@using AskrindoMVC.Helpers
+@using AskrindoMVC.Models
+
+@{
+    ViewBag.Title = "RiskApproval";
+    Layout = "~/Areas/RiskData/Views/Shared/_Risk.cshtml";
+
+    RiskApproval prevApr = null;
+    if (Model.LastApproval) {
+
+        AskrindoMVCEntities db = new AskrindoMVCEntities();
+        prevApr = db.RiskApprovals.Where(p => p.RiskId == Model.RiskId && p.ApprovalDate != null && p.ApprovalId != Model.ApprovalId).FirstOrDefault();
+    }
+}
+
+<h3>Approve Data Risiko</h3>
+
+@if (!Utils.IsRiskDataCompleted(Model.Risk))
+{ 
+    <div style="padding-bottom: 12px; color: Red">
+        Data Peristiwa Risiko berikut belum bisa di-approve karena belum lengkap
+    </div>
+}
+else
+{ 
+<div style="padding-bottom: 12px">
+    Data Peristiwa Risiko berikut akan di-approve
+</div>
+}
+
+@Html.Partial("~/Views/RiskInfo/_RiskSimple.cshtml", Model.Risk)
+
+@if (prevApr != null)
+{ 
+<div style="padding-top: 12px">
+    <div style="padding-top: 12px">
+        <table class="display">
+            <tr>
+                <td colspan="3"><strong>Approval Sebelumnya</strong></td>
+            </tr>
+            <tr>
+                <td>Oleh</td>
+                <td>:</td>
+                <td>@prevApr.UserInfo.FullName</td>
+            </tr>
+            <tr>
+                <td>Jabatan</td>
+                <td>:</td>
+                <td>@prevApr.JobTitle</td>
+            </tr>
+            <tr>
+                <td>Tanggal</td>
+                <td>:</td>
+                <td>@string.Format("{0:d}", prevApr.ApprovalDate)</td>
+            </tr>
+        </table>
+    </div>
+</div>
+}
+
+@if (!Utils.IsRiskDataCompleted(Model.Risk))
+{ 
+    <div style="padding-top: 12px">
+        @Html.ActionLink("Daftar Risiko", "RiskList")
+    </div>
+}
+else
+{
+    using (Html.BeginForm())
+    { 
+    <div style="padding-top: 12px">
+        <input type="submit" value="Approve" />
+        |
+        @Html.ActionLink("Batal", "RiskList")
+    </div>
+}
+}

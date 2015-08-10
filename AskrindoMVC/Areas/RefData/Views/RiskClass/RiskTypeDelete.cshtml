@@ -1,0 +1,38 @@
+﻿@model AskrindoMVC.Areas.RefData.Models.RiskClass.RiskTypeViewModel
+
+@{
+    ViewBag.Title = "RiskTypeDelete";
+    Layout = "~/Areas/RefData/Views/Shared/_RiskClass.cshtml";
+}
+
+<h3 style="padding-bottom: 0; margin-bottom: 0">Hapus Jenis Risiko</h3>
+@Html.Partial("_Info_RiskGroup", Model.RiskType.RiskGroup)
+
+<div style="padding-bottom: 12px" class="warning">
+    Jenis Risiko berikut akan dihapus. Lanjutkan?
+</div>
+
+<table class="warning">
+    <tr>
+        <td>ID</td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(model => model.RiskType.RiskTypeId)
+        </td>
+    </tr>
+    <tr>
+        <td>Nama Jenis Risiko</td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(model => model.RiskType.RiskTypeName)
+        </td>
+    </tr>
+</table>
+
+@using (Html.BeginForm()) {
+    <div style="padding-top: 12px">
+        <input type="submit" value="Hapus" />
+    </div>
+}
+
+@Html.Partial("_Link_RiskTypeList", new ViewDataDictionary { { "GroupId", Model.RiskType.RiskGroupId } })

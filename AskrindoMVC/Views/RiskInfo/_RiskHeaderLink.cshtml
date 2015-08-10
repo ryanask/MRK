@@ -1,0 +1,9 @@
+﻿@model AskrindoMVC.Models.Risk
+
+<div style="font-size: .85em; border: 1px solid #ddd; padding: 8px; background-color: #E6ECF2; line-height: 1.4em">
+    <strong>@Html.ActionLink(Model.RiskCode, "Details", new { id = Model.RiskId, controller = "RiskInfo", area = "" }, new { target = "_blank" })</strong> -
+    @Html.DisplayFor(m => m.RiskDate)
+    <div>
+        @Html.DisplayFor(m => m.RiskName)
+    </div>
+</div>

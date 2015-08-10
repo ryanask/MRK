@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Klasifikasi Risiko";
+    Layout = "~/Areas/RefData/Views/Shared/_refdata.cshtml";
+}
+
+<div class="pagetitle">
+    <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+            <td>
+                <h2>Klasifikasi Risiko</h2>
+            </td>
+            <td align="right">
+                @Html.ActionLink("Tree View", "TreeView") |
+                @Html.ActionLink("Table View", "TableView")
+            </td>
+        </tr>
+    </table>
+</div>
+@RenderBody()

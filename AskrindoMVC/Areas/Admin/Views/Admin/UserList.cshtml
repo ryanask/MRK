@@ -1,0 +1,343 @@
+﻿@model IEnumerable<AskrindoMVC.Models.Dept>
+           
+@using AskrindoMVC.Helpers
+
+@{
+    ViewBag.Title = "UserList";
+    Layout = "~/Areas/Admin/Views/Shared/_UserMgt.cshtml";
+
+    bool showJobTitle;
+    if (string.IsNullOrEmpty(Request.QueryString["ShowJobTitle"]))
+    {
+        showJobTitle = false;
+    }
+    else
+    {
+        showJobTitle = Convert.ToBoolean(Request.QueryString["ShowJobTitle"]);
+    }
+}
+
+<table width="100%" class="layout">
+    <tr>
+        <td>
+            <h3 style="margin-top: 0px">Daftar User</h3>
+        </td>
+        <td align="right" valign="top">
+            @if (showJobTitle)
+            {
+                @Html.ActionLink("Sembunyikan Jabatan User", "UserList", new { showJobTitle = false }, null)
+            }
+            else
+            { 
+                @Html.ActionLink("Tampilkan Jabatan User", "UserList", new { showJobTitle = true }, null)
+            }
+        </td>
+    </tr>
+</table>
+
+
+<div>
+    <table class="list">
+        <tr>
+            <th colspan="4">Organisasi</th>
+            <th></th>
+            <th>User</th>
+        </tr>
+    @foreach (var dept in Model)
+    { 
+        <tr>
+            <td colspan="4">
+                DIREKTORAT: @dept.DeptName
+            </td>
+            <td></td>
+            <td></td>
+        </tr>
+        foreach (var div in dept.Divisions)
+        { 
+            <tr>
+                <td style="width: 20px"></td>
+                <td colspan="3">
+                    DIVISI: @div.DivisionName
+                </td>
+                <td>
+                    @Html.ActionLink("Baru", "UserNew", new { orgPos = Utils.ORGPOS_DIVISION, divisionId = div.DivisionId }, null)
+                </td>
+                <td style="padding: 0">
+                @if (div.UserInfos.Count > 0)
+                { 
+                    <table width="100%" rules="all" frame="void">
+                    @{
+                    foreach (var nfo in div.UserInfos)
+                    {
+                        if (nfo.OrgPos == Utils.ORGPOS_DIVISION)
+                        { 
+                            <tr>
+                                <td>
+                                    @nfo.FullName
+                                    @if ((bool)nfo.IsRiskOwner)
+                                    { 
+                                        @:(RCP)
+                                    }
+                                    @if (showJobTitle)
+                                    { 
+                                        <br />
+                                        <span style="font-size: .8em">@nfo.JobTitle</span>
+                                    }
+                                </td>
+                                <td style="width: 30px">
+                                    @Html.ActionLink("Edit", "UserEdit", new { userId = nfo.UserId }, null)
+                                </td>
+                                <td style="width: 30px">
+                                    @Html.ActionLink("Hapus", "UserDelete", new { userId = nfo.UserId }, null)
+                                </td>
+                            </tr>
+                        }
+                    }
+                    }
+                    </table>
+                }
+                </td>
+            </tr>
+                foreach (var sub in div.SubDivs)
+                { 
+                <tr>
+                    <td></td>
+                    <td style="width: 20px"></td>
+                    <td colspan="2">
+                        BAGIAN: @sub.SubDivName
+                    </td>
+                    <td>
+                        @Html.ActionLink("Baru", "UserNew", new { orgPos = Utils.ORGPOS_SUBDIV, subDivId = sub.SubDivId }, null)
+                    </td>
+                    <td style="padding: 0">
+                    @if (sub.UserInfos.Count > 0)
+                    { 
+                        <table width="100%" rules="all" frame="void">
+                        @{
+                        foreach (var nfo in sub.UserInfos)
+                        {
+                            if (nfo.OrgPos == Utils.ORGPOS_SUBDIV)
+                            { 
+                                <tr>
+                                    <td>
+                                        @nfo.FullName
+                                        @if ((bool)nfo.IsRiskOwner)
+                                        { 
+                                            @:(RCP)
+                                        }
+                                        @if (showJobTitle)
+                                        { 
+                                            <br />
+                                            <span style="font-size: .8em">@nfo.JobTitle</span>
+                                        }
+                                    </td>
+                                    <td style="width: 30px">
+                                        @Html.ActionLink("Edit", "UserEdit", new { userId = nfo.UserId }, null)
+                                    </td>
+                                    <td style="width: 30px">
+                                        @Html.ActionLink("Hapus", "UserDelete", new { userId = nfo.UserId }, null)
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        }
+                        </table>
+                    }
+                    </td>
+                </tr>
+                }
+        }
+        foreach (var sub in dept.SubDepts)
+        { 
+            <tr>
+                <td style="width: 20px"></td>
+                <td colspan="3">
+                    BAGIAN: @sub.SubDeptName
+                </td>
+                <td>
+                    @Html.ActionLink("Baru", "UserNew", new { orgPos = Utils.ORGPOS_SUBDEPT, subDeptId = sub.SubDeptId }, null)
+                </td>
+                <td style="padding: 0">
+                @if (sub.UserInfos.Count > 0)
+                { 
+                    <table width="100%" rules="all" frame="void">
+                    @{
+                    foreach (var nfo in sub.UserInfos)
+                    {
+                        if (nfo.OrgPos == Utils.ORGPOS_SUBDEPT)
+                        { 
+                            <tr>
+                                <td>
+                                    @nfo.FullName
+                                    @if ((bool)nfo.IsRiskOwner)
+                                    { 
+                                        @:(RCP)
+                                    }
+                                    @if (showJobTitle)
+                                    { 
+                                        <br />
+                                        <span style="font-size: .8em">@nfo.JobTitle</span>
+                                    }
+                                </td>
+                                <td style="width: 30px">
+                                    @Html.ActionLink("Edit", "UserEdit", new { userId = nfo.UserId }, null)
+                                </td>
+                                <td style="width: 30px">
+                                    @Html.ActionLink("Hapus", "UserDelete", new { userId = nfo.UserId }, null)
+                                </td>
+                            </tr>
+                        }
+                    }
+                    }
+                    </table>
+                }
+                </td>
+            </tr>
+        }
+        foreach (var branch in dept.Branches)
+        { 
+            <tr>
+                <td></td>
+                <td colspan="3">
+                    CABANG: @branch.BranchName (Kelas @branch.BranchClass.ClassName)
+                </td>
+                <td>
+                    @Html.ActionLink("Baru", "UserNew", new { orgPos = Utils.ORGPOS_BRANCH, branchId = branch.BranchId }, null)
+                </td>
+                <td style="padding: 0">
+                @if (branch.UserInfos.Count > 0)
+                { 
+                    <table width="100%" rules="all" frame="void">
+                    @{
+                    foreach (var nfo in branch.UserInfos)
+                    {
+                        if (nfo.OrgPos == Utils.ORGPOS_BRANCH)
+                        { 
+                            <tr>
+                                <td>
+                                    @nfo.FullName
+                                    @if ((bool)nfo.IsRiskOwner)
+                                    { 
+                                        @:(RCP)
+                                    }
+                                    @if (showJobTitle)
+                                    { 
+                                        <br />
+                                        <span style="font-size: .8em">@nfo.JobTitle</span>
+                                    }
+                                </td>
+                                <td style="width: 30px">
+                                    @Html.ActionLink("Edit", "UserEdit", new { userId = nfo.UserId }, null)
+                                </td>
+                                <td style="width: 30px">
+                                    @Html.ActionLink("Hapus", "UserDelete", new { userId = nfo.UserId }, null)
+                                </td>
+                            </tr>
+                        }
+                    }
+                    }
+                    </table>
+                }
+                </td>
+            </tr>
+                foreach (var sub in branch.SubBranches)
+                { 
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td colspan="2">
+                        BAGIAN: @sub.SubBranchName
+                    </td>
+                    <td>
+                        @Html.ActionLink("Baru", "UserNew", new { orgPos = Utils.ORGPOS_SUBBRANCH, subBranchId = sub.SubBranchId }, null)
+                    </td>
+                    <td style="padding: 0">
+                    @if (sub.UserInfos.Count > 0)
+                    { 
+                        <table width="100%" rules="all" frame="void">
+                        @{
+                        foreach (var nfo in sub.UserInfos)
+                        {
+                            if (nfo.OrgPos == Utils.ORGPOS_SUBBRANCH)
+                            { 
+                                <tr>
+                                    <td>
+                                        @nfo.FullName
+                                        @if ((bool)nfo.IsRiskOwner)
+                                        { 
+                                            @:(RCP)
+                                        }
+                                        @if (showJobTitle)
+                                        { 
+                                            <br />
+                                            <span style="font-size: .8em">@nfo.JobTitle</span>
+                                        }
+                                    </td>
+                                    <td style="width: 30px">
+                                        @Html.ActionLink("Edit", "UserEdit", new { userId = nfo.UserId }, null)
+                                    </td>
+                                    <td style="width: 30px">
+                                        @Html.ActionLink("Hapus", "UserDelete", new { userId = nfo.UserId }, null)
+                                    </td>
+                                </tr>
+                                
+                            }
+                        }
+                        }
+                        </table>
+                    }
+                    </td>
+                </tr>
+                }
+                foreach (var biz in branch.BizUnits)
+                { 
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td colspan="2">
+                        KUP: @biz.BizUnitName
+                    </td>
+                    <td>
+                        @Html.ActionLink("Baru", "UserNew", new { orgPos = Utils.ORGPOS_BIZUNIT, bizUnitId = biz.BizUnitId }, null)
+                    </td>
+                    <td style="padding: 0">
+                    @if (biz.UserInfos.Count > 0)
+                    { 
+                        <table width="100%" rules="all" frame="void">
+                        @{
+                        foreach (var nfo in biz.UserInfos)
+                        {
+                            if (nfo.OrgPos == Utils.ORGPOS_BIZUNIT)
+                            { 
+                                <tr>
+                                    <td>
+                                        @nfo.FullName
+                                        @if ((bool)nfo.IsRiskOwner)
+                                        { 
+                                            @:(RCP)
+                                        }
+                                        @if (showJobTitle)
+                                        { 
+                                            <br />
+                                            <span style="font-size: .8em">@nfo.JobTitle</span>
+                                        }
+                                    </td>
+                                    <td style="width: 30px">
+                                        @Html.ActionLink("Edit", "UserEdit", new { userId = nfo.UserId }, null)
+                                    </td>
+                                    <td style="width: 30px">
+                                        @Html.ActionLink("Hapus", "UserDelete", new { userId = nfo.UserId }, null)
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        }
+                        </table>
+                    }
+                    </td>
+                </tr>
+            }
+        }
+    }
+    </table>
+</div>

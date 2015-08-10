@@ -1,0 +1,55 @@
+﻿@model IEnumerable<AskrindoMVC.Models.ProbLevel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/RefData/Views/Shared/_ProbLevel.cshtml";
+
+    var canModify = (bool)ViewBag.CanModify;
+}
+
+<h3>Daftar Tingkat Probabilitas</h3>
+
+<table class="list">
+    <tr>
+        <th>Level</th>
+        <th>Keterangan</th>
+        <th>% Min</th>
+        <th>% Maks</th>
+        <th>Indikasi Umum</th>
+        <th>Indikasi Proyek</th>
+        @if (canModify)
+        { 
+        <th></th>
+        }
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td align="center">
+            @Html.DisplayFor(modelItem => item.ProbLevelId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProbLevelName)
+        </td>
+        <td align="right">
+            @Html.DisplayFor(modelItem => item.PctMin)
+        </td>
+        <td align="right">
+            @Html.DisplayFor(modelItem => item.PctMax)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescriptionGeneral)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescriptionProject)
+        </td>
+        @if (canModify)
+        { 
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ProbLevelId })
+        </td>
+        }
+    </tr>
+}
+
+</table>

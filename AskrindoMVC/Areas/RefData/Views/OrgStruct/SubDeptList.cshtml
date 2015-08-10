@@ -1,0 +1,45 @@
+﻿@model AskrindoMVC.Areas.RefData.Models.OrgStruct.SubDeptViewModel
+
+@{
+    ViewBag.Title = "SubDeptList";
+    Layout = "~/Areas/RefData/Views/Shared/_OrgStruct.cshtml";
+    var canModify = (bool)ViewBag.CanModify;
+}
+
+<h3 style="padding-bottom: 0; margin-bottom: 0">Daftar Bagian</h3>
+@Html.Partial("_Info_Dept", Model.Dept)
+
+@if (canModify)
+{ 
+<div style="padding-bottom: 12px">
+    @Html.ActionLink("Bagian Baru", "SubDeptNew", new { deptId = Model.Dept.DeptId }, null)
+</div>
+}
+
+<table class="list">
+    <tr>
+        <th>ID</th>
+        <th>Nama Bagian</th>
+        <th>Supporting Unit</th>
+        @if (canModify)
+        { 
+        <th></th>
+        }
+    </tr>
+@foreach (var sub in Model.SubDepts) { 
+    <tr>
+        <td>@Html.DisplayFor(modelItem => sub.SubDeptId)</td>
+        <td>@Html.DisplayFor(modelItem => sub.SubDeptName)</td>
+        <td align="center">@Html.DisplayFor(modelItem => sub.IsSupporting)</td>
+        @if (canModify)
+        { 
+        <td>
+            @Html.ActionLink("Edit", "SubDeptEdit", new { id = sub.SubDeptId }, null) |
+            @Html.ActionLink("Hapus", "SubDeptDelete", new { id = sub.SubDeptId }, null)
+        </td>
+        }
+    </tr>
+}
+</table>
+
+@Html.Partial("_Link_DeptList")

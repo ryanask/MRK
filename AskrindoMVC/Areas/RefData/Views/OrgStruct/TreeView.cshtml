@@ -1,0 +1,79 @@
+﻿@model IEnumerable<AskrindoMVC.Models.Dept>
+
+@{
+    ViewBag.Title = "TreeView";
+    Layout = "~/Areas/RefData/Views/Shared/_orgstruct.cshtml";
+}
+
+<h3>Tree View</h3>
+
+<div>
+    <table class="list">
+    @foreach (var dept in Model) { 
+        <tr>
+            <td colspan="4">
+                @*DIREKTORAT: @dept.DeptId - @dept.DeptName*@
+                DIREKTORAT: @dept.DeptName
+            </td>
+        </tr>
+        foreach (var div in dept.Divisions)
+        { 
+            <tr>
+                <td style="width: 20px"></td>
+                <td colspan="3">
+                    @*DIVISI: @div.DivisionId - @div.DivisionName*@
+                    DIVISI: @div.DivisionName
+                </td>
+            </tr>
+            foreach (var sub in div.SubDivs) { 
+                <tr>
+                    <td></td>
+                    <td style="width: 20px"></td>
+                    <td colspan="2">
+                        @*BAGIAN: @sub.SubDivId - @sub.SubDivName*@
+                        BAGIAN: @sub.SubDivName
+                    </td>
+                </tr>
+            }
+        }
+        foreach (var sub in dept.SubDepts) { 
+            <tr>
+                <td style="width: 20px"></td>
+                <td colspan="3">
+                    @*BAGIAN: @sub.SubDeptId - @sub.SubDeptName*@
+                    BAGIAN: @sub.SubDeptName
+                </td>
+            </tr>
+        }
+        foreach (var branch in dept.Branches) { 
+            <tr>
+                <td></td>
+                <td colspan="3">
+                    @*CABANG: @branch.BranchId - @branch.BranchName (Kelas @branch.BranchClass.ClassName)*@
+                    CABANG: @branch.BranchName (Kelas @branch.BranchClass.ClassName)
+                </td>
+            </tr>
+            foreach (var sub in branch.SubBranches) { 
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td colspan="2">
+                        @*BAGIAN: @sub.SubBranchId - @sub.SubBranchName*@
+                        BAGIAN: @sub.SubBranchName
+                    </td>
+                </tr>
+            }
+            foreach (var biz in branch.BizUnits) { 
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td colspan="2">
+                        @*KUP: @biz.BizUnitId - @biz.BizUnitName*@
+                        KUP: @biz.BizUnitName
+                    </td>
+                </tr>
+            }
+        }
+    }
+    </table>
+</div>

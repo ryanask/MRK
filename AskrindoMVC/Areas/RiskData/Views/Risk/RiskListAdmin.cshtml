@@ -1,0 +1,86 @@
+﻿@model AskrindoMVC.Areas.RiskData.Models.RiskData.RiskListParamViewModel
+
+@{
+    ViewBag.Title = "RiskListAdmin";
+    Layout = "~/Areas/RiskData/Views/Shared/_Risk.cshtml";
+
+    var grid = new WebGrid(Model.Risks, canSort: false);
+}
+
+<h3>Daftar Risiko</h3>
+
+<script type="text/javascript">
+    $(function () {
+        $("#params").accordion({
+            collapsible: true,
+            active: -1
+        });
+    });
+</script>
+
+<div id="params" style="padding-bottom: 12px">
+    <h3>
+        <a href="#">Parameter</a>
+    </h3>
+    <div>
+        @using (Html.BeginForm()) {
+            <table>
+                <tr>
+                    <td>Lokasi</td>
+                    <td>
+                        @Html.DropDownListFor(m => m.PosId, Model.PosList, "")
+                    </td>
+                </tr>
+                <tr>
+                    <td>Cabang</td>
+                    <td>
+                        @Html.DropDownListFor(m => m.BranchId, Model.Branches, "")
+                    </td>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td>
+                        @Html.DropDownListFor(m => m.StateId, Model.States, "")
+                    </td>
+                </tr>
+            </table>
+        
+            <div style="padding-top: 12px">
+                <input type="submit" value="Refresh" />
+            </div>
+        }
+    </div>
+</div>
+
+@if (Model.StateId == 3)
+{ 
+@grid.GetHtml(tableStyle: "list",
+columns: grid.Columns(
+    grid.Column("RiskCode", header: "Kode Risiko", format: (item) => @Html.ActionLink((string)item.RiskCode, "Details", new { id = item.RiskId, controller = "RiskInfo", area = "" }, new { target = "_blank" })),
+    grid.Column("RiskName", header: "Peristiwa Risiko"),
+    grid.Column("RiskDate", header: "Tanggal", format: (item) => string.Format("{0:dd-MM-yyyy}", item.RiskDate)),
+    grid.Column("UserInfo.FullName", header: "Risk Owner"),
+    grid.Column(format: (item) => @Html.ActionLink("Tutup", "CloseRisk", new { id = item.RiskId }, null))
+))
+}
+else if (Model.StateId == 4)
+{ 
+@grid.GetHtml(tableStyle: "list",
+columns: grid.Columns(
+    grid.Column("RiskCode", header: "Kode Risiko", format: (item) => @Html.ActionLink((string)item.RiskCode, "Details", new { id = item.RiskId, controller = "RiskInfo", area = "" }, new { target = "_blank" })),
+    grid.Column("RiskName", header: "Peristiwa Risiko"),
+    grid.Column("RiskDate", header: "Tanggal", format: (item) => string.Format("{0:dd-MM-yyyy}", item.RiskDate)),
+    grid.Column("UserInfo.FullName", header: "Risk Owner"),
+    grid.Column(format: (item) => @Html.ActionLink("Batalkan Penutupan", "CancelRiskClosure", new { id = item.RiskId }, null))
+))
+}
+else
+{ 
+@grid.GetHtml(tableStyle: "list",
+columns: grid.Columns(
+    grid.Column("RiskCode", header: "Kode Risiko", format: (item) => @Html.ActionLink((string)item.RiskCode, "Details", new { id = item.RiskId, controller = "RiskInfo", area = "" }, new { target = "_blank" })),
+    grid.Column("RiskName", header: "Peristiwa Risiko"),
+    grid.Column("RiskDate", header: "Tanggal", format: (item) => string.Format("{0:dd-MM-yyyy}", item.RiskDate)),
+    grid.Column("UserInfo.FullName", header: "Risk Owner")
+))
+}

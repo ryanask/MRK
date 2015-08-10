@@ -1,0 +1,16 @@
+﻿@model AskrindoMVC.Models.RiskInfo.RiskImpactViewModel
+
+@{
+    ViewBag.Title = "Impact";
+    Layout = "~/Views/Shared/_RiskInfo.cshtml";
+}
+
+@Html.Partial("_RiskHeader", Model.RiskImpact.Risk)
+
+<div style="padding-top: 12px">
+@Html.Partial("_Link_RiskTab", new ViewDataDictionary { { "RiskId", Model.RiskImpact.RiskId } })
+</div>
+
+<h3>Dampak</h3>
+
+@Html.Partial("_Impact", Model)

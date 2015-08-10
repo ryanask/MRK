@@ -1,0 +1,57 @@
+﻿@model IEnumerable<AskrindoMVC.Models.Effect>
+
+@{
+    ViewBag.Title = "TableView";
+    Layout = "~/Areas/RefData/Views/Shared/_RiskEffect.cshtml";
+
+    var groupId = 0;
+    var typeId = 0;
+    var newGroupId = 0;
+    var newTypeId = 0;
+}
+
+<h3>Table View</h3>
+
+<table class="list">
+    <tr>
+        <th>Kelompok Akibat</th>
+        <th>Jenis Akibat</th>
+        <th>Akibat</th>
+    </tr>
+@foreach (var effect in Model)
+{ 
+    <tr>
+    @{
+    newGroupId = effect.EffectType.EffectGroupId;
+    newTypeId = effect.EffectTypeId;
+    if (groupId != newGroupId)
+    {
+        groupId = newGroupId;
+        typeId = newTypeId;
+        <td>
+            @effect.EffectType.EffectGroupId. @effect.EffectType.EffectGroup.EffectGroupName
+        </td>
+        <td>
+            @effect.EffectTypeId. @effect.EffectType.EffectTypeName
+        </td>
+    }
+    else { 
+        <td></td>
+        if (typeId != newTypeId)
+        {
+            typeId = newTypeId;
+            <td>
+                @effect.EffectTypeId. @effect.EffectType.EffectTypeName
+            </td>
+        }
+        else { 
+            <td></td>
+        }
+    }
+    }
+        <td>
+            @effect.EffectId. @effect.EffectName
+        </td>
+    </tr>
+}
+</table>

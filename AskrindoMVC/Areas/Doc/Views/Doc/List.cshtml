@@ -1,0 +1,51 @@
+﻿@model AskrindoMVC.Areas.Doc.Models.Doc.DocVM
+
+@using AskrindoMVC.Helpers
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Areas/Doc/Views/Shared/_Doc.cshtml";
+}
+
+@section docmenu {
+    @Html.Partial("_Partial_DocMenu", Model.HelpMenus)
+}
+
+<div class="pagetitle">
+    <h2>@Model.HelpMenu.MenuName</h2>
+</div>
+
+@if (Model.HelpMenu.Description != null)
+{ 
+    <div style="padding-bottom: 12px">
+        @Model.HelpMenu.Description
+    </div>
+}
+
+@if (Model.HelpDocs.Count() != 0)
+{ 
+<table class="list">
+    <tr>
+        <th>Dokumen</th>
+        <th>Format</th>
+        <th style="width: 70px">Ukuran</th>
+        <th></th>
+    </tr>
+@foreach (var m in Model.HelpDocs)
+{
+    <tr>
+        <td>
+            <b>@Html.DisplayFor(modelItem => m.DocName)</b>
+            <div style="padding-top: .3em">
+                @Html.DisplayFor(modelItem => m.Description)
+            </div>
+        </td>
+        <td>@Html.DisplayFor(modelItem => m.DocInfo)</td>
+        <td align="right">@Utils.GetByteSizeAsText((int)m.ContentLength)</td>
+        <td>
+            @Html.ActionLink("Download", "DocDownload", new { id = m.DocId }, null)
+        </td>
+    </tr>
+}
+</table>
+}

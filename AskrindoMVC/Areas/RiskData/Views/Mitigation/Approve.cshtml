@@ -1,0 +1,22 @@
+﻿@model AskrindoMVC.Models.MitigationApproval
+
+@{
+    ViewBag.Title = "Approve";
+    Layout = "~/Areas/RiskData/Views/Shared/_MitigationList.cshtml";
+}
+
+<h3>Approve Mitigasi Risiko</h3>
+
+<div style="padding-bottom: 12px">
+    Data mitigasi risiko berikut akan di-approve
+</div>
+
+@Html.Partial("~/Views/RiskInfo/_MitigationDetail.cshtml", Model.RiskMitigation)
+
+@using (Html.BeginForm())
+{ 
+<div style="padding-top: 12px">
+    <input type="submit" value="Approve Mitigasi Risiko" /> |
+    @Html.ActionLink("Batal", "MitigationList")
+</div>
+}

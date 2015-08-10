@@ -1,0 +1,46 @@
+﻿@model AskrindoMVC.Models.RiskNonMoneyImpact
+
+@{
+    ViewBag.Title = "ImpactNonMoneyDelete";
+    Layout = "~/Areas/RiskData/Views/Shared/_Risk.cshtml";
+}
+
+@Html.Partial("_Info_Risk", Model.Risk)
+
+<div style="padding-top: 12px">
+@Html.Partial("_Link_RiskTab", new ViewDataDictionary { { "Id", Model.RiskId } })
+</div>
+
+<h3>Hapus Dampak Non Keuangan</h3>
+
+<div style="padding-bottom: 12px" class="warning">
+    Dampak Non Keuangan Berikut akan dihapus. Lanjutkan?
+</div>
+
+<table class="warning">
+    <tr>
+        <td style="width: 100px">Dampak</td>
+        <td>:</td>
+        <td>
+            @Model.ImpactType.ImpactTypeName
+        </td>
+    </tr>
+    <tr>
+        <td>Tingkat Dampak</td>
+        <td>:</td>
+        <td>
+            @Model.ImpactLevelId - @Model.ImpactLevel.ImpactLevelName
+            <br />
+            <span style="font-size: .8em">
+                @Model.ImpactDetail.ImpactDetailName
+            </span>
+        </td>
+    </tr>
+</table>
+
+@using (Html.BeginForm()) {
+    <div style="padding-top: 12px">
+        <input type="submit" value="Hapus" /> |
+        @Html.ActionLink("Batal", "ImpactNonMoneyList", new { id = Model.RiskId }, null)
+    </div>
+}

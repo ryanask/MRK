@@ -1,0 +1,25 @@
+﻿@model AskrindoMVC.Models.RiskInfo.RiskAttachmentViewModel
+
+@{
+    ViewBag.Title = "Attachments";
+    Layout = "~/Views/Shared/_RiskInfo.cshtml";
+}
+
+@Html.Partial("_RiskHeader", Model.Risk)
+
+<div style="padding-top: 12px">
+@Html.Partial("_Link_RiskTab", new ViewDataDictionary { { "RiskId", Model.Risk.RiskId } })
+</div>
+
+<h3>Attachments</h3>
+
+@if (Model.RiskAttachments.Count() == 0)
+{ 
+    <p>
+        (Tidak ada data attachment)
+    </p>
+}
+else
+{ 
+    @Html.Partial("_Attachments", Model.RiskAttachments)
+}

@@ -1,0 +1,72 @@
+﻿@model AskrindoMVC.Models.RiskInfo.RiskImpactViewModel
+
+@if (Model.RiskImpact.IsMoneyImpact)
+{
+    <table class="display">
+        <tr>
+            <td colspan="3">Jenis Dampak: <strong>Dampak Keuangan</strong></td>
+        </tr>
+        <tr>
+            <td colspan="3" style="height: .3em"></td>
+        </tr>
+        <tr>
+            <td>Kerugian langsung (Rp)</td>
+            <td>:</td>
+            <td>
+                @Html.DisplayFor(m => m.RiskImpact.MoneyDirect)
+            </td>
+        </tr>
+        <tr>
+            <td>Kerugian tidak langsung (Rp)</td>
+            <td>:</td>
+            <td>
+                @Html.DisplayFor(m => m.RiskImpact.MoneyIndirect)
+            </td>
+        </tr>
+        <tr>
+            <td style="height: .3em"></td>
+        </tr>
+        <tr>
+            <td>Tingkat Dampak</td>
+            <td>:</td>
+            <td>
+                @Html.DisplayFor(m => m.RiskImpact.ImpactLevelId) - @Html.DisplayFor(m => m.RiskImpact.ImpactLevel.ImpactLevelName)
+            </td>
+        </tr>
+    </table>
+}
+else
+{ 
+    <table class="display">
+        <tr>
+            <td colspan="3">Jenis Dampak: <strong>Dampak Non Keuangan</strong></td>
+        </tr>
+        @*<tr>
+            <td colspan="3" style="height: .3em"></td>
+        </tr>*@
+        <tr>
+            <td colspan="3">
+                <table class="list">
+                    <tr>
+                        <th>Dampak</th>
+                        <th>Tingkat Dampak</th>
+                    </tr>
+                @foreach (var item in Model.RiskNonMoneyImpacts) { 
+                    <tr>
+                        <td>
+                            @item.ImpactDetail.ImpactType.ImpactTypeName
+                        </td>
+                        <td>
+                            @item.ImpactDetail.ImpactLevelId -
+                            @item.ImpactDetail.ImpactLevel.ImpactLevelName
+                            <br />
+                            <span style="font-size:.8em">@item.ImpactDetail.ImpactDetailName</span>
+                        </td>
+                    </tr>
+                }
+                </table>
+            </td>
+        </tr>
+        
+    </table>
+}

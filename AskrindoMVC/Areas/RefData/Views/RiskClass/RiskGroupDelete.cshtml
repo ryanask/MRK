@@ -1,0 +1,38 @@
+﻿@model AskrindoMVC.Areas.RefData.Models.RiskClass.RiskGroupViewModel
+
+@{
+    ViewBag.Title = "RiskGroupDelete";
+    Layout = "~/Areas/RefData/Views/Shared/_RiskClass.cshtml";
+}
+
+<h3 style="padding-bottom: 0; margin-bottom: 0">Hapus Kelompok Risiko</h3>
+@Html.Partial("_Info_RiskCat", Model.RiskGroup.RiskCat)
+
+<div style="padding-bottom: 12px" class="warning">
+    Kelompok Risiko berikut akan dihapus. Lanjutkan
+</div>
+
+<table class="edit">
+    <tr>
+        <td>ID</td>
+        <td style="width: 10px">:</td>
+        <td>
+            @Html.DisplayFor(model => model.RiskGroup.RiskGroupId)
+        </td>
+    </tr>
+    <tr>
+        <td>Nama Kelompok Risiko</td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(model => model.RiskGroup.RiskGroupName)
+        </td>
+    </tr>
+</table>
+
+@using (Html.BeginForm()) {
+    <div style="padding-top: 12px">
+        <input type="submit" value="Hapus" />
+    </div>
+}
+
+@Html.Partial("_Link_RiskGroupList", @Model.RiskGroup.RiskCat, new ViewDataDictionary { { "CatId", @Model.RiskGroup.RiskCatId } })

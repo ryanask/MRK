@@ -1,0 +1,35 @@
+﻿@model IEnumerable<AskrindoMVC.Models.EffectGroup>
+
+@{
+    ViewBag.Title = "TreeView";
+    Layout = "~/Areas/RefData/Views/Shared/_RiskEffect.cshtml";
+}
+
+<h3>TreeView</h3>
+
+<table class="list">
+    @foreach (var group in Model) { 
+        <tr>
+            <td colspan="3">
+                @group.EffectGroupId. @group.EffectGroupName
+            </td>
+        </tr>
+        foreach (var type in group.EffectTypes) { 
+            <tr>
+                <td style="width: 20px"></td>
+                <td colspan="2">
+                    @type.EffectTypeId. @type.EffectTypeName
+                </td>
+            </tr>
+            foreach (var effect in type.Effects) { 
+                <tr>
+                    <td></td>
+                    <td style="width: 20px"></td>
+                    <td>
+                        @effect.EffectId. @effect.EffectName
+                    </td>
+                </tr>
+            }
+        }
+    }
+</table>

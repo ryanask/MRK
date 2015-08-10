@@ -1,0 +1,6 @@
+E:\Askrindo\Source Code Program MR Berbasis Web\Askrindo.Web.2012.01.03\Source Code\AskrindoMVC\AskrindoMVC\bin\AskrindoMVC.dll
+E:\Askrindo\Source Code Program MR Berbasis Web\Askrindo.Web.2012.01.03\Source Code\AskrindoMVC\AskrindoMVC\bin\AskrindoMVC.pdb
+E:\Askrindo\Source Code Program MR Berbasis Web\Askrindo.Web.2012.01.03\Source Code\AskrindoMVC\AskrindoMVC\bin\EntityFramework.dll
+E:\Askrindo\Source Code Program MR Berbasis Web\Askrindo.Web.2012.01.03\Source Code\AskrindoMVC\AskrindoMVC\bin\EntityFramework.xml
+E:\Askrindo\Source Code Program MR Berbasis Web\Askrindo.Web.2012.01.03\Source Code\AskrindoMVC\AskrindoMVC\obj\Release\AskrindoMVC.dll
+E:\Askrindo\Source Code Program MR Berbasis Web\Askrindo.Web.2012.01.03\Source Code\AskrindoMVC\AskrindoMVC\obj\Release\AskrindoMVC.pdb

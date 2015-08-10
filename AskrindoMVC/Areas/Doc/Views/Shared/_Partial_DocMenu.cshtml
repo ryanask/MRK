@@ -1,0 +1,10 @@
+﻿@model IEnumerable<AskrindoMVC.Models.HelpMenu>
+
+<ul id="sidemenu">
+@foreach (var m in Model)
+{
+    if (m.IsVisible) { 
+        <li>@Html.ActionLink(m.MenuName, "List", new { menuId = m.MenuId }, null)</li>
+    }
+}
+</ul>

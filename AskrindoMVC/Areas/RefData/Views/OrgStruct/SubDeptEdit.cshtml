@@ -1,0 +1,44 @@
+﻿@model AskrindoMVC.Areas.RefData.Models.OrgStruct.SubDeptViewModel
+
+@{
+    ViewBag.Title = "SubDeptEdit";
+    Layout = "~/Areas/RefData/Views/Shared/_OrgStruct.cshtml";
+}
+
+<h3 style="padding-bottom: 0; margin-bottom: 0">Edit Bagian</h3>
+@Html.Partial("_Info_Dept", Model.SubDept.Dept)
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.SubDept.SubDeptId)
+    @Html.HiddenFor(model => model.SubDept.DeptId)
+    <table class="edit">
+        <tr>
+            <td>ID</td>
+            <td>@Html.DisplayFor(model => model.SubDept.SubDeptId)</td>
+        </tr>
+        <tr>
+            <td>Nama Bagian</td>
+            <td>
+                @Html.EditorFor(model => model.SubDept.SubDeptName)
+                @Html.ValidationMessageFor(model => model.SubDept.SubDeptName)
+            </td>
+        </tr>
+        <tr>
+            <td>Supporting Unit?</td>
+            <td>
+                @Html.EditorFor(model => model.SubDept.IsSupporting)
+                @Html.ValidationMessageFor(model => model.SubDept.IsSupporting)
+            </td>
+        </tr>
+    </table>
+    
+    <div style="padding-top: 12px">
+        <input type="submit" value="Update" /> |
+        @Html.ActionLink("Batal", "SubDeptList", new { deptId = Model.SubDept.DeptId }, null)
+    </div>
+}

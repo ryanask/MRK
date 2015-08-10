@@ -1,0 +1,89 @@
+﻿@model AskrindoMVC.Models.ImpactRef
+
+@{
+    ViewBag.Title = "ImpactPercentage";
+    Layout = "~/Areas/RefData/Views/Shared/_ImpactLevel.cshtml";
+
+    var canModify = (bool)ViewBag.CanModify;
+}
+
+<h3>Persentase Kerugian Keuangan</h3>
+
+<table class="edit">
+    <tr>
+        <td>Kerugian Maksimum (Rp)</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(model => model.MaxMoney)</td>
+    </tr>
+    <tr>
+        <td colspan="3" style="height: .3em"></td>
+    </tr>
+    <tr>
+        <td colspan="3"><strong>Persentase Kerugian untuk Core Unit</strong></td>
+    </tr>
+    <tr>
+        <td>Kantor Pusat (%)</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(model => model.HQPct)</td>
+        <td>@Html.ActionLink("Lihat Nilai Kerugian", "ShowImpactValue", new { item = "hq" })</td>
+    </tr>
+    <tr>
+        <td>Cabang Kelas I (%)</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(model => model.Branch1Pct)</td>
+        <td>@Html.ActionLink("Lihat Nilai Kerugian", "ShowImpactValue", new { item = "branch1" })</td>
+    </tr>
+    <tr>
+        <td>Cabang Kelas II (%)</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(model => model.Branch2Pct)</td>
+        <td>@Html.ActionLink("Lihat Nilai Kerugian", "ShowImpactValue", new { item = "branch2" })</td>
+    </tr>
+    <tr>
+        <td>Cabang Kelas III (%)</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(model => model.Branch3Pct)</td>
+        <td>@Html.ActionLink("Lihat Nilai Kerugian", "ShowImpactValue", new { item = "branch3" })</td>
+    </tr>
+    <tr>
+        <td>KUP (%)</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(model => model.BizUnitPct)</td>
+        <td>@Html.ActionLink("Lihat Nilai Kerugian", "ShowImpactValue", new { item = "bizunit" })</td>
+    </tr>
+    <tr>
+        <td colspan="3" style="height: .3em"></td>
+    </tr>
+    <tr>
+        <td colspan="3"><strong>Persentase Kerugian untuk Supporting Unit</strong></td>
+    </tr>
+    <tr>
+        <td>Kantor Pusat (%)</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(model => model.SupportingHQPct)</td>
+        <td>@Html.ActionLink("Lihat Nilai Kerugian", "ShowImpactValue", new { item = "supportinghq" })</td>
+    </tr>
+    <tr>
+        <td>Cabang (%)</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(model => model.SupportingBranchPct)</td>
+        <td>@Html.ActionLink("Lihat Nilai Kerugian", "ShowImpactValue", new { item = "supportingbranch" })</td>
+    </tr>
+    <tr>
+        <td>KUP (%)</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(model => model.SupportingBizUnitPct)</td>
+        <td>@Html.ActionLink("Lihat Nilai Kerugian", "ShowImpactValue", new { item = "supportingbizunit" })</td>
+    </tr>
+</table>
+
+@if (canModify)
+{ 
+<div style="padding-top: 12px">
+    @Html.ActionLink("Edit", "ImpactPercentageEdit")
+</div>
+}
+ 
+<div style="padding-top: 12px">
+    @Html.ActionLink("Daftar Tingkat Dampak", "Index")
+</div>

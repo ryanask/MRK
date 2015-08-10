@@ -1,0 +1,39 @@
+﻿@model AskrindoMVC.Areas.RefData.Models.OrgStruct.SubDeptViewModel
+
+@{
+    ViewBag.Title = "SubDeptDelete";
+    Layout = "~/Areas/RefData/Views/Shared/_OrgStruct.cshtml";
+}
+
+<h3 style="padding-bottom: 0; margin-bottom: 0">Hapus Bagian</h3>
+@Html.Partial("_Info_Dept", Model.SubDept.Dept)
+
+<div style="padding-bottom: 12px" class="warning">
+    Bagian berikut akan dihapus. Lanjutkan?
+</div>
+
+<table class="warning">
+    <tr>
+        <td>ID</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(model => model.SubDept.SubDeptId)</td>
+    </tr>
+    <tr>
+        <td>Nama Bagian</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(model => model.SubDept.SubDeptName)</td>
+    </tr>
+    <tr>
+        <td>Supporting Unit?</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(model => model.SubDept.IsSupporting)</td>
+    </tr>
+</table>
+
+@using (Html.BeginForm()) {
+    <div style="padding-top: 12px">
+        <input type="submit" value="Hapus" /> |
+        @Html.ActionLink("Batal", "SubDeptList", new { deptId = Model.SubDept.DeptId }, null)
+    </div>
+}
+

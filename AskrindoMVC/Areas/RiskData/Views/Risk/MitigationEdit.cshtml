@@ -1,0 +1,112 @@
+﻿@model AskrindoMVC.Areas.RiskData.Models.RiskData.RiskMitigationViewModel
+
+@using AskrindoMVC.Helpers
+
+@{
+    ViewBag.Title = "MitigationEdit";
+    Layout = "~/Areas/RiskData/Views/Shared/_Risk.cshtml";
+}
+
+@Html.Partial("~/Views/RiskInfo/_RiskHeaderLink.cshtml", Model.RiskMitigation.Risk)
+
+<h3>Edit Mitigasi Risiko</h3>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#ddlMitigationCat").change(function () {
+            var selectedValue = $(this).val();
+            $.getJSON('@VirtualPathUtility.ToAbsolute("~/Risk/LoadMitigationTypes")', { catId: selectedValue }, function (callbackData) {
+                var select = $("#ddlMitigationType");
+                select.empty();
+                select.append($("<option/>", {
+                    value: "",
+                    text: ""
+                }));
+                $.each(callbackData, function (index, itemData) {
+                    select.append($("<option/>", {
+                        value: itemData.Value,
+                        text: itemData.Text
+                    }));
+                });
+            });
+        });
+    });
+</script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(m => m.RiskMitigation.MitigationId)
+    @Html.HiddenFor(m => m.RiskMitigation.RiskId)
+    @Html.HiddenFor(m => m.RiskMitigation.MitigationCode)
+    @Html.HiddenFor(m => m.RiskMitigation.InputDate)
+    @Html.HiddenFor(m => m.RiskMitigation.OrgPos)
+    @Html.HiddenFor(m => m.RiskMitigation.DeptId)
+    @Html.HiddenFor(m => m.RiskMitigation.SubDeptId)
+    @Html.HiddenFor(m => m.RiskMitigation.DivisionId)
+    @Html.HiddenFor(m => m.RiskMitigation.SubDivId)
+    @Html.HiddenFor(m => m.RiskMitigation.BranchId)
+    @Html.HiddenFor(m => m.RiskMitigation.SubBranchId)
+    @Html.HiddenFor(m => m.RiskMitigation.BizUnitId)
+    <table class="edit">
+        <tr>
+            <td>Kode Mitigasi</td>
+            <td>@Html.DisplayFor(m => m.RiskMitigation.MitigationCode)</td>
+        </tr>
+        <tr>
+            <td>Uraian</td>
+            <td>
+                @Html.EditorFor(m => m.RiskMitigation.MitigationName)
+                @Html.ValidationMessageFor(m => m.RiskMitigation.MitigationName)
+            </td>
+        </tr>
+        <tr>
+            <td>Tanggal</td>
+            <td>
+                @Html.DisplayFor(m => m.RiskMitigation.MitigationDate)
+                @*@Html.EditorFor(m => m.RiskMitigation.MitigationDate) @Utils.GetDatePattern()
+                @Html.ValidationMessageFor(m => m.RiskMitigation.MitigationDate)*@
+            </td>
+        </tr>
+        <tr>
+            <td>Kelompok Mitigasi</td>
+            <td>
+                @Html.DropDownListFor(m => m.RiskMitigation.MitigationCatId, Model.MitigationCats, "",
+                    new { id = "ddlMitigationCat", style = "width: 400px" })
+                @Html.ValidationMessageFor(m => m.RiskMitigation.MitigationCatId)
+            </td>
+        </tr>
+        <tr>
+            <td>Jenis Mitigasi</td>
+            <td>
+                @Html.DropDownListFor(m => m.RiskMitigation.MitigationTypeId, Model.MitigationTypes, "",
+                    new { id = "ddlMitigationType", style = "width: 400px" })
+                @Html.ValidationMessageFor(m => m.RiskMitigation.MitigationTypeId)
+            </td>
+        </tr>
+        <tr>
+            <td>Tingkat Probabilitas</td>
+            <td>
+                @Html.DropDownListFor(m => m.RiskMitigation.ProbLevelId, Model.ProbLevels, "",
+                    new { id = "ddlProbLevel", style = "width: 400px" })
+                @Html.ValidationMessageFor(m => m.RiskMitigation.ProbLevelId)
+            </td>
+        </tr>
+        <tr>
+            <td>Tingkat Dampak</td>
+            <td>
+                @Html.DropDownListFor(m => m.RiskMitigation.ImpactLevelId, Model.ImpactLevels, "",
+                    new { id = "ddlImpactLevel", style = "width: 400px" })
+                @Html.ValidationMessageFor(m => m.RiskMitigation.ImpactLevelId)
+            </td>
+        </tr>
+    </table>
+    
+    <div style="padding-top: 12px">
+        <input type="submit" value="Update" /> |
+        @Html.ActionLink("Unit Kerja", "MitigationUnit", new { MitigationId = Model.RiskMitigation.MitigationId }, null) |
+        @Html.ActionLink("Batal", "MitigationList", new { id = Model.RiskMitigation.RiskId, approved = false }, null)
+    </div>
+}

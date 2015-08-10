@@ -1,0 +1,14 @@
+﻿@model IEnumerable<AskrindoMVC.Models.HelpMenu>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Doc/Views/Shared/_Doc.cshtml";
+}
+
+@section docmenu {
+    @Html.Partial("_Partial_DocMenu", Model)
+}
+
+<div class="pagetitle">
+    <h2>Dokumentasi</h2>
+</div>

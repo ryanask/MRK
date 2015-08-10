@@ -1,0 +1,42 @@
+﻿@model AskrindoMVC.Areas.RefData.Models.RiskEffect.EffectTypeViewModel
+
+@{
+    ViewBag.Title = "EffectTypeDelete";
+    Layout = "~/Areas/RefData/Views/Shared/_RiskEffect.cshtml";
+}
+
+<h3 style="padding-bottom: 0; margin-bottom: 0">Hapus Jenis Akibat</h3>
+<div style="padding-bottom: 12px">
+    Kelompok Akibat: @Model.EffectType.EffectGroup.EffectGroupName (@Model.EffectType.EffectGroupId)
+</div>
+
+<div style="padding-bottom: 12px">
+    Jenis Akibat berikut akan dihapus. Lanjutkan?
+</div>
+
+<table class="edit">
+    <tr>
+        <td>ID</td>
+        <td style="width: 10px">:</td>
+        <td>
+            @Html.DisplayFor(model => model.EffectType.EffectTypeId)
+        </td>
+    </tr>
+    <tr>
+        <td>Nama Jenis Akibat</td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(model => model.EffectType.EffectTypeName)
+        </td>
+    </tr>
+</table>
+
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Hapus" />
+        
+    </p>
+    <div>
+        @Html.ActionLink("Daftar Jenis Akibat", "EffectTypeList", new { groupId = @Model.EffectType.EffectGroupId }, null)
+    </div>
+}

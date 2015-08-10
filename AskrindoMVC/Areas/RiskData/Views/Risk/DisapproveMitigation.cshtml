@@ -1,0 +1,24 @@
+﻿@model AskrindoMVC.Models.MitigationApproval
+
+@{
+    ViewBag.Title = "ApproveMitigation";
+    Layout = "~/Areas/RiskData/Views/Shared/_Risk.cshtml";
+}
+
+@Html.Partial("~/Views/RiskInfo/_RiskHeaderLink.cshtml", Model.RiskMitigation.Risk)
+
+<h3>Pembatalan Approve Mitigasi Risiko</h3>
+
+<div style="padding-bottom: 12px" class="warning">
+  Approve data mitigasi risiko berikut akan dibatalkan. Lanjutkan?
+</div>
+
+@Html.Partial("~/Views/RiskInfo/_MitigationDetail.cshtml", Model.RiskMitigation)
+
+@using (Html.BeginForm())
+{ 
+    <div style="padding-top: 12px">
+        <input type="submit" value="Batalkan Approve" /> |
+        @Html.ActionLink("Batal", "MitigationListNonRO", new { id = Model.RiskMitigation.RiskId, approved = true }, null)
+    </div>
+}

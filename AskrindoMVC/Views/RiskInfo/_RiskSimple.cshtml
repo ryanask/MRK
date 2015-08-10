@@ -1,0 +1,36 @@
+﻿@model AskrindoMVC.Models.Risk
+
+<table class="display">
+    <tr>
+        <td style="width: 150px">Kode Risiko</td>
+        <td>:</td>
+        <td>@Html.ActionLink(Model.RiskCode, "Details", 
+            new { id = Model.RiskId, area = "", controller = "RiskInfo" }, 
+            new { target = "_blank" })</td>
+    </tr>
+    <tr>
+        <td>Peristiwa Risiko</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.RiskName)</td>
+    </tr>
+    <tr>
+        <td>Tanggal</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.RiskDate)</td>
+    </tr>
+    <tr>
+        <td>Tingkat Probabilitas</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.ProbLevelId) - @Html.DisplayFor(m => m.ProbLevel.ProbLevelName)</td>
+    </tr>
+    <tr>
+        <td>Tingkat Dampak</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.ImpactLevelId) - @Html.DisplayFor(m => m.ImpactLevel.ImpactLevelName)</td>
+    </tr>
+    <tr>
+        <td>Tingkat Risiko</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.RiskLevel)</td>
+    </tr>
+</table>

@@ -1,0 +1,107 @@
+﻿@model AskrindoMVC.Models.ImpactRef
+
+@{
+    ViewBag.Title = "ImpactPercentageEdit";
+    Layout = "~/Areas/RefData/Views/Shared/_ImpactLevel.cshtml";
+}
+
+<h3>Edit Persentase Kerugian Keuangan</h3>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.ImpactRefId)
+    <table class="edit">
+        <tr>
+            <td>Kerugian Maksimum (Rp)</td>
+            <td>
+                @Html.EditorFor(model => model.MaxMoney)
+                @Html.ValidationMessageFor(model => model.MaxMoney)
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" style="height: .3em"></td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <strong>Persentase Kerugian pada Core Unit</strong>
+            </td>
+        </tr>
+        <tr>
+            <td>Kantor Pusat (%)</td>
+            <td>
+                @Html.EditorFor(model => model.HQPct)
+                @Html.ValidationMessageFor(model => model.HQPct)
+            </td>
+        </tr>
+        <tr>
+            <td>Cabang Kelas I (%)</td>
+            <td>
+                @Html.EditorFor(model => model.Branch1Pct)
+                @Html.ValidationMessageFor(model => model.Branch1Pct)
+            </td>
+        </tr>
+        <tr>
+            <td>Cabang Kelas II (%)</td>
+            <td>
+                @Html.EditorFor(model => model.Branch2Pct)
+                @Html.ValidationMessageFor(model => model.Branch2Pct)
+            </td>
+        </tr>
+        <tr>
+            <td>Cabang Kelas III (%)</td>
+            <td>
+                @Html.EditorFor(model => model.Branch3Pct)
+                @Html.ValidationMessageFor(model => model.Branch3Pct)
+            </td>
+        </tr>
+        <tr>
+            <td>KUP (%)</td>
+            <td>
+            @Html.EditorFor(model => model.BizUnitPct)
+            @Html.ValidationMessageFor(model => model.BizUnitPct)
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" style="height: .3em"></td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <strong>Persentase Kerugian pada Supporting Unit</strong>
+            </td>
+        </tr>
+        <tr>
+            <td>Kantor Pusat (%)</td>
+            <td>
+                @Html.EditorFor(model => model.SupportingHQPct)
+                @Html.ValidationMessageFor(model => model.SupportingHQPct)
+            </td>
+        </tr>
+        <tr>
+            <td>Cabang (%)</td>
+            <td>
+                @Html.EditorFor(model => model.SupportingBranchPct)
+                @Html.ValidationMessageFor(model => model.SupportingBranchPct)
+            </td>
+        </tr>
+        <tr>
+            <td>KUP (%)</td>
+            <td>
+                @Html.EditorFor(model => model.SupportingBizUnitPct)
+                @Html.ValidationMessageFor(model => model.SupportingBizUnitPct)
+            </td>
+        </tr>
+    </table>
+    
+    <div style="padding-top: 12px">
+        <input type="submit" value="Update" /> |
+        @Html.ActionLink("Batal", "ImpactPercentage")
+    </div>
+}
+
+<div style="padding-top: 12px">
+    @Html.ActionLink("Daftar Tingkat Dampak", "Index")
+</div>

@@ -1,0 +1,93 @@
+﻿@model IEnumerable<AskrindoMVC.Models.RiskApproval>
+
+@{
+    ViewBag.Title = "RiskListNonRO";
+    Layout = "~/Areas/RiskData/Views/Shared/_Risk.cshtml";
+
+    var approved = Convert.ToBoolean(Request.QueryString["approved"]);
+}
+
+<table width="100%" class="layout">
+    <tr>
+        <td>
+        @if (approved)
+        { 
+            <h3>Daftar Risiko yang Sudah di-Approve</h3>
+        }
+        else
+        { 
+            <h3>Daftar Risiko yang Belum di-Approve</h3>
+        }
+        </td>
+        <td align="right">
+        @if (approved)
+        { 
+            @Html.ActionLink("Tampilkan data risiko yang belum di-approve", "RiskListNonRO", new { approved = false }, null)
+        }
+        else
+        {
+            @Html.ActionLink("Tampilkan data risiko yang sudah di-approve", "RiskListNonRO", new { approved = true }, null)
+        }
+        </td>
+    </tr>
+</table>
+
+<table class="list">
+    <tr>
+        <th>Kode Risiko</th>
+        <th>Peristiwa Risiko</th>
+        <th>Tanggal</th>
+        @if (!approved)
+        { 
+        <th>Batas Tgl. Approve</th>
+        }
+        else
+        { 
+        <th>Tgl. Approve</th>
+        }
+        <th></th>
+        <th></th>
+    </tr>
+@foreach (var apr in Model)
+{ 
+    <tr>
+        <td>
+            @Html.ActionLink(apr.Risk.RiskCode, "Details", new { area = "", controller = "RiskInfo", id = apr.RiskId }, new { target = "_blank" })
+        </td>
+        <td>@Html.DisplayFor(modelItem => apr.Risk.RiskName)</td>
+        <td>@Html.DisplayFor(modelItem => apr.Risk.RiskDate)</td>
+
+        @if (!approved)
+        {
+            if (apr.LimitDate < DateTime.Now)
+            {
+            <td style="color: Red">@Html.DisplayFor(modelItem => apr.LimitDate)</td>
+            }
+            else
+            {
+            <td>@Html.DisplayFor(modelItem => apr.LimitDate)</td>
+            }
+        }
+        else
+        { 
+        <td>@Html.DisplayFor(modelItem => apr.ApprovalDate)</td>
+        }
+        <td>
+        @if (approved)
+        {
+            if (!apr.IsReadOnly)
+            { 
+                @Html.ActionLink("Batalkan Approve", "DisapproveRisk", new { id = apr.ApprovalId }, null)
+            }
+        }
+        else
+        { 
+            @Html.ActionLink("Approve Data Risiko", "ApproveRisk", new { id = apr.ApprovalId }, null)
+        }
+        </td>
+        <td>
+            @Html.ActionLink("Mitigasi", "MitigationList", new { id = apr.RiskId, approved = false }, null)
+        </td>
+    </tr>
+}
+</table>

@@ -1,0 +1,38 @@
+﻿@model AskrindoMVC.Models.EffectGroup
+
+@{
+    ViewBag.Title = "EffectGroupDelete";
+    Layout = "~/Areas/RefData/Views/Shared/_RiskEffect.cshtml";
+}
+
+<h3>Hapus Kelompok Akibat</h3>
+
+<div style="padding-bottom: 12px" class="warning">
+    Kelompok Akibat berikut akan dihapus. Lanjutkan?
+</div>
+
+<table class="edit">
+    <tr>
+        <td>ID</td>
+        <td style="width: 10px">:</td>
+        <td>
+            @Model.EffectGroupId
+        </td>
+    </tr>
+    <tr>
+        <td>Nama Kelompok Akibat</td>
+        <td>:</td>
+        <td>
+            @Model.EffectGroupName
+        </td>
+    </tr>
+</table>
+
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Hapus" />
+    </p>
+    <div>
+        @Html.ActionLink("Daftar Kelompok Akibat", "EffectGroupList")
+    </div>
+}

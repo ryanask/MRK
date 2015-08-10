@@ -1,0 +1,26 @@
+﻿@model IEnumerable<AskrindoMVC.Models.MitigationCat>
+
+@{
+    ViewBag.Title = "TreeView";
+    Layout = "~/Areas/RefData/Views/Shared/_Mitigation.cshtml";
+}
+
+<h3>TreeView</h3>
+
+<table class="list">
+@foreach (var cat in Model) { 
+    <tr>
+        <td colspan="2">
+            @cat.MitigationCatId. @cat.MitigationCatName
+        </td>
+    </tr> 
+    foreach (var type in cat.MitigationTypes) { 
+        <tr>
+            <td style="width: 20px"></td>
+            <td>
+                @type.MitigationTypeId. @type.MitigationTypeName
+            </td>
+        </tr>
+    }
+}
+</table>

@@ -1,0 +1,130 @@
+﻿@model AskrindoMVC.Areas.Report.Models.RiskMap.RiskMapViewModel
+
+@using AskrindoMVC.Helpers
+@using AskrindoMVC.Areas.Report.Models.RiskMap
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Report/Views/Shared/_RiskMap.cshtml";
+}
+
+@{
+    var cnt = 0;
+    var backColor = string.Empty;
+    var foreColor = string.Empty;
+    int prob = 0;
+    int impact = 0;
+}
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $("#params").accordion({
+            collapsible: true,
+            active: -1
+        });
+    });
+</script>
+
+<div id="params" style="padding-bottom: 12px">
+    <h3>
+        <a href="#">Parameter</a>
+    </h3>
+    <div>
+        @using (Html.BeginForm()) {
+            <table class="edit">
+                <tr>
+                    <td>Lokasi</td>
+                    <td>@Html.DropDownListFor(m => m.Param.PosId, Model.Param.PosList, "")</td>
+                </tr>
+                <tr>
+                    <td>Cabang</td>
+                    <td>@Html.DropDownListFor(m => m.Param.BranchId, Model.Param.Branches, "")</td>
+                </tr>
+                <tr>
+                    <td>Tanggal</td>
+                    <td>@Html.EditorFor(m => m.Param.MapDate) @Utils.GetDatePattern()</td>
+                </tr>
+                <tr>
+                    <td>Approved?</td>
+                    <td>
+                        @Html.CheckBoxFor(m => m.Param.IsApproved)
+                        @Html.ValidationMessageFor(m => m.Param.IsApproved)
+                    </td>
+                </tr>
+            </table>
+        
+            <div style="padding-top: 12px">
+                <input type="submit" value="Refresh" />
+            </div>
+        }
+    </div>
+</div>
+
+<table class="riskmap">
+@{
+    for (var i = 7; i >= 1; i--)
+    {
+        <tr>
+        @for (var j = 1; j <= 7; j++)
+        {
+            prob = i - 2;
+            impact = j - 2;
+            if (i == 7 && j == 1)
+            {
+                <td rowspan="7" class="probaxis">
+                P<br />R<br />O<br />B<br />A<br />B<br />I<br />L<br />I<br />T<br />A<br />S
+                </td>
+            }
+            else if (i == 1 && j == 1)
+            {
+                <td colspan="6" class="impactaxis">
+                D A M P A K
+                </td>
+            }
+            else if (i == 1 && j > 1)
+            {
+            }
+            else if (j>1)
+            {
+                if (impact == 0 && prob != 0)
+                { 
+                    <td class="prob">
+                    @Utils.GetProbLevelText(prob)
+                    </td>
+                }
+                else if (impact != 0 && prob == 0)
+                { 
+                    <td class="impact">
+                    @Utils.GetImpactLevelText(impact)
+                    </td>
+                }
+                else if (impact == 0 && prob == 0)
+                {
+                    <td></td>
+                }
+                else
+                {
+                    Utils.GetRiskLevelColors(prob * impact, out backColor, out foreColor);
+                    cnt = RiskMapViewModel.GetCount(prob, impact, Model.RiskList);
+                    <td style="text-align: center; background-color: @backColor; color: @foreColor">
+                        @if (cnt > 0)
+                        { 
+                            <div style="font-size: @(8 + (decimal)cnt / (decimal)Model.MaxCount * 20M)pt; font-weight: bold">
+                                @Html.ActionLink(cnt.ToString(), "ShowRisks", new { prob = prob, impact = impact, posId = Model.Param.PosId, branchId = Model.Param.BranchId, mapDate = Model.Param.MapDate, isApproved = Model.Param.IsApproved }, new { target = "_blank"})
+                            </div>
+                        }
+                    </td>
+                }
+            }
+        }
+        </tr>
+    }
+}
+</table>
+
+<div style="padding-top: 12px">
+    @Html.ActionLink("Ekspor ke Word", "ExportToWord", new { posId = Model.Param.PosId, branchId = Model.Param.BranchId, mapDate = Model.Param.MapDate, isApproved = Model.Param.IsApproved }, null)
+</div>

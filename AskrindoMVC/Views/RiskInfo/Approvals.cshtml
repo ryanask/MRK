@@ -1,0 +1,50 @@
+﻿@model AskrindoMVC.Models.RiskInfo.RiskApprovalsViewModel
+
+@{
+    ViewBag.Title = "Approvals";
+    Layout = "~/Views/Shared/_RiskInfo.cshtml";
+}
+
+@Html.Partial("_RiskHeader", Model.Risk)
+
+<div style="padding-top: 12px">
+@Html.Partial("_Link_RiskTab", new ViewDataDictionary { { "RiskId", Model.Risk.RiskId } })
+</div>
+
+<h3>Approval</h3>
+
+@if (Model.RiskApprovals.Count() == 0)
+{
+    <p>
+        (Data risiko belum di-approve)
+    </p>
+}
+else
+{ 
+<table class="display">
+@foreach (var apr in Model.RiskApprovals)
+{ 
+    <tr>
+        <td>
+            <table>
+                <tr>
+                    <td>Tanggal</td>
+                    <td>:</td>
+                    <td><strong>@Html.DisplayFor(modelItem => apr.ApprovalDate)</strong></td>
+                </tr>
+                <tr>
+                    <td>Approve oleh</td>
+                    <td>:</td>
+                    <td>@Html.DisplayFor(modelItem => apr.UserInfo.FullName)</td>
+                </tr>
+                <tr>
+                    <td>Jabatan</td>
+                    <td>:</td>
+                    <td>@Html.DisplayFor(modelItem => apr.JobTitle)</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+}
+</table>
+}

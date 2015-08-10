@@ -1,0 +1,42 @@
+﻿@model AskrindoMVC.Models.RiskAttachment
+
+@{
+    ViewBag.Title = "AttachmentDelete";
+    Layout = "~/Areas/RiskData/Views/Shared/_Risk.cshtml";
+}
+
+@Html.Partial("_Info_Risk", Model.Risk)
+
+<div style="padding-top: 12px">
+@Html.Partial("_Link_RiskTab", new ViewDataDictionary { { "Id", Model.RiskId } })
+</div>
+
+<h3>Edit Attachment</h3>
+
+<div style="padding-bottom: 12px" class="warning">
+    Attachment berikut akan dihapus. Lanjutkan?
+</div>
+
+<table class="warning">
+    <tr>
+        <td>Nama</td>
+        <td>:</td>
+        <td>
+            @Model.AttachName
+        </td>
+    </tr>
+    <tr>
+        <td>Keterangan</td>
+        <td>:</td>
+        <td>
+            @Model.Notes
+        </td>
+    </tr>
+</table>
+
+@using (Html.BeginForm()) {
+    <div style="padding-top: 12px">
+        <input type="submit" value="Hapus" /> |
+        @Html.ActionLink("Batal", "AttachmentList", new { id = Model.RiskId }, null)
+    </div>
+}

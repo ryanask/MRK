@@ -1,0 +1,38 @@
+﻿@model AskrindoMVC.Areas.RefData.Models.OrgStruct.SubBranchViewModel
+
+@{
+    ViewBag.Title = "SubBranchDelete";
+    Layout = "~/Areas/RefData/Views/Shared/_orgstruct.cshtml";
+}
+
+<h3 style="padding-bottom: 0; margin-bottom: 0">Hapus Bagian</h3>
+@Html.Partial("_Info_Branch", Model.SubBranch.Branch)
+
+<div style="padding-bottom: 12px" class="warning">
+    Bagian berikut akan dihapus. Lanjutkan?
+</div>
+
+<table class="warning">
+    <tr>
+        <td>ID</td>
+        <td style="width: 10px">:</td>
+        <td>@Html.DisplayFor(m => m.SubBranch.SubBranchId)</td>
+    </tr>
+    <tr>
+        <td>Nama Bagian</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.SubBranch.SubBranchName)</td>
+    </tr>
+    <tr>
+        <td>Supporting Unit?</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.SubBranch.IsSupporting)</td>
+    </tr>
+</table>
+
+@using (Html.BeginForm()) {
+    <div style="padding-top: 12px">
+        <input type="submit" value="Hapus" /> |
+        @Html.ActionLink("Batal", "SubBranchList", new { branchId = @Model.SubBranch.BranchId }, null)
+    </div>
+}

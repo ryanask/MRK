@@ -1,0 +1,27 @@
+﻿@model AskrindoMVC.Models.MitigationApproval
+
+@{
+    ViewBag.Title = "ApproveMitigation";
+    Layout = "~/Areas/RiskData/Views/Shared/_Risk.cshtml";
+}
+
+@Html.Partial("~/Views/RiskInfo/_RiskHeaderLink.cshtml", Model.RiskMitigation.Risk)
+
+<h3>Approve Mitigasi Risiko</h3>
+
+@*<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>*@
+
+<div style="padding-bottom: 12px">
+  Data mitigasi risiko berikut akan di-approve
+</div>
+
+@Html.Partial("~/Views/RiskInfo/_MitigationDetail.cshtml", Model.RiskMitigation)
+
+@using (Html.BeginForm())
+{ 
+    <div style="padding-top: 12px">
+        <input type="submit" value="Approve Mitigasi Risiko" /> |
+        @Html.ActionLink("Batal", "MitigationListNonRO", new { id = Model.RiskMitigation.RiskId, approved = false }, null)
+    </div>
+}

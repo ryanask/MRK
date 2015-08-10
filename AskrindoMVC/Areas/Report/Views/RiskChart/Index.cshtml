@@ -1,0 +1,80 @@
+﻿@model AskrindoMVC.Areas.Report.Models.RiskChart.RiskChartViewModel
+           
+@using AskrindoMVC.Helpers
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Report/Views/Shared/_RiskChart.cshtml";
+}
+
+<script type="text/javascript">
+    $(function () {
+        $("#params").accordion({
+            collapsible: true,
+            active: -1
+        });
+    });
+</script>
+
+<div id="params" style="padding-bottom: 12px">
+    <h3>
+        <a href="#">Parameter</a>
+    </h3>
+    <div>
+        @using (Html.BeginForm()) {
+            <table class="edit">
+                <tr style="background-color: #ddd">
+                    <td colspan="2"><b>FILTER</b></td>
+                </tr>
+                <tr>
+                    <td>Lokasi</td>
+                    <td>@Html.DropDownListFor(m => m.PosId, Model.PosList, "")</td>
+                </tr>
+                <tr>
+                    <td>Cabang</td>
+                    <td>@Html.DropDownListFor(m => m.BranchId, Model.Branches, "")</td>
+                </tr>
+                <tr>
+                    <td>Tanggal</td>
+                    <td>@Html.EditorFor(m => m.ReportDate) @Utils.GetDatePattern()</td>
+                </tr>
+                <tr>
+                    <td>Approved?</td>
+                    <td>
+                        @Html.CheckBoxFor(m => m.IsApproved)
+                        @Html.ValidationMessageFor(m => m.IsApproved)
+                    </td>
+                </tr>
+                <tr style="background-color: #ddd">
+                    <td colspan="2"><b>TAMPILAN</b></td>
+                </tr>
+                <tr>
+                    <td>Tampilan Grafik</td>
+                    <td>@Html.DropDownListFor(m => m.ChartTypeId, Model.ChartTypes)</td>
+                </tr>
+                <tr>
+                    <td>Data Grafik</td>
+                    <td>@Html.DropDownListFor(m => m.YValueId, Model.YValues)</td>
+                </tr>
+                <tr>
+                    <td>Pengelompokan</td>
+                    <td>@Html.DropDownListFor(m => m.XValueId, Model.XValues)</td>
+                </tr>
+            </table>
+        
+            <div style="padding-top: 12px">
+                <input type="submit" value="Refresh" />
+            </div>
+        }
+    </div>
+</div>
+
+<div style="padding-bottom: 12px; font-size: 1.2em">
+    Data: @ViewBag.DataTypeText
+</div>
+
+<img src="@Url.Action("ChartGenerator")" alt="chart" />
+
+<div style="padding-top: 12px">
+    @Html.ActionLink("Ekspor Grafik", "ExportChart")
+</div>

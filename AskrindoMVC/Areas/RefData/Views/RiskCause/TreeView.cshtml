@@ -1,0 +1,37 @@
+﻿@model IEnumerable<AskrindoMVC.Models.CauseGroup>
+
+@{
+    ViewBag.Title = "TreeView";
+    Layout = "~/Areas/RefData/Views/Shared/_riskcause.cshtml";
+}
+
+<h3>Tree View</h3>
+
+<div>
+    <table class="list">
+        @foreach (var group in Model) { 
+            <tr>
+                <td colspan="3">
+                    @group.CauseGroupId. @group.CauseGroupName
+                </td>
+            </tr>
+            foreach (var type in group.CauseTypes) { 
+                <tr>
+                    <td style="width: 20px"></td>
+                    <td colspan="2">
+                        @type.CauseTypeId. @type.CauseTypeName
+                    </td>
+                </tr>
+                foreach (var cause in type.Causes) { 
+                    <tr>
+                        <td></td>
+                        <td style="width: 20px"></td>
+                        <td>
+                            @cause.CauseId. @cause.CauseName
+                        </td>
+                    </tr>
+                }
+            }
+        }
+    </table>
+</div>

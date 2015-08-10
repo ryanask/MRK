@@ -1,0 +1,119 @@
+﻿@model AskrindoMVC.Areas.Admin.Models.UserModel
+           
+@using AskrindoMVC.Models
+@using AskrindoMVC.Helpers
+
+@{
+    ViewBag.Title = "UserNew";
+    Layout = "~/Areas/Admin/Views/Shared/_UserMgt.cshtml";
+
+    var orgList = ViewBag.OrgList as List<KeyValuePair<string, string>>;
+    
+    var orgPos = Convert.ToInt32(Request.QueryString["orgPos"]);
+    int branchClassId = 0;
+    if (orgPos == Utils.ORGPOS_BRANCH) 
+    {
+        var branchId = Convert.ToInt32(Request.QueryString["branchId"]);
+        AskrindoMVCEntities db = new AskrindoMVCEntities();
+        var branch = db.Branches.Single(p => p.BranchId == branchId);
+        branchClassId = branch.ClassId;
+    }
+}
+
+<h3>User Baru</h3>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <table class="edit">
+    @foreach (var data in orgList) { 
+        <tr>
+            <td>
+                @data.Key
+            </td>
+            <td>
+                @data.Value
+            </td>
+        </tr>
+    }
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.UserName)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.UserName)
+                @Html.ValidationMessageFor(model => model.UserName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.FullName)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.FullName)
+                @Html.ValidationMessageFor(model => model.FullName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.JobTitle)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.JobTitle)
+                @Html.ValidationMessageFor(model => model.JobTitle)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Email)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Email)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.IsRCP)
+            </td>
+            <td>
+                @if (orgPos == Utils.ORGPOS_DIVISION || (orgPos == Utils.ORGPOS_BRANCH && branchClassId == Utils.BRANCHCLASS1))
+                { 
+                    @Html.DisplayFor(model => model.IsRCP)
+                }
+                else
+                { 
+                    @Html.CheckBoxFor(model => model.IsRCP)
+                }
+                @Html.ValidationMessageFor(model => model.IsRCP)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Password)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Password)
+                @Html.ValidationMessageFor(model => model.Password)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.ConfirmPassword)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.ConfirmPassword)
+                @Html.ValidationMessageFor(model => model.ConfirmPassword)
+            </td>
+        </tr>
+    </table>
+    
+    <div style="padding-top: 12px">
+        <input type="submit" value="Simpan" /> |
+        @Html.ActionLink("Batal", "UserList")
+    </div>
+}
+
+@*@Html.Partial("_Link_UserList")*@

@@ -1,0 +1,65 @@
+﻿@model AskrindoMVC.Models.RiskMitigation
+
+@{
+    ViewBag.Title = "MitigationDelete";
+    Layout = "~/Areas/RiskData/Views/Shared/_Risk.cshtml";
+}
+
+@Html.Partial("~/Views/RiskInfo/_RiskHeaderLink.cshtml", Model.Risk)
+
+<h3>Hapus Mitigasi Risiko</h3>
+
+<div style="padding-bottom: 12px" class="warning">
+    Data mitigasi risiko berikut akan dhapus. Lanjutkan?
+</div>
+
+<table class="warning">
+    <tr>
+        <td style="width: 124px">Kode Mitigasi</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.MitigationCode)</td>
+    </tr>
+    <tr>
+        <td>Uraian</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.MitigationName)</td>
+    </tr>
+    <tr>
+        <td>Tanggal</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.MitigationDate)</td>
+    </tr>
+    <tr>
+        <td>Kelompok Mitigasi</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.MitigationCat.MitigationCatName)</td>
+    </tr>
+    <tr>
+        <td>Jenis Mitigasi</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.MitigationType.MitigationTypeName)</td>
+    </tr>
+    <tr>
+        <td>Tingkat Probabilitas</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.ProbLevelId) - @Html.DisplayFor(m => m.ProbLevel.ProbLevelName)</td>
+    </tr>
+    <tr>
+        <td>Tingkat Dampak</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.ImpactLevelId) - @Html.DisplayFor(m => m.ImpactLevel.ImpactLevelName)</td>
+    </tr>
+    <tr>
+        <td>Tingkat Risiko</td>
+        <td>:</td>
+        <td>@Html.DisplayFor(m => m.RiskLevel)</td>
+    </tr>
+</table>
+
+@using (Html.BeginForm())
+{ 
+    <div style="padding-top: 12px">
+        <input type="submit" value="Hapus" /> |
+        @Html.ActionLink("Batal", "MitigationList", new { id = Model.RiskId, approved = false }, null)
+    </div>
+}

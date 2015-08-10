@@ -1,0 +1,92 @@
+﻿@model AskrindoMVC.Areas.RiskData.Models.RiskData.RiskMitigationViewModel
+
+@{
+    ViewBag.Title = "MitigationListRO";
+    Layout = "~/Areas/RiskData/Views/Shared/_Risk.cshtml";
+
+    var riskApproved = Model.Risk.ApprovalDate != null;
+    string status = (string)Request.QueryString["status"];
+}
+
+@Html.Partial("~/Views/RiskInfo/_RiskHeaderLink.cshtml", Model.Risk)
+
+<table width="100%" class="layout">
+    <tr>
+        <td>
+            <h3>Daftar Mitigasi Risiko</h3>
+        </td>
+        <td align="right">
+            Status: 
+            @if (string.IsNullOrEmpty(status))
+            { 
+                <b>Belum di-approved</b>
+            }
+            else
+            { 
+            @Html.ActionLink("Belum di-approved", "MitigationListRO", new { id = Model.Risk.RiskId }, null) 
+            }
+            |
+            @if (status == "readonly")
+            { 
+                <b>Dalam proses approval</b>
+            }
+            else
+            { 
+            @Html.ActionLink("Dalam proses approval", "MitigationListRO", new { id = Model.Risk.RiskId, status = "readonly" }, null)
+            }
+            |
+            @if (status == "approved")
+            { 
+                <b>Approved</b>
+            }
+            else
+            { 
+            @Html.ActionLink("Approved", "MitigationListRO", new { id = Model.Risk.RiskId, status = "approved" }, null)
+            }
+        </td>
+    </tr>
+</table>
+
+@if (Model.Risk.CloseDate == null)
+{ 
+<div style="padding-bottom: 12px">
+    @Html.ActionLink("Mitigasi Baru", "MitigationNew", new { riskId = Model.Risk.RiskId }, null)
+</div>
+}
+
+<table class="list">
+    <tr>
+        <th>Kode Mitigasi</th>
+        <th>Uraian</th>
+        <th>Tanggal</th>
+        <th>Tk. Prob</th>
+        <th>Tk. Dampak</th>
+        <th>Tk. Risiko</th>
+        @if (string.IsNullOrEmpty(status))
+        { 
+        <th></th>
+        }
+    </tr>
+@foreach (var m in Model.RiskMitigations)
+{ 
+    <tr>
+        <td>@Html.ActionLink(m.MitigationCode, "MitigationDetail", new { id = m.MitigationId }, null)</td>
+        <td>@Html.DisplayFor(modelItem => m.MitigationName)</td>
+        <td>@Html.DisplayFor(modelItem => m.MitigationDate)xxx</td>
+        <td align="center">@Html.DisplayFor(modelItem => m.ProbLevelId)</td>
+        <td align="center">@Html.DisplayFor(modelItem => m.ImpactLevelId)</td>
+        <td align="center">@Html.DisplayFor(modelItem => m.RiskLevel)</td>
+        @if (string.IsNullOrEmpty(status))
+        {
+        <td>
+            @Html.ActionLink("Edit", "MitigationEdit", new { id = m.MitigationId }, null) |
+            @Html.ActionLink("Hapus", "MitigationDelete", new { id = m.MitigationId }, null)
+        </td>
+        }
+    </tr>
+}
+</table>
+
+<div style="padding-top: 12px">
+    @Html.ActionLink("Daftar Risiko", "RiskList")
+</div>

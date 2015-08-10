@@ -1,0 +1,48 @@
+﻿@model IEnumerable<AskrindoMVC.Models.Dept>
+
+@{
+    Layout = "~/Areas/RefData/Views/Shared/_orgstruct.cshtml";
+
+    var canModify = (bool)ViewBag.CanModify;
+}
+
+<h3>Daftar Direktorat</h3>
+
+@if (canModify)
+{ 
+<div style="padding-bottom: 12px">
+    @Html.ActionLink("Direktorat Baru", "DeptNew")
+</div>
+}
+
+<table class="list">
+    <tr>
+        <th>ID</th>
+        <th>Nama Direktorat</th>
+        @if (canModify)
+        { 
+        <th></th>
+        }
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.DeptId)</td>
+        <td>@Html.DisplayFor(modelItem => item.DeptName)</td>
+        @if (canModify)
+        { 
+        <td>
+            @Html.ActionLink("Edit", "DeptEdit", new { id = item.DeptId }) |
+            @Html.ActionLink("Hapus", "DeptDelete", new { id = item.DeptId })
+        </td>
+        }
+        <td>
+            @Html.ActionLink("Divisi (" + @item.Divisions.Count + ")", "DivList", new { deptId = item.DeptId }) |
+            @Html.ActionLink("Bagian (" + @item.SubDepts.Count + ")", "SubDeptList", new { deptId = item.DeptId }) |
+            @Html.ActionLink("Cabang (" + @item.Branches.Count + ")", "BranchList", new { deptId = item.DeptId })
+        </td>
+    </tr>
+}
+
+</table>

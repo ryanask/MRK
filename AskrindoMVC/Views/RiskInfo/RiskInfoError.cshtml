@@ -1,0 +1,15 @@
+﻿@model AskrindoMVC.Models.Risk
+
+@{
+    ViewBag.Title = "RiskInfoError";
+    Layout = "~/Views/Shared/_RiskInfo.cshtml";
+}
+
+@Html.Partial("_RiskHeader", Model)
+<h3>@ViewBag.ErrorTitle</h3>
+
+@Html.Partial("_Link_RiskTab", new ViewDataDictionary { { "RiskId", Model.RiskId } })
+
+<div style="font-size: 1em; font-weight: bold; color: Red; padding-top: 24px">
+    @ViewBag.Message
+</div>

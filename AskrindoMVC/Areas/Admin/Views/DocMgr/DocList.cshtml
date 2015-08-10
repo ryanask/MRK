@@ -1,0 +1,50 @@
+﻿@model AskrindoMVC.Areas.Admin.Models.DocMgr.DocMgrVM
+
+@using AskrindoMVC.Helpers
+
+@{
+    ViewBag.Title = "DocList";
+    Layout = "~/Areas/Admin/Views/Shared/_DocMgr.cshtml";
+}
+
+<h3 style="margin-bottom: 0">Daftar Dokumen</h3>
+@Html.Partial("_Partial_HelpMenu", Model.HelpMenu)
+
+<div style="padding-bottom: 12px">
+    @Html.ActionLink("Dokumen Baru", "DocNew", new { id = Model.HelpMenu.MenuId }, null)
+</div>
+
+<table class="list">
+    <tr>
+        <th>ID</th>
+        <th>Dokumen</th>
+        <th>Keterangan</th>
+        <th>Format</th>
+        <th style="width: 70px">Ukuran</th>
+        <th>Visible?</th>
+        <th></th>
+        <th></th>
+    </tr>
+@foreach (var m in Model.HelpDocs)
+{ 
+    <tr>
+        <td>@Html.DisplayFor(modelItem => m.DocId)</td>
+        <td>@Html.DisplayFor(modelItem => m.DocName)</td>
+        <td>@Html.DisplayFor(modelItem => m.Description)</td>
+        <td>@Html.DisplayFor(modelItem => m.DocInfo)</td>
+        <td align="right">@Utils.GetByteSizeAsText((int)m.ContentLength)</td>
+        <td align="center">@Html.DisplayFor(modelItem => m.IsVisible)</td>
+        <td>
+            @Html.ActionLink("Edit", "DocEdit", new { id = m.DocId }, null) |
+            @Html.ActionLink("Hapus", "DocDelete", new { id = m.DocId }, null)
+        </td>
+        <td>
+            @Html.ActionLink("Download", "DocDownload", new { id = m.DocId }, null)
+        </td>
+    </tr>
+}
+</table>
+
+<div style="margin-top: 12px">
+    @Html.ActionLink("Daftar Menu", "Index")
+</div>

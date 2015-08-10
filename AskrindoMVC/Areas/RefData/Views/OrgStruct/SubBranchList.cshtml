@@ -1,0 +1,48 @@
+﻿@model AskrindoMVC.Areas.RefData.Models.OrgStruct.SubBranchViewModel
+
+@{
+    ViewBag.Title = "SubBranchList";
+    Layout = "~/Areas/RefData/Views/Shared/_orgstruct.cshtml";
+    
+    var canModify = (bool)ViewBag.CanModify;
+}
+
+<h3 style="padding-bottom: 0; margin-bottom: 0">Daftar Bagian</h3>
+@Html.Partial("_Info_Branch", Model.Branch)
+
+@if (canModify)
+{ 
+<div style="padding-bottom: 12px">
+    @Html.ActionLink("Bagian Baru", "SubBranchNew", new { branchId = @Model.Branch.BranchId })
+</div>
+}
+
+<table class="list">
+    <tr>
+        <th>ID</th>
+        <th>Nama Bagian</th>
+        <th>Supprting Unit</th>
+        @if (canModify)
+        { 
+        <th></th>
+        }
+    </tr>
+@foreach (var item in Model.SubBranches) { 
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.SubBranchId)</td>
+        <td>@Html.DisplayFor(modelItem => item.SubBranchName)</td>
+        <td align="center">@Html.DisplayFor(modelItem => item.IsSupporting)</td>
+        @if (canModify)
+        { 
+        <td>
+            @Html.ActionLink("Edit", "SubBranchEdit", new { id = item.SubBranchId }, null) |
+            @Html.ActionLink("Hapus", "SubBranchDelete", new { id = item.SubBranchId }, null)
+        </td>
+        }
+    </tr>
+}
+</table>
+
+<div style="padding-top: 12px">
+    @Html.ActionLink("Daftar Cabang", "BranchList", new { deptId = @Model.Branch.DeptId }, null)
+</div>

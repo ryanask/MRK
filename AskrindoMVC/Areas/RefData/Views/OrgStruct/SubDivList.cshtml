@@ -1,0 +1,49 @@
+﻿@model AskrindoMVC.Areas.RefData.Models.OrgStruct.SubDivViewModel
+
+@{
+    ViewBag.Title = "SubDivList";
+    Layout = "~/Areas/RefData/Views/Shared/_orgstruct.cshtml";
+    
+    var canModify = (bool)ViewBag.CanModify;
+}
+
+<h3 style="padding-bottom: 0; margin-bottom: 0">Daftar Bagian</h3>
+@Html.Partial("_Info_Division", Model.Division)
+
+@if (canModify)
+{ 
+<div style="padding-bottom: 12px">
+    @Html.ActionLink("Bagian Baru", "SubDivNew", new { divId = @Model.Division.DivisionId })
+</div>
+}
+
+<table class="list">
+    <tr>
+        <th>ID</th>
+        <th>Nama Bagian</th>
+        <th>Supporting Unit</th>
+        @if (canModify)
+        { 
+        <th></th>
+        }
+    </tr>
+
+    @foreach (var item in Model.SubDivs) { 
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.SubDivId)</td>
+            <td>@Html.DisplayFor(modelItem => item.SubDivName)</td>
+            <td align="center">@Html.DisplayFor(modelItem => item.IsSupporting)</td>
+            @if (canModify)
+            { 
+            <td>
+                @Html.ActionLink("Edit", "SubDivEdit", new { id = item.SubDivId }, null) |
+                @Html.ActionLink("Hapus", "SubDivDelete", new { id = item.SubDivId }, null)
+            </td>
+            }
+        </tr>
+    }
+</table>
+
+<div style="padding-top: 12px">
+    @Html.ActionLink("Daftar Divisi", "DivList", new { deptId = @Model.Division.DeptId }, null)
+</div>

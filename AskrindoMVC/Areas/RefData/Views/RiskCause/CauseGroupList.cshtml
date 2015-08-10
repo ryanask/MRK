@@ -1,0 +1,50 @@
+﻿@model IEnumerable<AskrindoMVC.Models.CauseGroup>
+
+@{
+    ViewBag.Title = "CauseGroupList";
+    Layout = "~/Areas/RefData/Views/Shared/_riskcause.cshtml";
+
+    var canModify = (bool)ViewBag.CanModify;
+}
+
+<h3>Daftar Kelompok Sebab</h3>
+
+@if (canModify)
+{ 
+<div style="padding-bottom: 12px">
+    @Html.ActionLink("Kelompok Sebab Baru", "CauseGroupNew")
+</div>
+}
+
+<table class="list">
+    <tr>
+        <th>ID</th>
+        <th>Nama Kelompok Sebab</th>
+        @if (canModify)
+        { 
+        <th></th>
+        }
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CauseGroupId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CauseGroupName)
+        </td>
+        @if (canModify)
+        { 
+        <td>
+            @Html.ActionLink("Edit", "CauseGroupEdit", new { id = item.CauseGroupId }) |
+            @Html.ActionLink("Hapus", "CauseGroupDelete", new { id = item.CauseGroupId })
+        </td>
+        }
+        <td>
+            @Html.ActionLink("Jenis Sebab (" + item.CauseTypes.Count + ")", "CauseTypeList", new { groupId = item.CauseGroupId }, null)
+        </td>
+    </tr>
+}
+</table>

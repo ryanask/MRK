@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "DispproveRiskSuccess";
+    Layout = "~/Areas/RiskData/Views/Shared/_Risk.cshtml";
+}
+
+<h3>Pembatalan Approve Risiko</h3>
+
+<div style="padding-bottom: 12px">
+    Approve data peristiwa risiko telah dibatalkan
+</div>
+
+@Html.ActionLink("Daftar Risiko", "RiskListNonRO", new { approved = true }, null)

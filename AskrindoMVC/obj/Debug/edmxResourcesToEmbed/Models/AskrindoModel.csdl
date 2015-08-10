@@ -1,0 +1,2024 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AskrindoMVCModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="AskrindoMVCEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="aspnet_User" EntityType="AskrindoMVCModel.aspnet_User" />
+    <EntitySet Name="CauseGroups" EntityType="AskrindoMVCModel.CauseGroup" />
+    <EntitySet Name="Causes" EntityType="AskrindoMVCModel.Cause" />
+    <EntitySet Name="CauseTypes" EntityType="AskrindoMVCModel.CauseType" />
+    <EntitySet Name="EffectGroups" EntityType="AskrindoMVCModel.EffectGroup" />
+    <EntitySet Name="Effects" EntityType="AskrindoMVCModel.Effect" />
+    <EntitySet Name="EffectTypes" EntityType="AskrindoMVCModel.EffectType" />
+    <EntitySet Name="RiskCats" EntityType="AskrindoMVCModel.RiskCat" />
+    <EntitySet Name="RiskGroups" EntityType="AskrindoMVCModel.RiskGroup" />
+    <EntitySet Name="RiskTypes" EntityType="AskrindoMVCModel.RiskType" />
+    <AssociationSet Name="FK_CauseTypes_CauseGroups" Association="AskrindoMVCModel.FK_CauseTypes_CauseGroups">
+      <End Role="CauseGroups" EntitySet="CauseGroups" />
+      <End Role="CauseTypes" EntitySet="CauseTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Causes_CauseTypes" Association="AskrindoMVCModel.FK_Causes_CauseTypes">
+      <End Role="CauseTypes" EntitySet="CauseTypes" />
+      <End Role="Causes" EntitySet="Causes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EffectTypes_EffectGroups" Association="AskrindoMVCModel.FK_EffectTypes_EffectGroups">
+      <End Role="EffectGroups" EntitySet="EffectGroups" />
+      <End Role="EffectTypes" EntitySet="EffectTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Effects_EffectTypes" Association="AskrindoMVCModel.FK_Effects_EffectTypes">
+      <End Role="EffectTypes" EntitySet="EffectTypes" />
+      <End Role="Effects" EntitySet="Effects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RiskGroups_RiskCats" Association="AskrindoMVCModel.FK_RiskGroups_RiskCats">
+      <End Role="RiskCats" EntitySet="RiskCats" />
+      <End Role="RiskGroups" EntitySet="RiskGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RiskTypes_RiskGroups" Association="AskrindoMVCModel.FK_RiskTypes_RiskGroups">
+      <End Role="RiskGroups" EntitySet="RiskGroups" />
+      <End Role="RiskTypes" EntitySet="RiskTypes" />
+    </AssociationSet>
+    <EntitySet Name="Depts" EntityType="AskrindoMVCModel.Dept" />
+    <EntitySet Name="BranchClasses" EntityType="AskrindoMVCModel.BranchClass" />
+    <EntitySet Name="ProbLevels" EntityType="AskrindoMVCModel.ProbLevel" />
+    <EntitySet Name="ImpactLevels" EntityType="AskrindoMVCModel.ImpactLevel" />
+    <EntitySet Name="ImpactCats" EntityType="AskrindoMVCModel.ImpactCat" />
+    <EntitySet Name="ImpactDetails" EntityType="AskrindoMVCModel.ImpactDetail" />
+    <EntitySet Name="ImpactTypes" EntityType="AskrindoMVCModel.ImpactType" />
+    <AssociationSet Name="FK_ImpactTypes_ImpactCats" Association="AskrindoMVCModel.FK_ImpactTypes_ImpactCats">
+      <End Role="ImpactCat" EntitySet="ImpactCats" />
+      <End Role="ImpactType" EntitySet="ImpactTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ImpactDetails_ImpactLevels" Association="AskrindoMVCModel.FK_ImpactDetails_ImpactLevels">
+      <End Role="ImpactLevel" EntitySet="ImpactLevels" />
+      <End Role="ImpactDetail" EntitySet="ImpactDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ImpactDetails_ImpactTypes" Association="AskrindoMVCModel.FK_ImpactDetails_ImpactTypes">
+      <End Role="ImpactType" EntitySet="ImpactTypes" />
+      <End Role="ImpactDetail" EntitySet="ImpactDetails" />
+    </AssociationSet>
+    <EntitySet Name="MitigationCats" EntityType="AskrindoMVCModel.MitigationCat" />
+    <EntitySet Name="MitigationTypes" EntityType="AskrindoMVCModel.MitigationType" />
+    <AssociationSet Name="FK_MitigationTypes_MitigationCats" Association="AskrindoMVCModel.FK_MitigationTypes_MitigationCats">
+      <End Role="MitigationCat" EntitySet="MitigationCats" />
+      <End Role="MitigationType" EntitySet="MitigationTypes" />
+    </AssociationSet>
+    <EntitySet Name="UserInfos" EntityType="AskrindoMVCModel.UserInfo" />
+    <AssociationSet Name="FK_UserInfos_aspnet_Users" Association="AskrindoMVCModel.FK_UserInfos_aspnet_Users">
+      <End Role="aspnet_Users" EntitySet="aspnet_User" />
+      <End Role="UserInfo" EntitySet="UserInfos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfos_Depts" Association="AskrindoMVCModel.FK_UserInfos_Depts">
+      <End Role="Dept" EntitySet="Depts" />
+      <End Role="UserInfo" EntitySet="UserInfos" />
+    </AssociationSet>
+    <EntitySet Name="aspnet_Membership" EntityType="AskrindoMVCModel.aspnet_Membership" />
+    <AssociationSet Name="FK__aspnet_Me__UserI__22AA2996" Association="AskrindoMVCModel.FK__aspnet_Me__UserI__22AA2996">
+      <End Role="aspnet_User" EntitySet="aspnet_User" />
+      <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
+    </AssociationSet>
+    <EntitySet Name="SerialNumbers" EntityType="AskrindoMVCModel.SerialNumber" />
+    <EntitySet Name="Freqs" EntityType="AskrindoMVCModel.Freq" />
+    <EntitySet Name="RiskProbs" EntityType="AskrindoMVCModel.RiskProb" />
+    <AssociationSet Name="FK_RiskProbs_Freqs" Association="AskrindoMVCModel.FK_RiskProbs_Freqs">
+      <End Role="Freq" EntitySet="Freqs" />
+      <End Role="RiskProb" EntitySet="RiskProbs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RiskProbs_ProbLevels" Association="AskrindoMVCModel.FK_RiskProbs_ProbLevels">
+      <End Role="ProbLevel" EntitySet="ProbLevels" />
+      <End Role="RiskProb" EntitySet="RiskProbs" />
+    </AssociationSet>
+    <EntitySet Name="RiskImpacts" EntityType="AskrindoMVCModel.RiskImpact" />
+    <AssociationSet Name="FK_RiskImpacts_ImpactLevels" Association="AskrindoMVCModel.FK_RiskImpacts_ImpactLevels">
+      <End Role="ImpactLevel" EntitySet="ImpactLevels" />
+      <End Role="RiskImpact" EntitySet="RiskImpacts" />
+    </AssociationSet>
+    <EntitySet Name="RiskNonMoneyImpacts" EntityType="AskrindoMVCModel.RiskNonMoneyImpact" />
+    <AssociationSet Name="FK_RiskNonMoneyImpacts_ImpactDetails" Association="AskrindoMVCModel.FK_RiskNonMoneyImpacts_ImpactDetails">
+      <End Role="ImpactDetail" EntitySet="ImpactDetails" />
+      <End Role="RiskNonMoneyImpact" EntitySet="RiskNonMoneyImpacts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RiskNonMoneyImpacts_ImpactLevels" Association="AskrindoMVCModel.FK_RiskNonMoneyImpacts_ImpactLevels">
+      <End Role="ImpactLevel" EntitySet="ImpactLevels" />
+      <End Role="RiskNonMoneyImpact" EntitySet="RiskNonMoneyImpacts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RiskNonMoneyImpacts_ImpactTypes" Association="AskrindoMVCModel.FK_RiskNonMoneyImpacts_ImpactTypes">
+      <End Role="ImpactType" EntitySet="ImpactTypes" />
+      <End Role="RiskNonMoneyImpact" EntitySet="RiskNonMoneyImpacts" />
+    </AssociationSet>
+    <EntitySet Name="RiskAttachments" EntityType="AskrindoMVCModel.RiskAttachment" />
+    <EntitySet Name="RiskApprovals" EntityType="AskrindoMVCModel.RiskApproval" />
+    <EntitySet Name="Risks" EntityType="AskrindoMVCModel.Risk" />
+    <AssociationSet Name="FK_Risks_CauseGroups" Association="AskrindoMVCModel.FK_Risks_CauseGroups">
+      <End Role="CauseGroup" EntitySet="CauseGroups" />
+      <End Role="Risk" EntitySet="Risks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Risks_Causes" Association="AskrindoMVCModel.FK_Risks_Causes">
+      <End Role="Cause" EntitySet="Causes" />
+      <End Role="Risk" EntitySet="Risks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Risks_CauseTypes" Association="AskrindoMVCModel.FK_Risks_CauseTypes">
+      <End Role="CauseType" EntitySet="CauseTypes" />
+      <End Role="Risk" EntitySet="Risks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RiskApprovals_Depts" Association="AskrindoMVCModel.FK_RiskApprovals_Depts">
+      <End Role="Dept" EntitySet="Depts" />
+      <End Role="RiskApproval" EntitySet="RiskApprovals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Risks_Depts" Association="AskrindoMVCModel.FK_Risks_Depts">
+      <End Role="Dept" EntitySet="Depts" />
+      <End Role="Risk" EntitySet="Risks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Risks_EffectGroups" Association="AskrindoMVCModel.FK_Risks_EffectGroups">
+      <End Role="EffectGroup" EntitySet="EffectGroups" />
+      <End Role="Risk" EntitySet="Risks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Risks_Effects" Association="AskrindoMVCModel.FK_Risks_Effects">
+      <End Role="Effect" EntitySet="Effects" />
+      <End Role="Risk" EntitySet="Risks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Risks_EffectTypes" Association="AskrindoMVCModel.FK_Risks_EffectTypes">
+      <End Role="EffectType" EntitySet="EffectTypes" />
+      <End Role="Risk" EntitySet="Risks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Risks_ImpactLevels" Association="AskrindoMVCModel.FK_Risks_ImpactLevels">
+      <End Role="ImpactLevel" EntitySet="ImpactLevels" />
+      <End Role="Risk" EntitySet="Risks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Risks_ProbLevels" Association="AskrindoMVCModel.FK_Risks_ProbLevels">
+      <End Role="ProbLevel" EntitySet="ProbLevels" />
+      <End Role="Risk" EntitySet="Risks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RiskApprovals_Risks" Association="AskrindoMVCModel.FK_RiskApprovals_Risks">
+      <End Role="Risk" EntitySet="Risks" />
+      <End Role="RiskApproval" EntitySet="RiskApprovals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RiskApprovals_UserInfos" Association="AskrindoMVCModel.FK_RiskApprovals_UserInfos">
+      <End Role="UserInfo" EntitySet="UserInfos" />
+      <End Role="RiskApproval" EntitySet="RiskApprovals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RiskAttachments_Risks" Association="AskrindoMVCModel.FK_RiskAttachments_Risks">
+      <End Role="Risk" EntitySet="Risks" />
+      <End Role="RiskAttachment" EntitySet="RiskAttachments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Risks_RiskCats" Association="AskrindoMVCModel.FK_Risks_RiskCats">
+      <End Role="RiskCat" EntitySet="RiskCats" />
+      <End Role="Risk" EntitySet="Risks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Risks_RiskGroups" Association="AskrindoMVCModel.FK_Risks_RiskGroups">
+      <End Role="RiskGroup" EntitySet="RiskGroups" />
+      <End Role="Risk" EntitySet="Risks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RiskImpacts_Risks" Association="AskrindoMVCModel.FK_RiskImpacts_Risks">
+      <End Role="Risk" EntitySet="Risks" />
+      <End Role="RiskImpact" EntitySet="RiskImpacts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RiskNonMoneyImpacts_Risks" Association="AskrindoMVCModel.FK_RiskNonMoneyImpacts_Risks">
+      <End Role="Risk" EntitySet="Risks" />
+      <End Role="RiskNonMoneyImpact" EntitySet="RiskNonMoneyImpacts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RiskProbs_Risks" Association="AskrindoMVCModel.FK_RiskProbs_Risks">
+      <End Role="Risk" EntitySet="Risks" />
+      <End Role="RiskProb" EntitySet="RiskProbs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Risks_RiskTypes" Association="AskrindoMVCModel.FK_Risks_RiskTypes">
+      <End Role="RiskType" EntitySet="RiskTypes" />
+      <End Role="Risk" EntitySet="Risks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Risks_UserInfos" Association="AskrindoMVCModel.FK_Risks_UserInfos">
+      <End Role="UserInfo" EntitySet="UserInfos" />
+      <End Role="Risk" EntitySet="Risks" />
+    </AssociationSet>
+    <EntitySet Name="MitigationAttachments" EntityType="AskrindoMVCModel.MitigationAttachment" />
+    <EntitySet Name="SubDepts" EntityType="AskrindoMVCModel.SubDept" />
+    <AssociationSet Name="FK_SubDepts_Depts" Association="AskrindoMVCModel.FK_SubDepts_Depts">
+      <End Role="Dept" EntitySet="Depts" />
+      <End Role="SubDept" EntitySet="SubDepts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RiskApprovals_SubDepts" Association="AskrindoMVCModel.FK_RiskApprovals_SubDepts">
+      <End Role="SubDept" EntitySet="SubDepts" />
+      <End Role="RiskApproval" EntitySet="RiskApprovals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Risks_SubDepts" Association="AskrindoMVCModel.FK_Risks_SubDepts">
+      <End Role="SubDept" EntitySet="SubDepts" />
+      <End Role="Risk" EntitySet="Risks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfos_SubDepts" Association="AskrindoMVCModel.FK_UserInfos_SubDepts">
+      <End Role="SubDept" EntitySet="SubDepts" />
+      <End Role="UserInfo" EntitySet="UserInfos" />
+    </AssociationSet>
+    <EntitySet Name="Divisions" EntityType="AskrindoMVCModel.Division" />
+    <EntitySet Name="SubDivs" EntityType="AskrindoMVCModel.SubDiv" />
+    <AssociationSet Name="FK_Divisions_Depts" Association="AskrindoMVCModel.FK_Divisions_Depts">
+      <End Role="Dept" EntitySet="Depts" />
+      <End Role="Division" EntitySet="Divisions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RiskApprovals_Divisions" Association="AskrindoMVCModel.FK_RiskApprovals_Divisions">
+      <End Role="Division" EntitySet="Divisions" />
+      <End Role="RiskApproval" EntitySet="RiskApprovals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Risks_Divisions" Association="AskrindoMVCModel.FK_Risks_Divisions">
+      <End Role="Division" EntitySet="Divisions" />
+      <End Role="Risk" EntitySet="Risks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SubDivs_Divisions" Association="AskrindoMVCModel.FK_SubDivs_Divisions">
+      <End Role="Division" EntitySet="Divisions" />
+      <End Role="SubDiv" EntitySet="SubDivs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfos_Divisions" Association="AskrindoMVCModel.FK_UserInfos_Divisions">
+      <End Role="Division" EntitySet="Divisions" />
+      <End Role="UserInfo" EntitySet="UserInfos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RiskApprovals_SubDivs" Association="AskrindoMVCModel.FK_RiskApprovals_SubDivs">
+      <End Role="SubDiv" EntitySet="SubDivs" />
+      <End Role="RiskApproval" EntitySet="RiskApprovals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Risks_SubDivs" Association="AskrindoMVCModel.FK_Risks_SubDivs">
+      <End Role="SubDiv" EntitySet="SubDivs" />
+      <End Role="Risk" EntitySet="Risks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfos_SubDivs" Association="AskrindoMVCModel.FK_UserInfos_SubDivs">
+      <End Role="SubDiv" EntitySet="SubDivs" />
+      <End Role="UserInfo" EntitySet="UserInfos" />
+    </AssociationSet>
+    <EntitySet Name="Branches" EntityType="AskrindoMVCModel.Branch" />
+    <AssociationSet Name="FK_Branches_BranchClasses" Association="AskrindoMVCModel.FK_Branches_BranchClasses">
+      <End Role="BranchClass" EntitySet="BranchClasses" />
+      <End Role="Branch" EntitySet="Branches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Branches_Depts" Association="AskrindoMVCModel.FK_Branches_Depts">
+      <End Role="Dept" EntitySet="Depts" />
+      <End Role="Branch" EntitySet="Branches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RiskApprovals_Branches" Association="AskrindoMVCModel.FK_RiskApprovals_Branches">
+      <End Role="Branch" EntitySet="Branches" />
+      <End Role="RiskApproval" EntitySet="RiskApprovals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Risks_Branches" Association="AskrindoMVCModel.FK_Risks_Branches">
+      <End Role="Branch" EntitySet="Branches" />
+      <End Role="Risk" EntitySet="Risks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfos_Branches" Association="AskrindoMVCModel.FK_UserInfos_Branches">
+      <End Role="Branch" EntitySet="Branches" />
+      <End Role="UserInfo" EntitySet="UserInfos" />
+    </AssociationSet>
+    <EntitySet Name="SubBranches" EntityType="AskrindoMVCModel.SubBranch" />
+    <AssociationSet Name="FK_SubBranches_Branches" Association="AskrindoMVCModel.FK_SubBranches_Branches">
+      <End Role="Branch" EntitySet="Branches" />
+      <End Role="SubBranch" EntitySet="SubBranches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RiskApprovals_SubBranches" Association="AskrindoMVCModel.FK_RiskApprovals_SubBranches">
+      <End Role="SubBranch" EntitySet="SubBranches" />
+      <End Role="RiskApproval" EntitySet="RiskApprovals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Risks_SubBranches" Association="AskrindoMVCModel.FK_Risks_SubBranches">
+      <End Role="SubBranch" EntitySet="SubBranches" />
+      <End Role="Risk" EntitySet="Risks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfos_SubBranches" Association="AskrindoMVCModel.FK_UserInfos_SubBranches">
+      <End Role="SubBranch" EntitySet="SubBranches" />
+      <End Role="UserInfo" EntitySet="UserInfos" />
+    </AssociationSet>
+    <EntitySet Name="BizUnits" EntityType="AskrindoMVCModel.BizUnit" />
+    <AssociationSet Name="FK_BizUnits_Branches" Association="AskrindoMVCModel.FK_BizUnits_Branches">
+      <End Role="Branch" EntitySet="Branches" />
+      <End Role="BizUnit" EntitySet="BizUnits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RiskApprovals_BizUnits" Association="AskrindoMVCModel.FK_RiskApprovals_BizUnits">
+      <End Role="BizUnit" EntitySet="BizUnits" />
+      <End Role="RiskApproval" EntitySet="RiskApprovals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Risks_BizUnits" Association="AskrindoMVCModel.FK_Risks_BizUnits">
+      <End Role="BizUnit" EntitySet="BizUnits" />
+      <End Role="Risk" EntitySet="Risks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfos_BizUnits" Association="AskrindoMVCModel.FK_UserInfos_BizUnits">
+      <End Role="BizUnit" EntitySet="BizUnits" />
+      <End Role="UserInfo" EntitySet="UserInfos" />
+    </AssociationSet>
+    <EntitySet Name="ImpactRefs" EntityType="AskrindoMVCModel.ImpactRef" />
+    <EntitySet Name="RiskStates" EntityType="AskrindoMVCModel.RiskState" />
+    <AssociationSet Name="FK_RiskStates_ImpactLevels" Association="AskrindoMVCModel.FK_RiskStates_ImpactLevels">
+      <End Role="ImpactLevel" EntitySet="ImpactLevels" />
+      <End Role="RiskState" EntitySet="RiskStates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RiskStates_ProbLevels" Association="AskrindoMVCModel.FK_RiskStates_ProbLevels">
+      <End Role="ProbLevel" EntitySet="ProbLevels" />
+      <End Role="RiskState" EntitySet="RiskStates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RiskStates_Risks" Association="AskrindoMVCModel.FK_RiskStates_Risks">
+      <End Role="Risk" EntitySet="Risks" />
+      <End Role="RiskState" EntitySet="RiskStates" />
+    </AssociationSet>
+    <EntitySet Name="RiskLevels" EntityType="AskrindoMVCModel.RiskLevel" />
+    <EntitySet Name="MitigationApprovals" EntityType="AskrindoMVCModel.MitigationApproval" />
+    <AssociationSet Name="FK_MitigationApprovals_UserInfos" Association="AskrindoMVCModel.FK_MitigationApprovals_UserInfos">
+      <End Role="UserInfo" EntitySet="UserInfos" />
+      <End Role="MitigationApproval" EntitySet="MitigationApprovals" />
+    </AssociationSet>
+    <EntitySet Name="RiskMitigations" EntityType="AskrindoMVCModel.RiskMitigation" />
+    <AssociationSet Name="FK_RiskMitigations_ImpactLevels" Association="AskrindoMVCModel.FK_RiskMitigations_ImpactLevels">
+      <End Role="ImpactLevel" EntitySet="ImpactLevels" />
+      <End Role="RiskMitigation" EntitySet="RiskMitigations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MitigationApprovals_RiskMitigations" Association="AskrindoMVCModel.FK_MitigationApprovals_RiskMitigations">
+      <End Role="RiskMitigation" EntitySet="RiskMitigations" />
+      <End Role="MitigationApproval" EntitySet="MitigationApprovals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MitigationAttachments_RiskMitigations" Association="AskrindoMVCModel.FK_MitigationAttachments_RiskMitigations">
+      <End Role="RiskMitigation" EntitySet="RiskMitigations" />
+      <End Role="MitigationAttachment" EntitySet="MitigationAttachments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RiskMitigations_MitigationCats" Association="AskrindoMVCModel.FK_RiskMitigations_MitigationCats">
+      <End Role="MitigationCat" EntitySet="MitigationCats" />
+      <End Role="RiskMitigation" EntitySet="RiskMitigations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RiskMitigations_MitigationTypes" Association="AskrindoMVCModel.FK_RiskMitigations_MitigationTypes">
+      <End Role="MitigationType" EntitySet="MitigationTypes" />
+      <End Role="RiskMitigation" EntitySet="RiskMitigations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RiskMitigations_ProbLevels" Association="AskrindoMVCModel.FK_RiskMitigations_ProbLevels">
+      <End Role="ProbLevel" EntitySet="ProbLevels" />
+      <End Role="RiskMitigation" EntitySet="RiskMitigations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RiskMitigations_Risks" Association="AskrindoMVCModel.FK_RiskMitigations_Risks">
+      <End Role="Risk" EntitySet="Risks" />
+      <End Role="RiskMitigation" EntitySet="RiskMitigations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RiskMitigations_UserInfos" Association="AskrindoMVCModel.FK_RiskMitigations_UserInfos">
+      <End Role="UserInfo" EntitySet="UserInfos" />
+      <End Role="RiskMitigation" EntitySet="RiskMitigations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RiskStates_RiskMitigations" Association="AskrindoMVCModel.FK_RiskStates_RiskMitigations">
+      <End Role="RiskMitigation" EntitySet="RiskMitigations" />
+      <End Role="RiskState" EntitySet="RiskStates" />
+    </AssociationSet>
+    <EntitySet Name="HelpDocs" EntityType="AskrindoMVCModel.HelpDoc" />
+    <EntitySet Name="HelpMenus" EntityType="AskrindoMVCModel.HelpMenu" />
+    <AssociationSet Name="FK_HelpDocs_HelpMenus" Association="AskrindoMVCModel.FK_HelpDocs_HelpMenus">
+      <End Role="HelpMenu" EntitySet="HelpMenus" />
+      <End Role="HelpDoc" EntitySet="HelpDocs" />
+    </AssociationSet>
+    <EntitySet Name="RiskEvents" EntityType="AskrindoMVCModel.RiskEvent" />
+    <EntitySet Name="UserGroups" EntityType="AskrindoMVCModel.UserGroup" />
+    <EntitySet Name="MitigationUnits" EntityType="AskrindoMVCModel.MitigationUnit" />
+    <AssociationSet Name="FK_Mitigationunit2" Association="AskrindoMVCModel.FK_Mitigationunit2">
+      <End Role="Division" EntitySet="Divisions" />
+      <End Role="MitigationUnit" EntitySet="MitigationUnits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mitigationunit1" Association="AskrindoMVCModel.FK_Mitigationunit1">
+      <End Role="RiskMitigation" EntitySet="RiskMitigations" />
+      <End Role="MitigationUnit" EntitySet="MitigationUnits" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="aspnet_User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+    <Property Name="LoweredUserName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+    <Property Name="MobileAlias" Type="String" MaxLength="16" Unicode="true" FixedLength="false" />
+    <Property Name="IsAnonymous" Type="Boolean" Nullable="false" />
+    <Property Name="LastActivityDate" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="UserInfo" Relationship="AskrindoMVCModel.FK_UserInfos_aspnet_Users" FromRole="aspnet_Users" ToRole="UserInfo" />
+    <NavigationProperty Name="aspnet_Membership" Relationship="AskrindoMVCModel.FK__aspnet_Me__UserI__22AA2996" FromRole="aspnet_User" ToRole="aspnet_Membership" />
+  </EntityType>
+  <EntityType Name="CauseGroup">
+    <Key>
+      <PropertyRef Name="CauseGroupId" />
+    </Key>
+    <Property Name="CauseGroupId" Type="Int32" Nullable="false" />
+    <Property Name="CauseGroupName" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="CauseTypes" Relationship="AskrindoMVCModel.FK_CauseTypes_CauseGroups" FromRole="CauseGroups" ToRole="CauseTypes" />
+    <NavigationProperty Name="Risks" Relationship="AskrindoMVCModel.FK_Risks_CauseGroups" FromRole="CauseGroup" ToRole="Risk" />
+  </EntityType>
+  <EntityType Name="Cause">
+    <Key>
+      <PropertyRef Name="CauseId" />
+    </Key>
+    <Property Name="CauseId" Type="Int32" Nullable="false" />
+    <Property Name="CauseTypeId" Type="Int32" Nullable="false" />
+    <Property Name="CauseName" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="CauseType" Relationship="AskrindoMVCModel.FK_Causes_CauseTypes" FromRole="Causes" ToRole="CauseTypes" />
+    <NavigationProperty Name="Risks" Relationship="AskrindoMVCModel.FK_Risks_Causes" FromRole="Cause" ToRole="Risk" />
+  </EntityType>
+  <EntityType Name="CauseType">
+    <Key>
+      <PropertyRef Name="CauseTypeId" />
+    </Key>
+    <Property Name="CauseTypeId" Type="Int32" Nullable="false" />
+    <Property Name="CauseGroupId" Type="Int32" Nullable="false" />
+    <Property Name="CauseTypeName" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="CauseGroup" Relationship="AskrindoMVCModel.FK_CauseTypes_CauseGroups" FromRole="CauseTypes" ToRole="CauseGroups" />
+    <NavigationProperty Name="Causes" Relationship="AskrindoMVCModel.FK_Causes_CauseTypes" FromRole="CauseTypes" ToRole="Causes" />
+    <NavigationProperty Name="Risks" Relationship="AskrindoMVCModel.FK_Risks_CauseTypes" FromRole="CauseType" ToRole="Risk" />
+  </EntityType>
+  <EntityType Name="EffectGroup">
+    <Key>
+      <PropertyRef Name="EffectGroupId" />
+    </Key>
+    <Property Name="EffectGroupId" Type="Int32" Nullable="false" />
+    <Property Name="EffectGroupName" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="EffectTypes" Relationship="AskrindoMVCModel.FK_EffectTypes_EffectGroups" FromRole="EffectGroups" ToRole="EffectTypes" />
+    <NavigationProperty Name="Risks" Relationship="AskrindoMVCModel.FK_Risks_EffectGroups" FromRole="EffectGroup" ToRole="Risk" />
+  </EntityType>
+  <EntityType Name="Effect">
+    <Key>
+      <PropertyRef Name="EffectId" />
+    </Key>
+    <Property Name="EffectId" Type="Int32" Nullable="false" />
+    <Property Name="EffectTypeId" Type="Int32" Nullable="false" />
+    <Property Name="EffectName" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="EffectType" Relationship="AskrindoMVCModel.FK_Effects_EffectTypes" FromRole="Effects" ToRole="EffectTypes" />
+    <NavigationProperty Name="Risks" Relationship="AskrindoMVCModel.FK_Risks_Effects" FromRole="Effect" ToRole="Risk" />
+  </EntityType>
+  <EntityType Name="EffectType">
+    <Key>
+      <PropertyRef Name="EffectTypeId" />
+    </Key>
+    <Property Name="EffectTypeId" Type="Int32" Nullable="false" />
+    <Property Name="EffectGroupId" Type="Int32" Nullable="false" />
+    <Property Name="EffectTypeName" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="EffectGroup" Relationship="AskrindoMVCModel.FK_EffectTypes_EffectGroups" FromRole="EffectTypes" ToRole="EffectGroups" />
+    <NavigationProperty Name="Effects" Relationship="AskrindoMVCModel.FK_Effects_EffectTypes" FromRole="EffectTypes" ToRole="Effects" />
+    <NavigationProperty Name="Risks" Relationship="AskrindoMVCModel.FK_Risks_EffectTypes" FromRole="EffectType" ToRole="Risk" />
+  </EntityType>
+  <EntityType Name="RiskCat">
+    <Key>
+      <PropertyRef Name="RiskCatId" />
+    </Key>
+    <Property Name="RiskCatId" Type="Int32" Nullable="false" />
+    <Property Name="RiskCatName" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="RiskGroups" Relationship="AskrindoMVCModel.FK_RiskGroups_RiskCats" FromRole="RiskCats" ToRole="RiskGroups" />
+    <NavigationProperty Name="Risks" Relationship="AskrindoMVCModel.FK_Risks_RiskCats" FromRole="RiskCat" ToRole="Risk" />
+  </EntityType>
+  <EntityType Name="RiskGroup">
+    <Key>
+      <PropertyRef Name="RiskGroupId" />
+    </Key>
+    <Property Name="RiskGroupId" Type="Int32" Nullable="false" />
+    <Property Name="RiskCatId" Type="Int32" Nullable="false" />
+    <Property Name="RiskGroupName" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="RiskCat" Relationship="AskrindoMVCModel.FK_RiskGroups_RiskCats" FromRole="RiskGroups" ToRole="RiskCats" />
+    <NavigationProperty Name="RiskTypes" Relationship="AskrindoMVCModel.FK_RiskTypes_RiskGroups" FromRole="RiskGroups" ToRole="RiskTypes" />
+    <NavigationProperty Name="Risks" Relationship="AskrindoMVCModel.FK_Risks_RiskGroups" FromRole="RiskGroup" ToRole="Risk" />
+  </EntityType>
+  <EntityType Name="RiskType">
+    <Key>
+      <PropertyRef Name="RiskTypeId" />
+    </Key>
+    <Property Name="RiskTypeId" Type="Int32" Nullable="false" />
+    <Property Name="RiskGroupId" Type="Int32" Nullable="false" />
+    <Property Name="RiskTypeName" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="RiskGroup" Relationship="AskrindoMVCModel.FK_RiskTypes_RiskGroups" FromRole="RiskTypes" ToRole="RiskGroups" />
+    <NavigationProperty Name="Risks" Relationship="AskrindoMVCModel.FK_Risks_RiskTypes" FromRole="RiskType" ToRole="Risk" />
+  </EntityType>
+  <Association Name="FK_CauseTypes_CauseGroups">
+    <End Role="CauseGroups" Type="AskrindoMVCModel.CauseGroup" Multiplicity="1" />
+    <End Role="CauseTypes" Type="AskrindoMVCModel.CauseType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CauseGroups">
+        <PropertyRef Name="CauseGroupId" />
+      </Principal>
+      <Dependent Role="CauseTypes">
+        <PropertyRef Name="CauseGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Causes_CauseTypes">
+    <End Role="CauseTypes" Type="AskrindoMVCModel.CauseType" Multiplicity="1" />
+    <End Role="Causes" Type="AskrindoMVCModel.Cause" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CauseTypes">
+        <PropertyRef Name="CauseTypeId" />
+      </Principal>
+      <Dependent Role="Causes">
+        <PropertyRef Name="CauseTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EffectTypes_EffectGroups">
+    <End Role="EffectGroups" Type="AskrindoMVCModel.EffectGroup" Multiplicity="1" />
+    <End Role="EffectTypes" Type="AskrindoMVCModel.EffectType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EffectGroups">
+        <PropertyRef Name="EffectGroupId" />
+      </Principal>
+      <Dependent Role="EffectTypes">
+        <PropertyRef Name="EffectGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Effects_EffectTypes">
+    <End Role="EffectTypes" Type="AskrindoMVCModel.EffectType" Multiplicity="1" />
+    <End Role="Effects" Type="AskrindoMVCModel.Effect" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EffectTypes">
+        <PropertyRef Name="EffectTypeId" />
+      </Principal>
+      <Dependent Role="Effects">
+        <PropertyRef Name="EffectTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RiskGroups_RiskCats">
+    <End Role="RiskCats" Type="AskrindoMVCModel.RiskCat" Multiplicity="1" />
+    <End Role="RiskGroups" Type="AskrindoMVCModel.RiskGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RiskCats">
+        <PropertyRef Name="RiskCatId" />
+      </Principal>
+      <Dependent Role="RiskGroups">
+        <PropertyRef Name="RiskCatId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RiskTypes_RiskGroups">
+    <End Role="RiskGroups" Type="AskrindoMVCModel.RiskGroup" Multiplicity="1" />
+    <End Role="RiskTypes" Type="AskrindoMVCModel.RiskType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RiskGroups">
+        <PropertyRef Name="RiskGroupId" />
+      </Principal>
+      <Dependent Role="RiskTypes">
+        <PropertyRef Name="RiskGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Dept">
+    <Key>
+      <PropertyRef Name="DeptId" />
+    </Key>
+    <Property Type="Int32" Name="DeptId" Nullable="false" />
+    <Property Type="String" Name="DeptName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserInfos" Relationship="AskrindoMVCModel.FK_UserInfos_Depts" FromRole="Dept" ToRole="UserInfo" />
+    <NavigationProperty Name="RiskApprovals" Relationship="AskrindoMVCModel.FK_RiskApprovals_Depts" FromRole="Dept" ToRole="RiskApproval" />
+    <NavigationProperty Name="Risks" Relationship="AskrindoMVCModel.FK_Risks_Depts" FromRole="Dept" ToRole="Risk" />
+    <NavigationProperty Name="SubDepts" Relationship="AskrindoMVCModel.FK_SubDepts_Depts" FromRole="Dept" ToRole="SubDept" />
+    <NavigationProperty Name="Divisions" Relationship="AskrindoMVCModel.FK_Divisions_Depts" FromRole="Dept" ToRole="Division" />
+    <NavigationProperty Name="Branches" Relationship="AskrindoMVCModel.FK_Branches_Depts" FromRole="Dept" ToRole="Branch" />
+  </EntityType>
+  <EntityType Name="BranchClass">
+    <Key>
+      <PropertyRef Name="ClassId" />
+    </Key>
+    <Property Type="Int32" Name="ClassId" Nullable="false" />
+    <Property Type="String" Name="ClassName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Branches" Relationship="AskrindoMVCModel.FK_Branches_BranchClasses" FromRole="BranchClass" ToRole="Branch" />
+  </EntityType>
+  <EntityType Name="ProbLevel">
+    <Key>
+      <PropertyRef Name="ProbLevelId" />
+    </Key>
+    <Property Type="Int32" Name="ProbLevelId" Nullable="false" />
+    <Property Type="String" Name="ProbLevelName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="PctMin" Nullable="false" />
+    <Property Type="Int32" Name="PctMax" Nullable="false" />
+    <Property Type="String" Name="DescriptionGeneral" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DescriptionProject" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="RiskProbs" Relationship="AskrindoMVCModel.FK_RiskProbs_ProbLevels" FromRole="ProbLevel" ToRole="RiskProb" />
+    <NavigationProperty Name="Risks" Relationship="AskrindoMVCModel.FK_Risks_ProbLevels" FromRole="ProbLevel" ToRole="Risk" />
+    <NavigationProperty Name="RiskStates" Relationship="AskrindoMVCModel.FK_RiskStates_ProbLevels" FromRole="ProbLevel" ToRole="RiskState" />
+    <NavigationProperty Name="RiskMitigations" Relationship="AskrindoMVCModel.FK_RiskMitigations_ProbLevels" FromRole="ProbLevel" ToRole="RiskMitigation" />
+  </EntityType>
+  <EntityType Name="ImpactLevel">
+    <Key>
+      <PropertyRef Name="ImpactLevelId" />
+    </Key>
+    <Property Type="Int32" Name="ImpactLevelId" Nullable="false" />
+    <Property Type="String" Name="ImpactLevelName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="PctMin" Nullable="false" />
+    <Property Type="Int32" Name="PctMax" Nullable="false" />
+    <Property Type="Decimal" Name="MoneyMin" Precision="19" Scale="4" Nullable="false" />
+    <Property Type="Decimal" Name="MoneyMax" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="ImpactDetails" Relationship="AskrindoMVCModel.FK_ImpactDetails_ImpactLevels" FromRole="ImpactLevel" ToRole="ImpactDetail" />
+    <NavigationProperty Name="RiskImpacts" Relationship="AskrindoMVCModel.FK_RiskImpacts_ImpactLevels" FromRole="ImpactLevel" ToRole="RiskImpact" />
+    <NavigationProperty Name="RiskNonMoneyImpacts" Relationship="AskrindoMVCModel.FK_RiskNonMoneyImpacts_ImpactLevels" FromRole="ImpactLevel" ToRole="RiskNonMoneyImpact" />
+    <NavigationProperty Name="Risks" Relationship="AskrindoMVCModel.FK_Risks_ImpactLevels" FromRole="ImpactLevel" ToRole="Risk" />
+    <NavigationProperty Name="RiskStates" Relationship="AskrindoMVCModel.FK_RiskStates_ImpactLevels" FromRole="ImpactLevel" ToRole="RiskState" />
+    <NavigationProperty Name="RiskMitigations" Relationship="AskrindoMVCModel.FK_RiskMitigations_ImpactLevels" FromRole="ImpactLevel" ToRole="RiskMitigation" />
+  </EntityType>
+  <EntityType Name="ImpactCat">
+    <Key>
+      <PropertyRef Name="ImpactCatId" />
+    </Key>
+    <Property Type="Int32" Name="ImpactCatId" Nullable="false" />
+    <Property Type="String" Name="ImpactCatName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ImpactTypes" Relationship="AskrindoMVCModel.FK_ImpactTypes_ImpactCats" FromRole="ImpactCat" ToRole="ImpactType" />
+  </EntityType>
+  <EntityType Name="ImpactDetail">
+    <Key>
+      <PropertyRef Name="ImpactDetailId" />
+    </Key>
+    <Property Type="Int32" Name="ImpactDetailId" Nullable="false" />
+    <Property Type="Int32" Name="ImpactTypeId" Nullable="false" />
+    <Property Type="Int32" Name="ImpactLevelId" Nullable="false" />
+    <Property Type="String" Name="ImpactDetailName" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ImpactLevel" Relationship="AskrindoMVCModel.FK_ImpactDetails_ImpactLevels" FromRole="ImpactDetail" ToRole="ImpactLevel" />
+    <NavigationProperty Name="ImpactType" Relationship="AskrindoMVCModel.FK_ImpactDetails_ImpactTypes" FromRole="ImpactDetail" ToRole="ImpactType" />
+    <NavigationProperty Name="RiskNonMoneyImpacts" Relationship="AskrindoMVCModel.FK_RiskNonMoneyImpacts_ImpactDetails" FromRole="ImpactDetail" ToRole="RiskNonMoneyImpact" />
+  </EntityType>
+  <EntityType Name="ImpactType">
+    <Key>
+      <PropertyRef Name="ImpactTypeId" />
+    </Key>
+    <Property Type="Int32" Name="ImpactTypeId" Nullable="false" />
+    <Property Type="Int32" Name="ImpactCatId" Nullable="false" />
+    <Property Type="String" Name="ImpactTypeName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Notes" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ImpactCat" Relationship="AskrindoMVCModel.FK_ImpactTypes_ImpactCats" FromRole="ImpactType" ToRole="ImpactCat" />
+    <NavigationProperty Name="ImpactDetails" Relationship="AskrindoMVCModel.FK_ImpactDetails_ImpactTypes" FromRole="ImpactType" ToRole="ImpactDetail" />
+    <NavigationProperty Name="RiskNonMoneyImpacts" Relationship="AskrindoMVCModel.FK_RiskNonMoneyImpacts_ImpactTypes" FromRole="ImpactType" ToRole="RiskNonMoneyImpact" />
+  </EntityType>
+  <Association Name="FK_ImpactTypes_ImpactCats">
+    <End Type="AskrindoMVCModel.ImpactCat" Role="ImpactCat" Multiplicity="1" />
+    <End Type="AskrindoMVCModel.ImpactType" Role="ImpactType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImpactCat">
+        <PropertyRef Name="ImpactCatId" />
+      </Principal>
+      <Dependent Role="ImpactType">
+        <PropertyRef Name="ImpactCatId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ImpactDetails_ImpactLevels">
+    <End Type="AskrindoMVCModel.ImpactLevel" Role="ImpactLevel" Multiplicity="1" />
+    <End Type="AskrindoMVCModel.ImpactDetail" Role="ImpactDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImpactLevel">
+        <PropertyRef Name="ImpactLevelId" />
+      </Principal>
+      <Dependent Role="ImpactDetail">
+        <PropertyRef Name="ImpactLevelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ImpactDetails_ImpactTypes">
+    <End Type="AskrindoMVCModel.ImpactType" Role="ImpactType" Multiplicity="1" />
+    <End Type="AskrindoMVCModel.ImpactDetail" Role="ImpactDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImpactType">
+        <PropertyRef Name="ImpactTypeId" />
+      </Principal>
+      <Dependent Role="ImpactDetail">
+        <PropertyRef Name="ImpactTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="MitigationCat">
+    <Key>
+      <PropertyRef Name="MitigationCatId" />
+    </Key>
+    <Property Type="Int32" Name="MitigationCatId" Nullable="false" />
+    <Property Type="String" Name="MitigationCatName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="MitigationTypes" Relationship="AskrindoMVCModel.FK_MitigationTypes_MitigationCats" FromRole="MitigationCat" ToRole="MitigationType" />
+    <NavigationProperty Name="RiskMitigations" Relationship="AskrindoMVCModel.FK_RiskMitigations_MitigationCats" FromRole="MitigationCat" ToRole="RiskMitigation" />
+  </EntityType>
+  <EntityType Name="MitigationType">
+    <Key>
+      <PropertyRef Name="MitigationTypeId" />
+    </Key>
+    <Property Type="Int32" Name="MitigationTypeId" Nullable="false" />
+    <Property Type="Int32" Name="MitigationCatId" Nullable="false" />
+    <Property Type="String" Name="MitigationTypeName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="MitigationCat" Relationship="AskrindoMVCModel.FK_MitigationTypes_MitigationCats" FromRole="MitigationType" ToRole="MitigationCat" />
+    <NavigationProperty Name="RiskMitigations" Relationship="AskrindoMVCModel.FK_RiskMitigations_MitigationTypes" FromRole="MitigationType" ToRole="RiskMitigation" />
+  </EntityType>
+  <Association Name="FK_MitigationTypes_MitigationCats">
+    <End Type="AskrindoMVCModel.MitigationCat" Role="MitigationCat" Multiplicity="1" />
+    <End Type="AskrindoMVCModel.MitigationType" Role="MitigationType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MitigationCat">
+        <PropertyRef Name="MitigationCatId" />
+      </Principal>
+      <Dependent Role="MitigationType">
+        <PropertyRef Name="MitigationCatId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="UserInfo">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Type="Guid" Name="UserId" Nullable="false" />
+    <Property Type="String" Name="FullName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="JobTitle" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="IsRiskOwner" Nullable="false" />
+    <Property Type="Int32" Name="DeptId" />
+    <Property Type="Int32" Name="SubDeptId" />
+    <Property Type="Int32" Name="DivisionId" />
+    <Property Type="Int32" Name="SubDivId" />
+    <Property Type="Int32" Name="BranchId" />
+    <Property Type="Int32" Name="SubBranchId" />
+    <Property Type="Int32" Name="BizUnitId" />
+    <Property Type="Int32" Name="OrgPos" Nullable="false" />
+    <NavigationProperty Name="aspnet_User" Relationship="AskrindoMVCModel.FK_UserInfos_aspnet_Users" FromRole="UserInfo" ToRole="aspnet_Users" />
+    <NavigationProperty Name="Dept" Relationship="AskrindoMVCModel.FK_UserInfos_Depts" FromRole="UserInfo" ToRole="Dept" />
+    <NavigationProperty Name="RiskApprovals" Relationship="AskrindoMVCModel.FK_RiskApprovals_UserInfos" FromRole="UserInfo" ToRole="RiskApproval" />
+    <NavigationProperty Name="Risks" Relationship="AskrindoMVCModel.FK_Risks_UserInfos" FromRole="UserInfo" ToRole="Risk" />
+    <NavigationProperty Name="SubDept" Relationship="AskrindoMVCModel.FK_UserInfos_SubDepts" FromRole="UserInfo" ToRole="SubDept" />
+    <NavigationProperty Name="Division" Relationship="AskrindoMVCModel.FK_UserInfos_Divisions" FromRole="UserInfo" ToRole="Division" />
+    <NavigationProperty Name="SubDiv" Relationship="AskrindoMVCModel.FK_UserInfos_SubDivs" FromRole="UserInfo" ToRole="SubDiv" />
+    <NavigationProperty Name="Branch" Relationship="AskrindoMVCModel.FK_UserInfos_Branches" FromRole="UserInfo" ToRole="Branch" />
+    <NavigationProperty Name="SubBranch" Relationship="AskrindoMVCModel.FK_UserInfos_SubBranches" FromRole="UserInfo" ToRole="SubBranch" />
+    <NavigationProperty Name="BizUnit" Relationship="AskrindoMVCModel.FK_UserInfos_BizUnits" FromRole="UserInfo" ToRole="BizUnit" />
+    <NavigationProperty Name="MitigationApprovals" Relationship="AskrindoMVCModel.FK_MitigationApprovals_UserInfos" FromRole="UserInfo" ToRole="MitigationApproval" />
+    <NavigationProperty Name="RiskMitigations" Relationship="AskrindoMVCModel.FK_RiskMitigations_UserInfos" FromRole="UserInfo" ToRole="RiskMitigation" />
+    <Property Type="Boolean" Name="StsPC" />
+  </EntityType>
+  <Association Name="FK_UserInfos_aspnet_Users">
+    <End Type="AskrindoMVCModel.aspnet_User" Role="aspnet_Users" Multiplicity="1" />
+    <End Type="AskrindoMVCModel.UserInfo" Role="UserInfo" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserInfo">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfos_Depts">
+    <End Type="AskrindoMVCModel.Dept" Role="Dept" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.UserInfo" Role="UserInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dept">
+        <PropertyRef Name="DeptId" />
+      </Principal>
+      <Dependent Role="UserInfo">
+        <PropertyRef Name="DeptId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="aspnet_Membership">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Type="Guid" Name="ApplicationId" Nullable="false" />
+    <Property Type="Guid" Name="UserId" Nullable="false" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="PasswordFormat" Nullable="false" />
+    <Property Type="String" Name="PasswordSalt" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="MobilePIN" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Email" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="LoweredEmail" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PasswordQuestion" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PasswordAnswer" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="IsApproved" Nullable="false" />
+    <Property Type="Boolean" Name="IsLockedOut" Nullable="false" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="false" />
+    <Property Type="DateTime" Name="LastLoginDate" Nullable="false" />
+    <Property Type="DateTime" Name="LastPasswordChangedDate" Nullable="false" />
+    <Property Type="DateTime" Name="LastLockoutDate" Nullable="false" />
+    <Property Type="Int32" Name="FailedPasswordAttemptCount" Nullable="false" />
+    <Property Type="DateTime" Name="FailedPasswordAttemptWindowStart" Nullable="false" />
+    <Property Type="Int32" Name="FailedPasswordAnswerAttemptCount" Nullable="false" />
+    <Property Type="DateTime" Name="FailedPasswordAnswerAttemptWindowStart" Nullable="false" />
+    <Property Type="String" Name="Comment" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="aspnet_User" Relationship="AskrindoMVCModel.FK__aspnet_Me__UserI__22AA2996" FromRole="aspnet_Membership" ToRole="aspnet_User" />
+  </EntityType>
+  <Association Name="FK__aspnet_Me__UserI__22AA2996">
+    <End Type="AskrindoMVCModel.aspnet_User" Role="aspnet_User" Multiplicity="1" />
+    <End Type="AskrindoMVCModel.aspnet_Membership" Role="aspnet_Membership" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="aspnet_Membership">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="SerialNumber">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="Year" Nullable="false" />
+    <Property Type="Int32" Name="SN" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Freq">
+    <Key>
+      <PropertyRef Name="FreqId" />
+    </Key>
+    <Property Type="Int32" Name="FreqId" Nullable="false" />
+    <Property Type="String" Name="FreqName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="RiskProbs" Relationship="AskrindoMVCModel.FK_RiskProbs_Freqs" FromRole="Freq" ToRole="RiskProb" />
+  </EntityType>
+  <EntityType Name="RiskProb">
+    <Key>
+      <PropertyRef Name="RiskId" />
+    </Key>
+    <Property Type="Int32" Name="RiskId" Nullable="false" />
+    <Property Type="Int32" Name="ProbOption" Nullable="false" />
+    <Property Type="Int32" Name="Poisson1" />
+    <Property Type="Int32" Name="Poisson2" />
+    <Property Type="Int32" Name="Binom1" />
+    <Property Type="Int32" Name="Binom2" />
+    <Property Type="Decimal" Name="Approx1" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Approx2" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Approx3" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Compare" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="FreqId" />
+    <Property Type="Decimal" Name="ProbValue" Precision="9" Scale="2" />
+    <Property Type="Int32" Name="ProbLevelId" />
+    <NavigationProperty Name="Freq" Relationship="AskrindoMVCModel.FK_RiskProbs_Freqs" FromRole="RiskProb" ToRole="Freq" />
+    <NavigationProperty Name="ProbLevel" Relationship="AskrindoMVCModel.FK_RiskProbs_ProbLevels" FromRole="RiskProb" ToRole="ProbLevel" />
+    <NavigationProperty Name="Risk" Relationship="AskrindoMVCModel.FK_RiskProbs_Risks" FromRole="RiskProb" ToRole="Risk" />
+  </EntityType>
+  <Association Name="FK_RiskProbs_Freqs">
+    <End Type="AskrindoMVCModel.Freq" Role="Freq" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.RiskProb" Role="RiskProb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Freq">
+        <PropertyRef Name="FreqId" />
+      </Principal>
+      <Dependent Role="RiskProb">
+        <PropertyRef Name="FreqId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RiskProbs_ProbLevels">
+    <End Type="AskrindoMVCModel.ProbLevel" Role="ProbLevel" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.RiskProb" Role="RiskProb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProbLevel">
+        <PropertyRef Name="ProbLevelId" />
+      </Principal>
+      <Dependent Role="RiskProb">
+        <PropertyRef Name="ProbLevelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="RiskImpact">
+    <Key>
+      <PropertyRef Name="RiskId" />
+    </Key>
+    <Property Type="Int32" Name="RiskId" Nullable="false" />
+    <Property Type="Boolean" Name="IsMoneyImpact" Nullable="false" />
+    <Property Type="Decimal" Name="MoneyDirect" Precision="19" Scale="4" />
+    <Property Type="Decimal" Name="MoneyIndirect" Precision="19" Scale="4" />
+    <Property Type="Int32" Name="ImpactLevelId" />
+    <NavigationProperty Name="ImpactLevel" Relationship="AskrindoMVCModel.FK_RiskImpacts_ImpactLevels" FromRole="RiskImpact" ToRole="ImpactLevel" />
+    <NavigationProperty Name="Risk" Relationship="AskrindoMVCModel.FK_RiskImpacts_Risks" FromRole="RiskImpact" ToRole="Risk" />
+  </EntityType>
+  <Association Name="FK_RiskImpacts_ImpactLevels">
+    <End Type="AskrindoMVCModel.ImpactLevel" Role="ImpactLevel" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.RiskImpact" Role="RiskImpact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImpactLevel">
+        <PropertyRef Name="ImpactLevelId" />
+      </Principal>
+      <Dependent Role="RiskImpact">
+        <PropertyRef Name="ImpactLevelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="RiskNonMoneyImpact">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="RiskId" Nullable="false" />
+    <Property Type="Int32" Name="ImpactDetailId" Nullable="false" />
+    <Property Type="Int32" Name="ImpactTypeId" Nullable="false" />
+    <Property Type="Int32" Name="ImpactLevelId" Nullable="false" />
+    <NavigationProperty Name="ImpactDetail" Relationship="AskrindoMVCModel.FK_RiskNonMoneyImpacts_ImpactDetails" FromRole="RiskNonMoneyImpact" ToRole="ImpactDetail" />
+    <NavigationProperty Name="ImpactLevel" Relationship="AskrindoMVCModel.FK_RiskNonMoneyImpacts_ImpactLevels" FromRole="RiskNonMoneyImpact" ToRole="ImpactLevel" />
+    <NavigationProperty Name="ImpactType" Relationship="AskrindoMVCModel.FK_RiskNonMoneyImpacts_ImpactTypes" FromRole="RiskNonMoneyImpact" ToRole="ImpactType" />
+    <NavigationProperty Name="Risk" Relationship="AskrindoMVCModel.FK_RiskNonMoneyImpacts_Risks" FromRole="RiskNonMoneyImpact" ToRole="Risk" />
+  </EntityType>
+  <Association Name="FK_RiskNonMoneyImpacts_ImpactDetails">
+    <End Type="AskrindoMVCModel.ImpactDetail" Role="ImpactDetail" Multiplicity="1" />
+    <End Type="AskrindoMVCModel.RiskNonMoneyImpact" Role="RiskNonMoneyImpact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImpactDetail">
+        <PropertyRef Name="ImpactDetailId" />
+      </Principal>
+      <Dependent Role="RiskNonMoneyImpact">
+        <PropertyRef Name="ImpactDetailId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RiskNonMoneyImpacts_ImpactLevels">
+    <End Type="AskrindoMVCModel.ImpactLevel" Role="ImpactLevel" Multiplicity="1" />
+    <End Type="AskrindoMVCModel.RiskNonMoneyImpact" Role="RiskNonMoneyImpact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImpactLevel">
+        <PropertyRef Name="ImpactLevelId" />
+      </Principal>
+      <Dependent Role="RiskNonMoneyImpact">
+        <PropertyRef Name="ImpactLevelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RiskNonMoneyImpacts_ImpactTypes">
+    <End Type="AskrindoMVCModel.ImpactType" Role="ImpactType" Multiplicity="1" />
+    <End Type="AskrindoMVCModel.RiskNonMoneyImpact" Role="RiskNonMoneyImpact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImpactType">
+        <PropertyRef Name="ImpactTypeId" />
+      </Principal>
+      <Dependent Role="RiskNonMoneyImpact">
+        <PropertyRef Name="ImpactTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="RiskAttachment">
+    <Key>
+      <PropertyRef Name="AttachId" />
+    </Key>
+    <Property Type="Int32" Name="AttachId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="RiskId" Nullable="false" />
+    <Property Type="String" Name="AttachName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Notes" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Filename" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ContentType" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="ContentLength" />
+    <Property Type="Binary" Name="Data" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Risk" Relationship="AskrindoMVCModel.FK_RiskAttachments_Risks" FromRole="RiskAttachment" ToRole="Risk" />
+  </EntityType>
+  <EntityType Name="RiskApproval">
+    <Key>
+      <PropertyRef Name="ApprovalId" />
+    </Key>
+    <Property Type="Int32" Name="ApprovalId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="RiskId" Nullable="false" />
+    <Property Type="Int32" Name="OrgPos" Nullable="false" />
+    <Property Type="Int32" Name="DeptId" />
+    <Property Type="Int32" Name="SubDeptId" />
+    <Property Type="Int32" Name="DivisionId" />
+    <Property Type="Int32" Name="SubDivId" />
+    <Property Type="Int32" Name="BranchId" />
+    <Property Type="Int32" Name="SubBranchId" />
+    <Property Type="Int32" Name="BizUnitId" />
+    <Property Type="String" Name="OrgName" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="Guid" Name="UserId" />
+    <Property Type="String" Name="JobTitle" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="ApprovalDate" />
+    <Property Type="DateTime" Name="LimitDate" />
+    <Property Type="Boolean" Name="LastApproval" Nullable="false" />
+    <Property Type="Boolean" Name="IsReadOnly" Nullable="false" />
+    <NavigationProperty Name="Dept" Relationship="AskrindoMVCModel.FK_RiskApprovals_Depts" FromRole="RiskApproval" ToRole="Dept" />
+    <NavigationProperty Name="Risk" Relationship="AskrindoMVCModel.FK_RiskApprovals_Risks" FromRole="RiskApproval" ToRole="Risk" />
+    <NavigationProperty Name="UserInfo" Relationship="AskrindoMVCModel.FK_RiskApprovals_UserInfos" FromRole="RiskApproval" ToRole="UserInfo" />
+    <NavigationProperty Name="SubDept" Relationship="AskrindoMVCModel.FK_RiskApprovals_SubDepts" FromRole="RiskApproval" ToRole="SubDept" />
+    <NavigationProperty Name="Division" Relationship="AskrindoMVCModel.FK_RiskApprovals_Divisions" FromRole="RiskApproval" ToRole="Division" />
+    <NavigationProperty Name="SubDiv" Relationship="AskrindoMVCModel.FK_RiskApprovals_SubDivs" FromRole="RiskApproval" ToRole="SubDiv" />
+    <NavigationProperty Name="Branch" Relationship="AskrindoMVCModel.FK_RiskApprovals_Branches" FromRole="RiskApproval" ToRole="Branch" />
+    <NavigationProperty Name="SubBranch" Relationship="AskrindoMVCModel.FK_RiskApprovals_SubBranches" FromRole="RiskApproval" ToRole="SubBranch" />
+    <NavigationProperty Name="BizUnit" Relationship="AskrindoMVCModel.FK_RiskApprovals_BizUnits" FromRole="RiskApproval" ToRole="BizUnit" />
+  </EntityType>
+  <EntityType Name="Risk">
+    <Key>
+      <PropertyRef Name="RiskId" />
+    </Key>
+    <Property Type="Int32" Name="RiskId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Guid" Name="UserId" Nullable="false" />
+    <Property Type="String" Name="RiskCode" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="RiskName" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="RiskDate" Nullable="false" />
+    <Property Type="Int32" Name="OrgPos" Nullable="false" />
+    <Property Type="Int32" Name="DeptId" />
+    <Property Type="Int32" Name="SubDeptId" />
+    <Property Type="Int32" Name="DivisionId" />
+    <Property Type="Int32" Name="SubDivId" />
+    <Property Type="Int32" Name="BranchId" />
+    <Property Type="Int32" Name="SubBranchId" />
+    <Property Type="Int32" Name="BizUnitId" />
+    <Property Type="Int32" Name="CauseGroupId" />
+    <Property Type="Int32" Name="CauseTypeId" />
+    <Property Type="Int32" Name="CauseId" />
+    <Property Type="Int32" Name="EffectGroupId" />
+    <Property Type="Int32" Name="EffectTypeId" />
+    <Property Type="Int32" Name="EffectId" />
+    <Property Type="Int32" Name="RiskCatId" />
+    <Property Type="Int32" Name="RiskGroupId" />
+    <Property Type="Int32" Name="RiskTypeId" />
+    <Property Type="String" Name="JobTitle" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="Decimal" Name="ProbValue" Precision="9" Scale="2" />
+    <Property Type="Int32" Name="ProbLevelId" />
+    <Property Type="Int32" Name="ImpactLevelId" />
+    <Property Type="Decimal" Name="ImpactMoney" Precision="19" Scale="4" />
+    <Property Type="Int32" Name="RiskLevel" />
+    <Property Type="DateTime" Name="ApprovalDate" />
+    <Property Type="DateTime" Name="CloseDate" />
+    <Property Type="Boolean" Name="IsReadOnly" Nullable="false" />
+    <NavigationProperty Name="CauseGroup" Relationship="AskrindoMVCModel.FK_Risks_CauseGroups" FromRole="Risk" ToRole="CauseGroup" />
+    <NavigationProperty Name="Cause" Relationship="AskrindoMVCModel.FK_Risks_Causes" FromRole="Risk" ToRole="Cause" />
+    <NavigationProperty Name="CauseType" Relationship="AskrindoMVCModel.FK_Risks_CauseTypes" FromRole="Risk" ToRole="CauseType" />
+    <NavigationProperty Name="Dept" Relationship="AskrindoMVCModel.FK_Risks_Depts" FromRole="Risk" ToRole="Dept" />
+    <NavigationProperty Name="EffectGroup" Relationship="AskrindoMVCModel.FK_Risks_EffectGroups" FromRole="Risk" ToRole="EffectGroup" />
+    <NavigationProperty Name="Effect" Relationship="AskrindoMVCModel.FK_Risks_Effects" FromRole="Risk" ToRole="Effect" />
+    <NavigationProperty Name="EffectType" Relationship="AskrindoMVCModel.FK_Risks_EffectTypes" FromRole="Risk" ToRole="EffectType" />
+    <NavigationProperty Name="ImpactLevel" Relationship="AskrindoMVCModel.FK_Risks_ImpactLevels" FromRole="Risk" ToRole="ImpactLevel" />
+    <NavigationProperty Name="ProbLevel" Relationship="AskrindoMVCModel.FK_Risks_ProbLevels" FromRole="Risk" ToRole="ProbLevel" />
+    <NavigationProperty Name="RiskApprovals" Relationship="AskrindoMVCModel.FK_RiskApprovals_Risks" FromRole="Risk" ToRole="RiskApproval" />
+    <NavigationProperty Name="RiskAttachments" Relationship="AskrindoMVCModel.FK_RiskAttachments_Risks" FromRole="Risk" ToRole="RiskAttachment" />
+    <NavigationProperty Name="RiskCat" Relationship="AskrindoMVCModel.FK_Risks_RiskCats" FromRole="Risk" ToRole="RiskCat" />
+    <NavigationProperty Name="RiskGroup" Relationship="AskrindoMVCModel.FK_Risks_RiskGroups" FromRole="Risk" ToRole="RiskGroup" />
+    <NavigationProperty Name="RiskImpact" Relationship="AskrindoMVCModel.FK_RiskImpacts_Risks" FromRole="Risk" ToRole="RiskImpact" />
+    <NavigationProperty Name="RiskNonMoneyImpacts" Relationship="AskrindoMVCModel.FK_RiskNonMoneyImpacts_Risks" FromRole="Risk" ToRole="RiskNonMoneyImpact" />
+    <NavigationProperty Name="RiskProb" Relationship="AskrindoMVCModel.FK_RiskProbs_Risks" FromRole="Risk" ToRole="RiskProb" />
+    <NavigationProperty Name="RiskType" Relationship="AskrindoMVCModel.FK_Risks_RiskTypes" FromRole="Risk" ToRole="RiskType" />
+    <NavigationProperty Name="UserInfo" Relationship="AskrindoMVCModel.FK_Risks_UserInfos" FromRole="Risk" ToRole="UserInfo" />
+    <NavigationProperty Name="SubDept" Relationship="AskrindoMVCModel.FK_Risks_SubDepts" FromRole="Risk" ToRole="SubDept" />
+    <NavigationProperty Name="Division" Relationship="AskrindoMVCModel.FK_Risks_Divisions" FromRole="Risk" ToRole="Division" />
+    <NavigationProperty Name="SubDiv" Relationship="AskrindoMVCModel.FK_Risks_SubDivs" FromRole="Risk" ToRole="SubDiv" />
+    <NavigationProperty Name="Branch" Relationship="AskrindoMVCModel.FK_Risks_Branches" FromRole="Risk" ToRole="Branch" />
+    <NavigationProperty Name="SubBranch" Relationship="AskrindoMVCModel.FK_Risks_SubBranches" FromRole="Risk" ToRole="SubBranch" />
+    <NavigationProperty Name="BizUnit" Relationship="AskrindoMVCModel.FK_Risks_BizUnits" FromRole="Risk" ToRole="BizUnit" />
+    <NavigationProperty Name="RiskStates" Relationship="AskrindoMVCModel.FK_RiskStates_Risks" FromRole="Risk" ToRole="RiskState" />
+    <NavigationProperty Name="RiskMitigations" Relationship="AskrindoMVCModel.FK_RiskMitigations_Risks" FromRole="Risk" ToRole="RiskMitigation" />
+  </EntityType>
+  <Association Name="FK_Risks_CauseGroups">
+    <End Type="AskrindoMVCModel.CauseGroup" Role="CauseGroup" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.Risk" Role="Risk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CauseGroup">
+        <PropertyRef Name="CauseGroupId" />
+      </Principal>
+      <Dependent Role="Risk">
+        <PropertyRef Name="CauseGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Risks_Causes">
+    <End Type="AskrindoMVCModel.Cause" Role="Cause" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.Risk" Role="Risk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cause">
+        <PropertyRef Name="CauseId" />
+      </Principal>
+      <Dependent Role="Risk">
+        <PropertyRef Name="CauseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Risks_CauseTypes">
+    <End Type="AskrindoMVCModel.CauseType" Role="CauseType" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.Risk" Role="Risk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CauseType">
+        <PropertyRef Name="CauseTypeId" />
+      </Principal>
+      <Dependent Role="Risk">
+        <PropertyRef Name="CauseTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RiskApprovals_Depts">
+    <End Type="AskrindoMVCModel.Dept" Role="Dept" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.RiskApproval" Role="RiskApproval" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dept">
+        <PropertyRef Name="DeptId" />
+      </Principal>
+      <Dependent Role="RiskApproval">
+        <PropertyRef Name="DeptId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Risks_Depts">
+    <End Type="AskrindoMVCModel.Dept" Role="Dept" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.Risk" Role="Risk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dept">
+        <PropertyRef Name="DeptId" />
+      </Principal>
+      <Dependent Role="Risk">
+        <PropertyRef Name="DeptId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Risks_EffectGroups">
+    <End Type="AskrindoMVCModel.EffectGroup" Role="EffectGroup" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.Risk" Role="Risk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EffectGroup">
+        <PropertyRef Name="EffectGroupId" />
+      </Principal>
+      <Dependent Role="Risk">
+        <PropertyRef Name="EffectGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Risks_Effects">
+    <End Type="AskrindoMVCModel.Effect" Role="Effect" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.Risk" Role="Risk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Effect">
+        <PropertyRef Name="EffectId" />
+      </Principal>
+      <Dependent Role="Risk">
+        <PropertyRef Name="EffectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Risks_EffectTypes">
+    <End Type="AskrindoMVCModel.EffectType" Role="EffectType" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.Risk" Role="Risk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EffectType">
+        <PropertyRef Name="EffectTypeId" />
+      </Principal>
+      <Dependent Role="Risk">
+        <PropertyRef Name="EffectTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Risks_ImpactLevels">
+    <End Type="AskrindoMVCModel.ImpactLevel" Role="ImpactLevel" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.Risk" Role="Risk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImpactLevel">
+        <PropertyRef Name="ImpactLevelId" />
+      </Principal>
+      <Dependent Role="Risk">
+        <PropertyRef Name="ImpactLevelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Risks_ProbLevels">
+    <End Type="AskrindoMVCModel.ProbLevel" Role="ProbLevel" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.Risk" Role="Risk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProbLevel">
+        <PropertyRef Name="ProbLevelId" />
+      </Principal>
+      <Dependent Role="Risk">
+        <PropertyRef Name="ProbLevelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RiskApprovals_Risks">
+    <End Type="AskrindoMVCModel.Risk" Role="Risk" Multiplicity="1" />
+    <End Type="AskrindoMVCModel.RiskApproval" Role="RiskApproval" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Risk">
+        <PropertyRef Name="RiskId" />
+      </Principal>
+      <Dependent Role="RiskApproval">
+        <PropertyRef Name="RiskId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RiskApprovals_UserInfos">
+    <End Type="AskrindoMVCModel.UserInfo" Role="UserInfo" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.RiskApproval" Role="RiskApproval" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="RiskApproval">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RiskAttachments_Risks">
+    <End Type="AskrindoMVCModel.Risk" Role="Risk" Multiplicity="1" />
+    <End Type="AskrindoMVCModel.RiskAttachment" Role="RiskAttachment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Risk">
+        <PropertyRef Name="RiskId" />
+      </Principal>
+      <Dependent Role="RiskAttachment">
+        <PropertyRef Name="RiskId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Risks_RiskCats">
+    <End Type="AskrindoMVCModel.RiskCat" Role="RiskCat" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.Risk" Role="Risk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RiskCat">
+        <PropertyRef Name="RiskCatId" />
+      </Principal>
+      <Dependent Role="Risk">
+        <PropertyRef Name="RiskCatId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Risks_RiskGroups">
+    <End Type="AskrindoMVCModel.RiskGroup" Role="RiskGroup" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.Risk" Role="Risk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RiskGroup">
+        <PropertyRef Name="RiskGroupId" />
+      </Principal>
+      <Dependent Role="Risk">
+        <PropertyRef Name="RiskGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RiskImpacts_Risks">
+    <End Type="AskrindoMVCModel.Risk" Role="Risk" Multiplicity="1" />
+    <End Type="AskrindoMVCModel.RiskImpact" Role="RiskImpact" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Risk">
+        <PropertyRef Name="RiskId" />
+      </Principal>
+      <Dependent Role="RiskImpact">
+        <PropertyRef Name="RiskId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RiskNonMoneyImpacts_Risks">
+    <End Type="AskrindoMVCModel.Risk" Role="Risk" Multiplicity="1" />
+    <End Type="AskrindoMVCModel.RiskNonMoneyImpact" Role="RiskNonMoneyImpact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Risk">
+        <PropertyRef Name="RiskId" />
+      </Principal>
+      <Dependent Role="RiskNonMoneyImpact">
+        <PropertyRef Name="RiskId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RiskProbs_Risks">
+    <End Type="AskrindoMVCModel.Risk" Role="Risk" Multiplicity="1" />
+    <End Type="AskrindoMVCModel.RiskProb" Role="RiskProb" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Risk">
+        <PropertyRef Name="RiskId" />
+      </Principal>
+      <Dependent Role="RiskProb">
+        <PropertyRef Name="RiskId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Risks_RiskTypes">
+    <End Type="AskrindoMVCModel.RiskType" Role="RiskType" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.Risk" Role="Risk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RiskType">
+        <PropertyRef Name="RiskTypeId" />
+      </Principal>
+      <Dependent Role="Risk">
+        <PropertyRef Name="RiskTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Risks_UserInfos">
+    <End Type="AskrindoMVCModel.UserInfo" Role="UserInfo" Multiplicity="1" />
+    <End Type="AskrindoMVCModel.Risk" Role="Risk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Risk">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="MitigationAttachment">
+    <Key>
+      <PropertyRef Name="AttachId" />
+    </Key>
+    <Property Type="Int32" Name="AttachId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="MitigationId" Nullable="false" />
+    <Property Type="String" Name="AttachName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Notes" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Filename" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ContentType" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="ContentLength" />
+    <Property Type="Binary" Name="Data" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="RiskMitigation" Relationship="AskrindoMVCModel.FK_MitigationAttachments_RiskMitigations" FromRole="MitigationAttachment" ToRole="RiskMitigation" />
+  </EntityType>
+  <EntityType Name="SubDept">
+    <Key>
+      <PropertyRef Name="SubDeptId" />
+    </Key>
+    <Property Type="Int32" Name="SubDeptId" Nullable="false" />
+    <Property Type="Int32" Name="DeptId" Nullable="false" />
+    <Property Type="String" Name="SubDeptName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="IsSupporting" Nullable="false" />
+    <NavigationProperty Name="Dept" Relationship="AskrindoMVCModel.FK_SubDepts_Depts" FromRole="SubDept" ToRole="Dept" />
+    <NavigationProperty Name="RiskApprovals" Relationship="AskrindoMVCModel.FK_RiskApprovals_SubDepts" FromRole="SubDept" ToRole="RiskApproval" />
+    <NavigationProperty Name="Risks" Relationship="AskrindoMVCModel.FK_Risks_SubDepts" FromRole="SubDept" ToRole="Risk" />
+    <NavigationProperty Name="UserInfos" Relationship="AskrindoMVCModel.FK_UserInfos_SubDepts" FromRole="SubDept" ToRole="UserInfo" />
+  </EntityType>
+  <Association Name="FK_SubDepts_Depts">
+    <End Type="AskrindoMVCModel.Dept" Role="Dept" Multiplicity="1" />
+    <End Type="AskrindoMVCModel.SubDept" Role="SubDept" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dept">
+        <PropertyRef Name="DeptId" />
+      </Principal>
+      <Dependent Role="SubDept">
+        <PropertyRef Name="DeptId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RiskApprovals_SubDepts">
+    <End Type="AskrindoMVCModel.SubDept" Role="SubDept" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.RiskApproval" Role="RiskApproval" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubDept">
+        <PropertyRef Name="SubDeptId" />
+      </Principal>
+      <Dependent Role="RiskApproval">
+        <PropertyRef Name="SubDeptId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Risks_SubDepts">
+    <End Type="AskrindoMVCModel.SubDept" Role="SubDept" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.Risk" Role="Risk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubDept">
+        <PropertyRef Name="SubDeptId" />
+      </Principal>
+      <Dependent Role="Risk">
+        <PropertyRef Name="SubDeptId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfos_SubDepts">
+    <End Type="AskrindoMVCModel.SubDept" Role="SubDept" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.UserInfo" Role="UserInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubDept">
+        <PropertyRef Name="SubDeptId" />
+      </Principal>
+      <Dependent Role="UserInfo">
+        <PropertyRef Name="SubDeptId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Division">
+    <Key>
+      <PropertyRef Name="DivisionId" />
+    </Key>
+    <Property Type="Int32" Name="DivisionId" Nullable="false" />
+    <Property Type="Int32" Name="DeptId" Nullable="false" />
+    <Property Type="String" Name="DivisionName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="IsSupporting" Nullable="false" />
+    <NavigationProperty Name="Dept" Relationship="AskrindoMVCModel.FK_Divisions_Depts" FromRole="Division" ToRole="Dept" />
+    <NavigationProperty Name="RiskApprovals" Relationship="AskrindoMVCModel.FK_RiskApprovals_Divisions" FromRole="Division" ToRole="RiskApproval" />
+    <NavigationProperty Name="Risks" Relationship="AskrindoMVCModel.FK_Risks_Divisions" FromRole="Division" ToRole="Risk" />
+    <NavigationProperty Name="SubDivs" Relationship="AskrindoMVCModel.FK_SubDivs_Divisions" FromRole="Division" ToRole="SubDiv" />
+    <NavigationProperty Name="UserInfos" Relationship="AskrindoMVCModel.FK_UserInfos_Divisions" FromRole="Division" ToRole="UserInfo" />
+    <NavigationProperty Name="MitigationUnits" Relationship="AskrindoMVCModel.FK_Mitigationunit2" FromRole="Division" ToRole="MitigationUnit" />
+  </EntityType>
+  <EntityType Name="SubDiv">
+    <Key>
+      <PropertyRef Name="SubDivId" />
+    </Key>
+    <Property Type="Int32" Name="SubDivId" Nullable="false" />
+    <Property Type="Int32" Name="DivisionId" Nullable="false" />
+    <Property Type="String" Name="SubDivName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="IsSupporting" Nullable="false" />
+    <NavigationProperty Name="Division" Relationship="AskrindoMVCModel.FK_SubDivs_Divisions" FromRole="SubDiv" ToRole="Division" />
+    <NavigationProperty Name="RiskApprovals" Relationship="AskrindoMVCModel.FK_RiskApprovals_SubDivs" FromRole="SubDiv" ToRole="RiskApproval" />
+    <NavigationProperty Name="Risks" Relationship="AskrindoMVCModel.FK_Risks_SubDivs" FromRole="SubDiv" ToRole="Risk" />
+    <NavigationProperty Name="UserInfos" Relationship="AskrindoMVCModel.FK_UserInfos_SubDivs" FromRole="SubDiv" ToRole="UserInfo" />
+  </EntityType>
+  <Association Name="FK_Divisions_Depts">
+    <End Type="AskrindoMVCModel.Dept" Role="Dept" Multiplicity="1" />
+    <End Type="AskrindoMVCModel.Division" Role="Division" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dept">
+        <PropertyRef Name="DeptId" />
+      </Principal>
+      <Dependent Role="Division">
+        <PropertyRef Name="DeptId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RiskApprovals_Divisions">
+    <End Type="AskrindoMVCModel.Division" Role="Division" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.RiskApproval" Role="RiskApproval" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Division">
+        <PropertyRef Name="DivisionId" />
+      </Principal>
+      <Dependent Role="RiskApproval">
+        <PropertyRef Name="DivisionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Risks_Divisions">
+    <End Type="AskrindoMVCModel.Division" Role="Division" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.Risk" Role="Risk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Division">
+        <PropertyRef Name="DivisionId" />
+      </Principal>
+      <Dependent Role="Risk">
+        <PropertyRef Name="DivisionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SubDivs_Divisions">
+    <End Type="AskrindoMVCModel.Division" Role="Division" Multiplicity="1" />
+    <End Type="AskrindoMVCModel.SubDiv" Role="SubDiv" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Division">
+        <PropertyRef Name="DivisionId" />
+      </Principal>
+      <Dependent Role="SubDiv">
+        <PropertyRef Name="DivisionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfos_Divisions">
+    <End Type="AskrindoMVCModel.Division" Role="Division" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.UserInfo" Role="UserInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Division">
+        <PropertyRef Name="DivisionId" />
+      </Principal>
+      <Dependent Role="UserInfo">
+        <PropertyRef Name="DivisionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RiskApprovals_SubDivs">
+    <End Type="AskrindoMVCModel.SubDiv" Role="SubDiv" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.RiskApproval" Role="RiskApproval" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubDiv">
+        <PropertyRef Name="SubDivId" />
+      </Principal>
+      <Dependent Role="RiskApproval">
+        <PropertyRef Name="SubDivId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Risks_SubDivs">
+    <End Type="AskrindoMVCModel.SubDiv" Role="SubDiv" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.Risk" Role="Risk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubDiv">
+        <PropertyRef Name="SubDivId" />
+      </Principal>
+      <Dependent Role="Risk">
+        <PropertyRef Name="SubDivId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfos_SubDivs">
+    <End Type="AskrindoMVCModel.SubDiv" Role="SubDiv" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.UserInfo" Role="UserInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubDiv">
+        <PropertyRef Name="SubDivId" />
+      </Principal>
+      <Dependent Role="UserInfo">
+        <PropertyRef Name="SubDivId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Branch">
+    <Key>
+      <PropertyRef Name="BranchId" />
+    </Key>
+    <Property Type="Int32" Name="BranchId" Nullable="false" />
+    <Property Type="Int32" Name="DeptId" Nullable="false" />
+    <Property Type="String" Name="BranchName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="ClassId" Nullable="false" />
+    <Property Type="String" Name="BranchCode" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="IsSupporting" Nullable="false" />
+    <NavigationProperty Name="BranchClass" Relationship="AskrindoMVCModel.FK_Branches_BranchClasses" FromRole="Branch" ToRole="BranchClass" />
+    <NavigationProperty Name="Dept" Relationship="AskrindoMVCModel.FK_Branches_Depts" FromRole="Branch" ToRole="Dept" />
+    <NavigationProperty Name="RiskApprovals" Relationship="AskrindoMVCModel.FK_RiskApprovals_Branches" FromRole="Branch" ToRole="RiskApproval" />
+    <NavigationProperty Name="Risks" Relationship="AskrindoMVCModel.FK_Risks_Branches" FromRole="Branch" ToRole="Risk" />
+    <NavigationProperty Name="UserInfos" Relationship="AskrindoMVCModel.FK_UserInfos_Branches" FromRole="Branch" ToRole="UserInfo" />
+    <NavigationProperty Name="SubBranches" Relationship="AskrindoMVCModel.FK_SubBranches_Branches" FromRole="Branch" ToRole="SubBranch" />
+    <NavigationProperty Name="BizUnits" Relationship="AskrindoMVCModel.FK_BizUnits_Branches" FromRole="Branch" ToRole="BizUnit" />
+  </EntityType>
+  <Association Name="FK_Branches_BranchClasses">
+    <End Type="AskrindoMVCModel.BranchClass" Role="BranchClass" Multiplicity="1" />
+    <End Type="AskrindoMVCModel.Branch" Role="Branch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BranchClass">
+        <PropertyRef Name="ClassId" />
+      </Principal>
+      <Dependent Role="Branch">
+        <PropertyRef Name="ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Branches_Depts">
+    <End Type="AskrindoMVCModel.Dept" Role="Dept" Multiplicity="1" />
+    <End Type="AskrindoMVCModel.Branch" Role="Branch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dept">
+        <PropertyRef Name="DeptId" />
+      </Principal>
+      <Dependent Role="Branch">
+        <PropertyRef Name="DeptId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RiskApprovals_Branches">
+    <End Type="AskrindoMVCModel.Branch" Role="Branch" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.RiskApproval" Role="RiskApproval" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Branch">
+        <PropertyRef Name="BranchId" />
+      </Principal>
+      <Dependent Role="RiskApproval">
+        <PropertyRef Name="BranchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Risks_Branches">
+    <End Type="AskrindoMVCModel.Branch" Role="Branch" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.Risk" Role="Risk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Branch">
+        <PropertyRef Name="BranchId" />
+      </Principal>
+      <Dependent Role="Risk">
+        <PropertyRef Name="BranchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfos_Branches">
+    <End Type="AskrindoMVCModel.Branch" Role="Branch" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.UserInfo" Role="UserInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Branch">
+        <PropertyRef Name="BranchId" />
+      </Principal>
+      <Dependent Role="UserInfo">
+        <PropertyRef Name="BranchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="SubBranch">
+    <Key>
+      <PropertyRef Name="SubBranchId" />
+    </Key>
+    <Property Type="Int32" Name="SubBranchId" Nullable="false" />
+    <Property Type="Int32" Name="BranchId" Nullable="false" />
+    <Property Type="String" Name="SubBranchName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="IsSupporting" Nullable="false" />
+    <NavigationProperty Name="Branch" Relationship="AskrindoMVCModel.FK_SubBranches_Branches" FromRole="SubBranch" ToRole="Branch" />
+    <NavigationProperty Name="RiskApprovals" Relationship="AskrindoMVCModel.FK_RiskApprovals_SubBranches" FromRole="SubBranch" ToRole="RiskApproval" />
+    <NavigationProperty Name="Risks" Relationship="AskrindoMVCModel.FK_Risks_SubBranches" FromRole="SubBranch" ToRole="Risk" />
+    <NavigationProperty Name="UserInfos" Relationship="AskrindoMVCModel.FK_UserInfos_SubBranches" FromRole="SubBranch" ToRole="UserInfo" />
+  </EntityType>
+  <Association Name="FK_SubBranches_Branches">
+    <End Type="AskrindoMVCModel.Branch" Role="Branch" Multiplicity="1" />
+    <End Type="AskrindoMVCModel.SubBranch" Role="SubBranch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Branch">
+        <PropertyRef Name="BranchId" />
+      </Principal>
+      <Dependent Role="SubBranch">
+        <PropertyRef Name="BranchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RiskApprovals_SubBranches">
+    <End Type="AskrindoMVCModel.SubBranch" Role="SubBranch" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.RiskApproval" Role="RiskApproval" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubBranch">
+        <PropertyRef Name="SubBranchId" />
+      </Principal>
+      <Dependent Role="RiskApproval">
+        <PropertyRef Name="SubBranchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Risks_SubBranches">
+    <End Type="AskrindoMVCModel.SubBranch" Role="SubBranch" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.Risk" Role="Risk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubBranch">
+        <PropertyRef Name="SubBranchId" />
+      </Principal>
+      <Dependent Role="Risk">
+        <PropertyRef Name="SubBranchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfos_SubBranches">
+    <End Type="AskrindoMVCModel.SubBranch" Role="SubBranch" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.UserInfo" Role="UserInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubBranch">
+        <PropertyRef Name="SubBranchId" />
+      </Principal>
+      <Dependent Role="UserInfo">
+        <PropertyRef Name="SubBranchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="BizUnit">
+    <Key>
+      <PropertyRef Name="BizUnitId" />
+    </Key>
+    <Property Type="Int32" Name="BizUnitId" Nullable="false" />
+    <Property Type="Int32" Name="BranchId" Nullable="false" />
+    <Property Type="String" Name="BizUnitName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="BizUnitCode" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="IsSupporting" Nullable="false" />
+    <NavigationProperty Name="Branch" Relationship="AskrindoMVCModel.FK_BizUnits_Branches" FromRole="BizUnit" ToRole="Branch" />
+    <NavigationProperty Name="RiskApprovals" Relationship="AskrindoMVCModel.FK_RiskApprovals_BizUnits" FromRole="BizUnit" ToRole="RiskApproval" />
+    <NavigationProperty Name="Risks" Relationship="AskrindoMVCModel.FK_Risks_BizUnits" FromRole="BizUnit" ToRole="Risk" />
+    <NavigationProperty Name="UserInfos" Relationship="AskrindoMVCModel.FK_UserInfos_BizUnits" FromRole="BizUnit" ToRole="UserInfo" />
+    <Property Type="Boolean" Name="statusf" />
+  </EntityType>
+  <Association Name="FK_BizUnits_Branches">
+    <End Type="AskrindoMVCModel.Branch" Role="Branch" Multiplicity="1" />
+    <End Type="AskrindoMVCModel.BizUnit" Role="BizUnit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Branch">
+        <PropertyRef Name="BranchId" />
+      </Principal>
+      <Dependent Role="BizUnit">
+        <PropertyRef Name="BranchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RiskApprovals_BizUnits">
+    <End Type="AskrindoMVCModel.BizUnit" Role="BizUnit" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.RiskApproval" Role="RiskApproval" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BizUnit">
+        <PropertyRef Name="BizUnitId" />
+      </Principal>
+      <Dependent Role="RiskApproval">
+        <PropertyRef Name="BizUnitId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Risks_BizUnits">
+    <End Type="AskrindoMVCModel.BizUnit" Role="BizUnit" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.Risk" Role="Risk" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BizUnit">
+        <PropertyRef Name="BizUnitId" />
+      </Principal>
+      <Dependent Role="Risk">
+        <PropertyRef Name="BizUnitId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfos_BizUnits">
+    <End Type="AskrindoMVCModel.BizUnit" Role="BizUnit" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.UserInfo" Role="UserInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BizUnit">
+        <PropertyRef Name="BizUnitId" />
+      </Principal>
+      <Dependent Role="UserInfo">
+        <PropertyRef Name="BizUnitId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ImpactRef">
+    <Key>
+      <PropertyRef Name="ImpactRefId" />
+    </Key>
+    <Property Type="Int32" Name="ImpactRefId" Nullable="false" />
+    <Property Type="Decimal" Name="MaxMoney" Nullable="false" Precision="19" Scale="4" />
+    <Property Type="Decimal" Name="HQPct" Nullable="false" Precision="9" Scale="2" />
+    <Property Type="Decimal" Name="Branch1Pct" Nullable="false" Precision="9" Scale="2" />
+    <Property Type="Decimal" Name="Branch2Pct" Nullable="false" Precision="9" Scale="2" />
+    <Property Type="Decimal" Name="Branch3Pct" Nullable="false" Precision="9" Scale="2" />
+    <Property Type="Decimal" Name="BizUnitPct" Nullable="false" Precision="9" Scale="2" />
+    <Property Type="Decimal" Name="SupportingHQPct" Nullable="false" Precision="9" Scale="2" />
+    <Property Type="Decimal" Name="SupportingBranchPct" Nullable="false" Precision="9" Scale="2" />
+    <Property Type="Decimal" Name="SupportingBizUnitPct" Nullable="false" Precision="9" Scale="2" />
+  </EntityType>
+  <EntityType Name="RiskState">
+    <Key>
+      <PropertyRef Name="StateId" />
+    </Key>
+    <Property Type="Int32" Name="StateId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="RiskId" Nullable="false" />
+    <Property Type="Int32" Name="MitigationId" />
+    <Property Type="DateTime" Name="StateDate" Nullable="false" />
+    <Property Type="Int32" Name="ProbLevelId" Nullable="false" />
+    <Property Type="Int32" Name="ImpactLevelId" Nullable="false" />
+    <Property Type="Int32" Name="RiskLevel" Nullable="false" />
+    <NavigationProperty Name="ImpactLevel" Relationship="AskrindoMVCModel.FK_RiskStates_ImpactLevels" FromRole="RiskState" ToRole="ImpactLevel" />
+    <NavigationProperty Name="ProbLevel" Relationship="AskrindoMVCModel.FK_RiskStates_ProbLevels" FromRole="RiskState" ToRole="ProbLevel" />
+    <NavigationProperty Name="Risk" Relationship="AskrindoMVCModel.FK_RiskStates_Risks" FromRole="RiskState" ToRole="Risk" />
+    <NavigationProperty Name="RiskMitigation" Relationship="AskrindoMVCModel.FK_RiskStates_RiskMitigations" FromRole="RiskState" ToRole="RiskMitigation" />
+  </EntityType>
+  <Association Name="FK_RiskStates_ImpactLevels">
+    <End Type="AskrindoMVCModel.ImpactLevel" Role="ImpactLevel" Multiplicity="1" />
+    <End Type="AskrindoMVCModel.RiskState" Role="RiskState" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImpactLevel">
+        <PropertyRef Name="ImpactLevelId" />
+      </Principal>
+      <Dependent Role="RiskState">
+        <PropertyRef Name="ImpactLevelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RiskStates_ProbLevels">
+    <End Type="AskrindoMVCModel.ProbLevel" Role="ProbLevel" Multiplicity="1" />
+    <End Type="AskrindoMVCModel.RiskState" Role="RiskState" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProbLevel">
+        <PropertyRef Name="ProbLevelId" />
+      </Principal>
+      <Dependent Role="RiskState">
+        <PropertyRef Name="ProbLevelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RiskStates_Risks">
+    <End Type="AskrindoMVCModel.Risk" Role="Risk" Multiplicity="1" />
+    <End Type="AskrindoMVCModel.RiskState" Role="RiskState" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Risk">
+        <PropertyRef Name="RiskId" />
+      </Principal>
+      <Dependent Role="RiskState">
+        <PropertyRef Name="RiskId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="RiskLevel">
+    <Key>
+      <PropertyRef Name="LevelId" />
+    </Key>
+    <Property Type="Int32" Name="LevelId" Nullable="false" />
+    <Property Type="String" Name="LevelName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="MinValue" Nullable="false" />
+    <Property Type="Int32" Name="MaxValue" Nullable="false" />
+    <Property Type="String" Name="Action" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="BackColor" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ForeColor" MaxLength="10" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="MitigationApproval">
+    <Key>
+      <PropertyRef Name="ApprovalId" />
+    </Key>
+    <Property Type="Int32" Name="ApprovalId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="MitigationId" Nullable="false" />
+    <Property Type="Int32" Name="OrgPos" Nullable="false" />
+    <Property Type="Int32" Name="DeptId" />
+    <Property Type="Int32" Name="SubDeptId" />
+    <Property Type="Int32" Name="DivisionId" />
+    <Property Type="Int32" Name="SubDivId" />
+    <Property Type="Int32" Name="BranchId" />
+    <Property Type="Int32" Name="SubBranchId" />
+    <Property Type="Int32" Name="BizUnitId" />
+    <Property Type="String" Name="OrgName" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="Guid" Name="UserId" />
+    <Property Type="String" Name="JobTitle" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="ApprovalDate" />
+    <Property Type="DateTime" Name="LimitDate" />
+    <Property Type="Boolean" Name="LastApproval" Nullable="false" />
+    <Property Type="Boolean" Name="IsReadOnly" Nullable="false" />
+    <NavigationProperty Name="UserInfo" Relationship="AskrindoMVCModel.FK_MitigationApprovals_UserInfos" FromRole="MitigationApproval" ToRole="UserInfo" />
+    <NavigationProperty Name="RiskMitigation" Relationship="AskrindoMVCModel.FK_MitigationApprovals_RiskMitigations" FromRole="MitigationApproval" ToRole="RiskMitigation" />
+  </EntityType>
+  <Association Name="FK_MitigationApprovals_UserInfos">
+    <End Type="AskrindoMVCModel.UserInfo" Role="UserInfo" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.MitigationApproval" Role="MitigationApproval" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="MitigationApproval">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="RiskMitigation">
+    <Key>
+      <PropertyRef Name="MitigationId" />
+    </Key>
+    <Property Type="Int32" Name="MitigationId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="RiskId" Nullable="false" />
+    <Property Type="String" Name="MitigationCode" Nullable="false" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="MitigationName" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="InputDate" Nullable="false" />
+    <Property Type="DateTime" Name="MitigationDate" Nullable="false" />
+    <Property Type="Decimal" Name="Cost" Precision="19" Scale="4" />
+    <Property Type="Int32" Name="MitigationCatId" />
+    <Property Type="Int32" Name="MitigationTypeId" />
+    <Property Type="Int32" Name="ProbLevelId" />
+    <Property Type="Int32" Name="ImpactLevelId" />
+    <Property Type="Int32" Name="RiskLevel" />
+    <Property Type="DateTime" Name="LimitDate" />
+    <Property Type="DateTime" Name="ApprovalDate" />
+    <Property Type="Guid" Name="UserId" />
+    <Property Type="String" Name="JobTitle" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="OrgPos" Nullable="false" />
+    <Property Type="Int32" Name="DeptId" />
+    <Property Type="Int32" Name="SubDeptId" />
+    <Property Type="Int32" Name="DivisionId" />
+    <Property Type="Int32" Name="SubDivId" />
+    <Property Type="Int32" Name="BranchId" />
+    <Property Type="Int32" Name="SubBranchId" />
+    <Property Type="Int32" Name="BizUnitId" />
+    <Property Type="Boolean" Name="IsReadOnly" Nullable="false" />
+    <NavigationProperty Name="ImpactLevel" Relationship="AskrindoMVCModel.FK_RiskMitigations_ImpactLevels" FromRole="RiskMitigation" ToRole="ImpactLevel" />
+    <NavigationProperty Name="MitigationApprovals" Relationship="AskrindoMVCModel.FK_MitigationApprovals_RiskMitigations" FromRole="RiskMitigation" ToRole="MitigationApproval" />
+    <NavigationProperty Name="MitigationAttachments" Relationship="AskrindoMVCModel.FK_MitigationAttachments_RiskMitigations" FromRole="RiskMitigation" ToRole="MitigationAttachment" />
+    <NavigationProperty Name="MitigationCat" Relationship="AskrindoMVCModel.FK_RiskMitigations_MitigationCats" FromRole="RiskMitigation" ToRole="MitigationCat" />
+    <NavigationProperty Name="MitigationType" Relationship="AskrindoMVCModel.FK_RiskMitigations_MitigationTypes" FromRole="RiskMitigation" ToRole="MitigationType" />
+    <NavigationProperty Name="ProbLevel" Relationship="AskrindoMVCModel.FK_RiskMitigations_ProbLevels" FromRole="RiskMitigation" ToRole="ProbLevel" />
+    <NavigationProperty Name="Risk" Relationship="AskrindoMVCModel.FK_RiskMitigations_Risks" FromRole="RiskMitigation" ToRole="Risk" />
+    <NavigationProperty Name="UserInfo" Relationship="AskrindoMVCModel.FK_RiskMitigations_UserInfos" FromRole="RiskMitigation" ToRole="UserInfo" />
+    <NavigationProperty Name="RiskStates" Relationship="AskrindoMVCModel.FK_RiskStates_RiskMitigations" FromRole="RiskMitigation" ToRole="RiskState" />
+    <NavigationProperty Name="MitigationUnits" Relationship="AskrindoMVCModel.FK_Mitigationunit1" FromRole="RiskMitigation" ToRole="MitigationUnit" />
+  </EntityType>
+  <Association Name="FK_RiskMitigations_ImpactLevels">
+    <End Type="AskrindoMVCModel.ImpactLevel" Role="ImpactLevel" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.RiskMitigation" Role="RiskMitigation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImpactLevel">
+        <PropertyRef Name="ImpactLevelId" />
+      </Principal>
+      <Dependent Role="RiskMitigation">
+        <PropertyRef Name="ImpactLevelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MitigationApprovals_RiskMitigations">
+    <End Type="AskrindoMVCModel.RiskMitigation" Role="RiskMitigation" Multiplicity="1" />
+    <End Type="AskrindoMVCModel.MitigationApproval" Role="MitigationApproval" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RiskMitigation">
+        <PropertyRef Name="MitigationId" />
+      </Principal>
+      <Dependent Role="MitigationApproval">
+        <PropertyRef Name="MitigationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MitigationAttachments_RiskMitigations">
+    <End Type="AskrindoMVCModel.RiskMitigation" Role="RiskMitigation" Multiplicity="1" />
+    <End Type="AskrindoMVCModel.MitigationAttachment" Role="MitigationAttachment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RiskMitigation">
+        <PropertyRef Name="MitigationId" />
+      </Principal>
+      <Dependent Role="MitigationAttachment">
+        <PropertyRef Name="MitigationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RiskMitigations_MitigationCats">
+    <End Type="AskrindoMVCModel.MitigationCat" Role="MitigationCat" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.RiskMitigation" Role="RiskMitigation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MitigationCat">
+        <PropertyRef Name="MitigationCatId" />
+      </Principal>
+      <Dependent Role="RiskMitigation">
+        <PropertyRef Name="MitigationCatId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RiskMitigations_MitigationTypes">
+    <End Type="AskrindoMVCModel.MitigationType" Role="MitigationType" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.RiskMitigation" Role="RiskMitigation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MitigationType">
+        <PropertyRef Name="MitigationTypeId" />
+      </Principal>
+      <Dependent Role="RiskMitigation">
+        <PropertyRef Name="MitigationTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RiskMitigations_ProbLevels">
+    <End Type="AskrindoMVCModel.ProbLevel" Role="ProbLevel" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.RiskMitigation" Role="RiskMitigation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProbLevel">
+        <PropertyRef Name="ProbLevelId" />
+      </Principal>
+      <Dependent Role="RiskMitigation">
+        <PropertyRef Name="ProbLevelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RiskMitigations_Risks">
+    <End Type="AskrindoMVCModel.Risk" Role="Risk" Multiplicity="1" />
+    <End Type="AskrindoMVCModel.RiskMitigation" Role="RiskMitigation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Risk">
+        <PropertyRef Name="RiskId" />
+      </Principal>
+      <Dependent Role="RiskMitigation">
+        <PropertyRef Name="RiskId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RiskMitigations_UserInfos">
+    <End Type="AskrindoMVCModel.UserInfo" Role="UserInfo" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.RiskMitigation" Role="RiskMitigation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="RiskMitigation">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RiskStates_RiskMitigations">
+    <End Type="AskrindoMVCModel.RiskMitigation" Role="RiskMitigation" Multiplicity="0..1" />
+    <End Type="AskrindoMVCModel.RiskState" Role="RiskState" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RiskMitigation">
+        <PropertyRef Name="MitigationId" />
+      </Principal>
+      <Dependent Role="RiskState">
+        <PropertyRef Name="MitigationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="HelpDoc">
+    <Key>
+      <PropertyRef Name="DocId" />
+    </Key>
+    <Property Type="Int32" Name="DocId" Nullable="false" />
+    <Property Type="Int32" Name="MenuId" Nullable="false" />
+    <Property Type="String" Name="DocName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="DocInfo" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="IsVisible" Nullable="false" />
+    <Property Type="String" Name="Filename" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ContentType" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="ContentLength" />
+    <Property Type="Binary" Name="Data" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="HelpMenu" Relationship="AskrindoMVCModel.FK_HelpDocs_HelpMenus" FromRole="HelpDoc" ToRole="HelpMenu" />
+  </EntityType>
+  <EntityType Name="HelpMenu">
+    <Key>
+      <PropertyRef Name="MenuId" />
+    </Key>
+    <Property Type="Int32" Name="MenuId" Nullable="false" />
+    <Property Type="String" Name="MenuName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="IsVisible" Nullable="false" />
+    <NavigationProperty Name="HelpDocs" Relationship="AskrindoMVCModel.FK_HelpDocs_HelpMenus" FromRole="HelpMenu" ToRole="HelpDoc" />
+  </EntityType>
+  <Association Name="FK_HelpDocs_HelpMenus">
+    <End Type="AskrindoMVCModel.HelpMenu" Role="HelpMenu" Multiplicity="1" />
+    <End Type="AskrindoMVCModel.HelpDoc" Role="HelpDoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HelpMenu">
+        <PropertyRef Name="MenuId" />
+      </Principal>
+      <Dependent Role="HelpDoc">
+        <PropertyRef Name="MenuId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="RiskEvent">
+    <Key>
+      <PropertyRef Name="RiskEventID" />
+    </Key>
+    <Property Type="Int32" Name="RiskEventID" Nullable="false" />
+    <Property Type="String" Name="RiskEvent1" MaxLength="2000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="UserGroup">
+    <Key>
+      <PropertyRef Name="UserGroupID" />
+    </Key>
+    <Property Type="Int16" Name="UserGroupID" Nullable="false" />
+    <Property Type="String" Name="UserGroup1" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="MitigationUnit">
+    <Key>
+      <PropertyRef Name="MitigationUnitId" />
+    </Key>
+    <Property Type="Int32" Name="MitigationUnitId" Nullable="false" />
+    <Property Type="Int32" Name="MitigationId" Nullable="false" />
+    <Property Type="Int32" Name="DivisionId" Nullable="false" />
+    <NavigationProperty Name="Division" Relationship="AskrindoMVCModel.FK_Mitigationunit2" FromRole="MitigationUnit" ToRole="Division" />
+    <NavigationProperty Name="RiskMitigation" Relationship="AskrindoMVCModel.FK_Mitigationunit1" FromRole="MitigationUnit" ToRole="RiskMitigation" />
+  </EntityType>
+  <Association Name="FK_Mitigationunit2">
+    <End Type="AskrindoMVCModel.Division" Role="Division" Multiplicity="1" />
+    <End Type="AskrindoMVCModel.MitigationUnit" Role="MitigationUnit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Division">
+        <PropertyRef Name="DivisionId" />
+      </Principal>
+      <Dependent Role="MitigationUnit">
+        <PropertyRef Name="DivisionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mitigationunit1">
+    <End Type="AskrindoMVCModel.RiskMitigation" Role="RiskMitigation" Multiplicity="1" />
+    <End Type="AskrindoMVCModel.MitigationUnit" Role="MitigationUnit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RiskMitigation">
+        <PropertyRef Name="MitigationId" />
+      </Principal>
+      <Dependent Role="MitigationUnit">
+        <PropertyRef Name="MitigationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

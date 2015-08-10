@@ -1,0 +1,51 @@
+﻿@model IEnumerable<AskrindoMVC.Models.EffectGroup>
+
+@{
+    ViewBag.Title = "EffectGroupList";
+    Layout = "~/Areas/RefData/Views/Shared/_RiskEffect.cshtml";
+
+    var canModify = (bool)ViewBag.CanModify;
+}
+
+<h3>Daftar Kelompok Akibat</h3>
+
+@if (canModify)
+{ 
+<div style="padding-bottom: 12px">
+    @Html.ActionLink("Kelompok Akibat Baru", "EffectGroupNew")
+</div>
+}
+
+<table class="list">
+    <tr>
+        <th>ID</th>
+        <th>Nama Kelompok Akibat</th>
+        @if (canModify)
+        { 
+        <th></th>
+        }
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EffectGroupId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EffectGroupName)
+        </td>
+        @if (canModify)
+        { 
+        <td>
+            @Html.ActionLink("Edit", "EffectGroupEdit", new { id = item.EffectGroupId }) |
+            @Html.ActionLink("Hapus", "EffectGroupDelete", new { id = item.EffectGroupId })
+        </td>
+        }
+        <td>
+            @Html.ActionLink("Jenis Akibat (" + item.EffectTypes.Count + ")", "EffectTypeList", new { groupId = item.EffectGroupId }, null)
+        </td>
+    </tr>
+}
+
+</table>

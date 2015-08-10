@@ -1,0 +1,45 @@
+﻿@model AskrindoMVC.Areas.RefData.Models.NonMoneyImpact.ImpactTypeViewModel
+
+@{
+    ViewBag.Title = "ImpactTypeDelete";
+    Layout = "~/Areas/RefData/Views/Shared/_NonMoneyImpact.cshtml";
+}
+
+<h3 style="padding-bottom: 0; margin-bottom: 0">Edit Dampak</h3>
+@Html.Partial("_Info_ImpactCat", Model.ImpactType.ImpactCat)
+
+<div style="padding-bottom: 12px" class="warning">
+    Dampak berikut akan dihapus. Lanjutkan?
+</div>
+
+<table class="warning">
+    <tr>
+        <td>ID</td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(model => model.ImpactType.ImpactTypeId)
+        </td>
+    </tr>
+    <tr>
+        <td>Nama Dampak</td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(model => model.ImpactType.ImpactTypeName)
+        </td>
+    </tr>
+    <tr>
+        <td>Keterangan</td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(model => model.ImpactType.Notes)
+        </td>
+    </tr>
+</table>
+
+@using (Html.BeginForm()) {
+    <div style="padding-top: 12px" class="warning">
+        <input type="submit" value="Hapus" />
+    </div>
+}
+
+@Html.Partial("_Link_ImpactTypeList", new ViewDataDictionary { { "CatId", Model.ImpactType.ImpactCatId } })

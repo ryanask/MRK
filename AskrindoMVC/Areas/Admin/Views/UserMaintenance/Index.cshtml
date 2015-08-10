@@ -1,0 +1,19 @@
+﻿@model AskrindoMVC.Areas.Admin.Models.UserMaintenance.UserViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_UserMaintenance.cshtml";
+    var grid = new WebGrid(Model.UserList);
+}
+
+<h3>Daftar User</h3>
+
+@grid.GetHtml(tableStyle: "list",
+columns: grid.Columns(
+    grid.Column("UserName", header: "Nama User"),
+    grid.Column("FullName", header: "Nama Lengkap"),
+    grid.Column("IsRiwkOwner", format: @<text> @if (@item.IsRiskOwner) { @("Ya"); } </text>, header: "RCP?", style: "text-align-center"),
+    grid.Column("LastLoginDate", header: "Login Terakhir", format: (item) => string.Format("{0:dd MMM yyyy}", item.LastLoginDate)),
+    grid.Column("IsLocked", format: @<text> @if (@item.IsLocked) { @("Ya"); } </text>, header: "Locked?", style: "text-align-center"),
+    grid.Column(format: @<text> @if (@item.IsLocked) { @Html.ActionLink("Unlock", "UnlockUser", new { userId = item.UserId }, null); } </text>)
+))

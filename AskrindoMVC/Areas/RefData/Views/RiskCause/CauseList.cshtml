@@ -1,0 +1,67 @@
+﻿@model AskrindoMVC.Areas.RefData.Models.RiskCause.CauseViewModel
+
+@{
+    ViewBag.Title = "CauseList";
+    Layout = "~/Areas/RefData/Views/Shared/_riskcause.cshtml";
+
+    var canModify = (bool)ViewBag.CanModify;
+}
+
+<h3 style="padding-bottom: 0; margin-bottom: 0">Daftar Sebab</h3>
+<div style="padding-bottom: 12px">
+    <table class="layout">
+        <tr>
+            <td>Kelompok Sebab</td>
+            <td style="width: 10px">:</td>
+            <td>
+                @Model.CauseType.CauseGroup.CauseGroupName (@Model.CauseType.CauseGroupId)
+            </td>
+        </tr>
+        <tr>
+            <td>Jenis Sebab</td>
+            <td style="width: 10px">:</td>
+            <td>
+                @Model.CauseType.CauseTypeName (@Model.CauseType.CauseTypeId)
+            </td>
+        </tr>
+    </table>
+</div>
+
+@if (canModify)
+{ 
+<div style="padding-bottom 12px">
+    @Html.ActionLink("Sebab Baru", "CauseNew", new { typeId = @Model.CauseType.CauseTypeId }, null)
+</div>
+}
+
+<table class="list">
+    <tr>
+        <th>ID</th>
+        <th>Nama Sebab</th>
+        @if (canModify)
+        { 
+        <th></th>
+        }
+    </tr>
+    @foreach (var cause in @Model.Causes) { 
+        <tr>
+            <td>
+                @cause.CauseId
+            </td>
+            <td>
+                @cause.CauseName
+            </td>
+            @if (canModify)
+            { 
+            <td>
+                @Html.ActionLink("Edit", "CauseEdit", new { id = cause.CauseId }, null) |
+                @Html.ActionLink("Hapus", "CauseDelete", new { id = cause.CauseId }, null)
+            </td>
+            }
+        </tr>
+    }
+</table>
+
+<div style="padding-top: 12px">
+    @Html.ActionLink("Daftar Jenis Sebab", "CauseTypeList", new { groupId = @Model.CauseType.CauseGroupId }, null)
+</div>

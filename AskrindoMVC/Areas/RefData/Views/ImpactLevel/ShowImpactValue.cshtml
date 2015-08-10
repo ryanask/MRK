@@ -1,0 +1,41 @@
+﻿@model AskrindoMVC.Areas.RefData.Models.ImpactLevel.ImpactValueViewModel
+
+@{
+    ViewBag.Title = "ShowImpactValue";
+    Layout = "~/Areas/RefData/Views/Shared/_ImpactLevel.cshtml";
+}
+
+<h3>Nilai Kerugian Keuangan</h3>
+
+<div style="padding-bottom: 12px">
+    <strong>@ViewBag.LevelName</strong>
+</div>
+
+<table class="list">
+    <tr>
+        <th>Level</th>
+        <th>Keterangan</th>
+        <th>Kerugian Minimum (Rp)</th>
+        <th>Kerugian Maksimum (Rp)</th>
+    </tr>
+@foreach (var value in Model.ImpactValues) { 
+    <tr>
+        <td align="center">
+            @Html.DisplayFor(modelItem => value.ImpactLevelId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => value.ImpactLevelName)
+        </td>
+        <td align="right">
+            @Html.DisplayFor(modelItem => value.MinValue)
+        </td>
+        <td align="right">
+            @Html.DisplayFor(modelItem => value.MaxValue)
+        </td>
+    </tr>
+}
+</table>
+
+<div style="padding-top: 12px">
+    @Html.ActionLink("Kerugian Keuangan", "ImpactPercentage")
+</div>

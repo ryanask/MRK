@@ -1,0 +1,159 @@
+﻿@model AskrindoMVC.Models.Risk
+
+@{
+    ViewBag.Title = "RiskDetail";
+    Layout = "~/Areas/RiskData/Views/Shared/_Risk.cshtml";
+
+    var isReadOnly = Model.IsReadOnly;
+}
+
+@Html.Partial("_Link_RiskTab", new ViewDataDictionary { { "Id", Model.RiskId } })
+
+<h3>Data Risiko</h3>
+
+<table class="display">
+    <tr>
+        <td style="width: 150px">Kode Risiko</td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(model => model.RiskCode)
+        </td>
+    </tr>
+    <tr>
+        <td>Peristiwa Risiko</td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(model => model.RiskName)
+        </td>
+    </tr>
+    <tr>
+        <td>Tanggal</td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(model => model.RiskDate)
+        </td>
+    </tr>
+    <tr>
+        <td style="height:.3em"></td>
+    </tr>
+    <tr style="color: Olive">
+        <td></td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(model => model.CauseGroup.CauseGroupName)
+        </td>
+    </tr>
+    <tr style="color: Olive">
+        <td>Sebab Risiko</td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(model => model.CauseType.CauseTypeName)
+        </td>
+    </tr>
+    <tr style="color: Olive">
+        <td></td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(model => model.Cause.CauseName)
+        </td>
+    </tr>
+    <tr>
+        <td style="height:.3em"></td>
+    </tr>
+    <tr style="color: Green">
+        <td></td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(model => model.EffectGroup.EffectGroupName)
+        </td>
+    </tr>
+    <tr style="color: Green">
+        <td>Akibat Risiko</td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(model => model.EffectType.EffectTypeName)
+        </td>
+    </tr>
+    <tr style="color: Green">
+        <td></td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(model => model.Effect.EffectName)
+        </td>
+    </tr>
+    <tr>
+        <td style="height:.3em"></td>
+    </tr>
+    <tr style="color: Navy">
+        <td></td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(model => model.RiskCat.RiskCatName)
+        </td>
+    </tr>
+    <tr style="color: Navy">
+        <td>Klasifikasi Risiko</td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(model => model.RiskGroup.RiskGroupName)
+        </td>
+    </tr>
+    <tr style="color: Navy">
+        <td></td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(model => model.RiskType.RiskTypeName)
+        </td>
+    </tr>
+    <tr>
+        <td style="height:.3em"></td>
+    </tr>
+    <tr>
+        <td>Nilai Probabilitas (%)</td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(model => model.ProbValue)
+        </td>
+    </tr>
+    <tr>
+        <td>Tingkat Probabilitas</td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(model => model.ProbLevelId) - @Html.DisplayFor(model => model.ProbLevel.ProbLevelName)
+        </td>
+    </tr>
+    <tr>
+        <td style="height:.3em"></td>
+    </tr>
+    <tr>
+        <td>Kerugian Keuangan (Rp)</td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(model => model.ImpactMoney)
+        </td>
+    </tr>
+    <tr>
+        <td>Tingkat Dampak</td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(model => model.ImpactLevelId) - @Html.DisplayFor(model => model.ImpactLevel.ImpactLevelName)
+        </td>
+    </tr>
+    <tr>
+        <td style="height:.3em"></td>
+    </tr>
+    <tr>
+        <td>Tingkat Risiko</td>
+        <td>:</td>
+        <td>
+            @Html.DisplayFor(model => model.RiskLevel)
+        </td>
+    </tr>
+</table>
+
+@if (!isReadOnly)
+{ 
+<div style="padding-top: 12px">
+    @Html.ActionLink("Edit", "RiskEdit", new { id = Model.RiskId }, null)
+</div>
+}

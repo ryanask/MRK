@@ -1,0 +1,43 @@
+﻿@model AskrindoMVC.Areas.RefData.Models.OrgStruct.SubDivViewModel
+
+@{
+    ViewBag.Title = "SubDivEdit";
+    Layout = "~/Areas/RefData/Views/Shared/_orgstruct.cshtml";
+}
+
+<h3 style="padding-bottom: 0; margin-bottom: 0">Edit Bagian</h3>
+@Html.Partial("_Info_Division", Model.SubDiv.Division)
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model=>model.SubDiv.SubDivId)
+    @Html.HiddenFor(model => model.SubDiv.DivisionId)
+    <table class="edit">
+        <tr>
+            <td>ID</td>
+            <td>@Html.DisplayFor(model => model.SubDiv.SubDivId)</td>
+        </tr>
+        <tr>
+            <td>Nama Divisi</td>
+            <td>
+                @Html.EditorFor(model => model.SubDiv.SubDivName)
+                @Html.ValidationMessageFor(model => model.SubDiv.SubDivName)
+            </td>
+        </tr>
+        <tr>
+            <td>Supporting Unit?</td>
+            <td>
+                @Html.CheckBoxFor(model => model.SubDiv.IsSupporting)
+                @Html.ValidationMessageFor(model => model.SubDiv.IsSupporting)
+            </td>
+        </tr>
+    </table>
+    
+    <div style="padding-top: 12px">
+        <input type="submit" value="Simpan" /> |
+        @Html.ActionLink("Batal", "SubDivList", new { divId = @Model.SubDiv.DivisionId }, null)
+    </div>
+}

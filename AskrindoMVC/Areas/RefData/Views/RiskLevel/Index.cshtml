@@ -1,0 +1,53 @@
+﻿@model IEnumerable<AskrindoMVC.Models.RiskLevel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/RefData/Views/Shared/_RiskLevel.cshtml";
+
+    var canModify = (bool)ViewBag.CanModify;
+}
+
+<h3>Daftar Tingkat Risiko</h3>
+
+@if (canModify)
+{ 
+<div style="padding-bottom: 12px">
+    @Html.ActionLink("Tingkat Risiko Baru", "Create")
+</div>
+}
+
+<table class="list">
+    <tr>
+        <th>ID</th>
+        <th>Keterangan</th>
+        <th>Nilai Min</th>
+        <th>Nilai Maks</th>
+        <th>Tindakan</th>
+        <th>Warna Latar Belakang</th>
+        <th>Warna Teks</th>
+        @if (canModify)
+        { 
+        <th></th>
+        }
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.LevelId)</td>
+        <td>@Html.DisplayFor(modelItem => item.LevelName)</td>
+        <td>@Html.DisplayFor(modelItem => item.MinValue)</td>
+        <td>@Html.DisplayFor(modelItem => item.MaxValue)</td>
+        <td>@Html.DisplayFor(modelItem => item.Action)</td>
+        <td>@Html.DisplayFor(modelItem => item.BackColor)</td>
+        <td>@Html.DisplayFor(modelItem => item.ForeColor)</td>
+        @if (canModify)
+        { 
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.LevelId }) |
+            @Html.ActionLink("Hapus", "Delete", new { id = item.LevelId })
+        </td>
+        }
+    </tr>
+}
+
+</table>

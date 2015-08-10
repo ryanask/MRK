@@ -1,0 +1,56 @@
+﻿@model AskrindoMVC.Areas.RefData.Models.RiskCause.CauseViewModel
+
+@{
+    ViewBag.Title = "CauseDelete";
+    Layout = "~/Areas/RefData/Views/Shared/_riskcause.cshtml";
+}
+
+<h3 style="padding-bottom: 0; margin-bottom: 0">Hapus Sebab</h3>
+<div style="padding-bottom: 12px">
+    <table class="layout">
+        <tr>
+            <td>Kelompok Sebab</td>
+            <td style="width: 10px">:</td>
+            <td>
+                @Model.Cause.CauseType.CauseGroup.CauseGroupName (@Model.Cause.CauseType.CauseGroupId)
+            </td>
+        </tr>
+        <tr>
+            <td>Jenis Sebab</td>
+            <td style="width: 10px">:</td>
+            <td>
+                @Model.Cause.CauseType.CauseTypeName (@Model.Cause.CauseType.CauseTypeId)
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div style="padding-bottom: 12px">
+    Sebab berikut akan dihapus. Lanjutkan?
+</div>
+
+<table class="edit">
+    <tr>
+        <td>ID</td>
+        <td style="width: 10px">:</td>
+        <td>
+            @Model.Cause.CauseId
+        </td>
+    </tr>
+    <tr>
+        <td>Nama Sebab</td>
+        <td>:</td>
+        <td>
+            @Model.Cause.CauseName
+        </td>
+    </tr>
+</table>
+
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Hapus" />
+    </p>
+    <div>
+        @Html.ActionLink("Daftar Sebab", "CauseList", new { typeId = @Model.Cause.CauseTypeId }, null)
+    </div>
+}

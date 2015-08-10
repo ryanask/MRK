@@ -1,0 +1,98 @@
+﻿@model AskrindoMVC.Areas.RiskData.Models.RiskData.RiskMitigationViewModel
+
+@{
+    ViewBag.Title = "MitigationListNonRO";
+    Layout = "~/Areas/RiskData/Views/Shared/_Risk.cshtml";
+
+    var approved = Convert.ToBoolean(Request.QueryString["approved"]);
+    var canModifyApproval = Model.Risk.ApprovalDate != null && Model.Risk.CloseDate == null;
+    //var canModifyMitigation = (bool)ViewBag.CanModifyMitigation;
+}
+
+@Html.Partial("~/Views/RiskInfo/_RiskHeaderLink.cshtml", Model.Risk)
+
+<table width="100%" class="layout">
+    <tr>
+    @if (approved)
+    {
+        <td>
+            <h3>Daftar Mitigasi Risiko yang Sudah di-Approve</h3>
+        </td>
+        <td align="right">
+            @Html.ActionLink("Tampilkan daftar mitigasi yang belum di-approve", "MitigationListNonRO", new { id = Model.Risk.RiskId, approved = false }, null)
+        </td>
+    }
+    else
+    { 
+        <td>
+            <h3>Daftar Mitigasi Risiko yang Belum di-Approve</h3>
+        </td>
+        <td align="right">
+            @Html.ActionLink("Tampilkan daftar mitigasi yang sudah di-approve", "MitigationListNonRO", new { id = Model.Risk.RiskId, approved = true }, null)
+        </td>
+    }
+    </tr>
+</table>
+
+<table class="list">
+    <tr>
+        <th>Kode Mitigasi</th>
+        <th>Uraian</th>
+        <th>Tanggal</th>
+        <th>Tk. Prob</th>
+        <th>Tk. Dampak</th>
+        <th>Tk. Risiko</th>
+        @*@if (canModifyMitigation)
+        { 
+        <th></th>
+        }*@
+        @if (canModifyApproval)
+        { 
+            <th></th>
+        }
+    </tr>
+@foreach (var m in Model.MitigationApprovals)
+{ 
+    <tr>
+        <td>@Html.ActionLink(m.RiskMitigation.MitigationCode, "MitigationDetail", new { id = m.RiskMitigation.MitigationId }, null)</td>
+        <td>@Html.DisplayFor(modelItem => m.RiskMitigation.MitigationName)</td>
+        <td>@Html.DisplayFor(modelItem => m.RiskMitigation.MitigationDate)</td>
+        <td align="center">@Html.DisplayFor(modelItem => m.RiskMitigation.ProbLevelId)</td>
+        <td align="center">@Html.DisplayFor(modelItem => m.RiskMitigation.ImpactLevelId)</td>
+        <td align="center">@Html.DisplayFor(modelItem => m.RiskMitigation.RiskLevel)</td>
+        @if (canModifyApproval)
+        { 
+        <td>
+        @if (!approved)
+        { 
+            @Html.ActionLink("Approve", "ApproveMitigation", new { approvalId = m.ApprovalId }, null)
+        }
+        else
+        { 
+            if (!m.IsReadOnly)
+            { 
+            @Html.ActionLink("Batalkan Approve", "DisapproveMitigation", new { approvalId = m.ApprovalId }, null)
+            }
+        }
+        </td>
+        }
+   @* @if (canModifyMitigation)
+    { 
+        <td>
+        @if (!approved)
+        { 
+            @Html.ActionLink("Approve", "ApproveMitigation", new { id = m.MitigationId }, null)
+        }
+        else
+        { 
+            @Html.ActionLink("Batalkan Approve", "DisapproveMitigation", new { id = m.MitigationId }, null)
+        }
+        </td>
+    }*@
+    </tr>
+}
+</table>
+
+<div style="padding-top: 12px">
+    @Html.ActionLink("Daftar Risiko", "RiskList")
+</div>

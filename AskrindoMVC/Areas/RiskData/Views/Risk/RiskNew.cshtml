@@ -1,0 +1,258 @@
+﻿@model AskrindoMVC.Areas.RiskData.Models.RiskData.RiskEditViewModel
+
+@{
+    ViewBag.Title = "RiskNew";
+    Layout = "~/Areas/RiskData/Views/Shared/_NewRisk.cshtml";
+}
+
+@*<h3>Data Risiko Baru</h3>*@
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#ddlCauseGroup").change(function () {
+            var selectedValue = $(this).val();
+            $.getJSON('@VirtualPathUtility.ToAbsolute("~/Risk/LoadCauseTypes")', { groupId: selectedValue }, function (callbackData) {
+                var select = $("#ddlCauseType");
+                select.empty();
+                select.append($("<option/>", {
+                    value: "",
+                    text: ""
+                }));
+                $.each(callbackData, function (index, itemData) {
+                    select.append($("<option/>", {
+                        value: itemData.Value,
+                        text: itemData.Text
+                    }));
+                });
+
+                var select = $("#ddlCause");
+                select.empty();
+                select.append($("<option/>", {
+                    value: "",
+                    text: ""
+                }));
+            });
+        });
+
+        $("#ddlCauseType").change(function () {
+            var selectedValue = $(this).val();
+            $.getJSON('@VirtualPathUtility.ToAbsolute("~/Risk/LoadCauses")', { typeId: selectedValue }, function (callbackData) {
+                var select = $("#ddlCause");
+                select.empty();
+                select.append($("<option/>", {
+                    value: "",
+                    text: ""
+                }));
+                $.each(callbackData, function (index, itemData) {
+                    select.append($("<option/>", {
+                        value: itemData.Value,
+                        text: itemData.Text
+                    }));
+                });
+            });
+        });
+
+        $("#ddlEffectGroup").change(function () {
+            var selectedValue = $(this).val();
+            $.getJSON('@VirtualPathUtility.ToAbsolute("~/Risk/LoadEffectTypes")', { groupId: selectedValue }, function (callbackData) {
+                var select = $("#ddlEffectType");
+                select.empty();
+                select.append($("<option/>", {
+                    value: "",
+                    text: ""
+                }));
+                $.each(callbackData, function (index, itemData) {
+                    select.append($("<option>", {
+                        value: itemData.Value,
+                        text: itemData.Text
+                    }));
+                });
+
+                var select = $("#ddlEffect");
+                select.empty();
+                select.append($("<option/>", {
+                    value: "",
+                    text: ""
+                }));
+            });
+        });
+
+        $("#ddlEffectType").change(function () {
+            var selectedValue = $(this).val();
+            $.getJSON('@VirtualPathUtility.ToAbsolute("~/Risk/LoadEffects")', { typeId: selectedValue }, function (callbackData) {
+                var select = $("#ddlEffect");
+                select.empty();
+                select.append($("<option/>", {
+                    value: "",
+                    text: ""
+                }));
+                $.each(callbackData, function (index, itemData) {
+                    select.append($("<option/>", {
+                        value: itemData.Value,
+                        text: itemData.Text
+                    }));
+                });
+            });
+        });
+
+        $("#ddlRiskCat").change(function () {
+            var selectedValue = $(this).val();
+            $.getJSON('@VirtualPathUtility.ToAbsolute("~/Risk/LoadRiskGroups")', { catId: selectedValue }, function (callbackData) {
+                var select = $("#ddlRiskGroup");
+                select.empty();
+                select.append($("<option/>", {
+                    value: "",
+                    text: ""
+                }));
+                $.each(callbackData, function (index, itemData) {
+                    select.append($("<option>", {
+                        value: itemData.Value,
+                        text: itemData.Text
+                    }));
+                });
+
+                var select = $("#ddlRiskType");
+                select.empty();
+                select.append($("<option/>", {
+                    value: "",
+                    text: ""
+                }));
+            });
+        });
+
+        $("#ddlRiskGroup").change(function () {
+            var selectedValue = $(this).val();
+            $.getJSON('@VirtualPathUtility.ToAbsolute("~/Risk/LoadRiskTypes")', { groupId: selectedValue }, function (callbackData) {
+                var select = $("#ddlRiskType");
+                select.empty();
+                select.append($("<option/>", {
+                    value: "",
+                    text: ""
+                }));
+                $.each(callbackData, function (index, itemData) {
+                    select.append($("<option/>", {
+                        value: itemData.Value,
+                        text: itemData.Text
+                    }));
+                });
+            });
+        });
+
+    });
+</script>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(m => m.Risk.RiskCode)
+    @Html.HiddenFor(m => m.Risk.RiskDate)
+    <table class="edit">
+        <tr>
+            <td>Kode Risiko</td>
+            <td>
+                @Html.DisplayFor(m => m.Risk.RiskCode)
+            </td>
+        </tr>
+        <tr>
+            <td>Peristiwa Risiko</td>
+            <td>
+                @Html.TextAreaFor(m => m.Risk.RiskName, new { style = "width: 400px" })
+                @Html.ValidationMessageFor(m => m.Risk.RiskName)
+            </td>
+        </tr>
+        <tr>
+            <td>Tanggal</td>
+            <td>
+                @Html.DisplayFor(m => m.Risk.RiskDate)
+            </td>
+        </tr>
+        <tr>
+            <td style="height:.3em"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                @Html.DropDownListFor(m => m.Risk.CauseGroupId, Model.CauseGroups, "",
+                    new { id = "ddlCauseGroup", style = "width: 400px; background-color: #FFFFCC" })
+                @Html.ValidationMessageFor(m => m.Risk.CauseGroupId)
+            </td>
+        </tr>
+        <tr>
+            <td style="color: Olive">Sebab Risiko</td>
+            <td>
+                @Html.DropDownListFor(m => m.Risk.CauseTypeId, Model.CauseTypes, "",
+                    new { id = "ddlCauseType", style = "width: 400px; background-color: #FFFFCC" })
+                @Html.ValidationMessageFor(m => m.Risk.CauseTypeId)
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                @Html.DropDownListFor(m => m.Risk.CauseId, Model.Causes, "",
+                    new { id = "ddlCause", style = "width: 400px; background-color: #FFFFCC" })
+                @Html.ValidationMessageFor(m => m.Risk.CauseId)
+            </td>
+        </tr>
+        <tr>
+            <td style="height:.3em"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                @Html.DropDownListFor(m => m.Risk.EffectGroupId, Model.EffectGroups, "",
+                    new { id = "ddlEffectGroup", style = "width: 400px; background-color: #CCFFCC" })
+                @Html.ValidationMessageFor(m => m.Risk.EffectGroupId)
+            </td>
+        </tr>
+        <tr>
+            <td style="color: Green">Akibat Risiko</td>
+            <td>
+                @Html.DropDownListFor(m => m.Risk.EffectTypeId, Model.EffectTypes, "",
+                    new { id = "ddlEffectType", style = "width: 400px; background-color: #CCFFCC" })
+                @Html.ValidationMessageFor(m => m.Risk.EffectTypeId)
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                @Html.DropDownListFor(m => m.Risk.EffectId, Model.Effects, "",
+                    new { id = "ddlEffect", style = "width: 400px; background-color: #CCFFCC" })
+                @Html.ValidationMessageFor(m => m.Risk.EffectId)
+            </td>
+        </tr>
+        <tr>
+            <td style="height:.3em"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                @Html.DropDownListFor(m => m.Risk.RiskCatId, Model.RiskCats, "",
+             new { id = "ddlRiskCat", style = "width: 400px; background-color: #CCFFFF" })
+                @Html.ValidationMessageFor(m => m.Risk.RiskCatId)
+            </td>
+        </tr>
+        <tr>
+            <td style="color: Navy">Klasifikasi Risiko</td>
+            <td>
+                @Html.DropDownListFor(m => m.Risk.RiskGroupId, Model.RiskGroups, "",
+                    new { id = "ddlRiskGroup", style = "width: 400px; background-color: #CCFFFF" })
+                @Html.ValidationMessageFor(m => m.Risk.RiskGroupId)
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                @Html.DropDownListFor(m => m.Risk.RiskTypeId, Model.RiskTypes, "",
+                    new { id = "ddlRiskType", style = "width: 400px; background-color: #CCFFFF" })
+                @Html.ValidationMessageFor(m => m.Risk.RiskTypeId)
+            </td>
+        </tr>
+    </table>
+    
+    <div style="padding-top: 12px">
+        <input type="submit" value="Simpan" />
+    </div>
+}

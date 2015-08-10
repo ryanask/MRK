@@ -1,0 +1,44 @@
+﻿@model IEnumerable<AskrindoMVC.Models.ImpactLevel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/RefData/Views/Shared/_ImpactLevel.cshtml";
+    
+    var canModify = (bool)ViewBag.CanModify;
+}
+
+<h3>Daftar Tingkat Dampak</h3>
+
+<table class="list">
+    <tr>
+        <th>Level</th>
+        <th>Keterangan</th>
+        <th>% Min</th>
+        <th>% Maks</th>
+        <th>Kerugian Minimum (Rp)</th>
+        <th>Kerugian Maksimum (Rp)</th>
+        @if (canModify)
+        { 
+        <th></th>
+        }
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td align="center">@Html.DisplayFor(modelItem => item.ImpactLevelId)</td>
+        <td>@Html.DisplayFor(modelItem => item.ImpactLevelName)</td>
+        <td align="right">@Html.DisplayFor(modelItem => item.PctMin)</td>
+        <td align="right">@Html.DisplayFor(modelItem => item.PctMax)</td>
+        <td align="right">@Html.DisplayFor(modelItem => item.MoneyMin)</td>
+        <td align="right">@Html.DisplayFor(modelItem => item.MoneyMax)</td>
+        @if (canModify)
+        { 
+        <td>@Html.ActionLink("Edit", "Edit", new { id = item.ImpactLevelId })</td>
+        }
+    </tr>
+}
+</table>
+
+<div style="padding-top: 12px">
+    @Html.ActionLink("Persentase Kerugian Keuangan", "ImpactPercentage")
+</div>

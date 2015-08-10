@@ -1,0 +1,172 @@
+﻿@model AskrindoMVC.Areas.Report.Models.RiskTable.RiskTableViewModel
+
+@using AskrindoMVC.Helpers
+@using AskrindoMVC.Areas.Report.Models.RiskTable
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Report/Views/Shared/_RiskTable.cshtml";
+    int rowId = -1;
+    int colId = -1;
+    int index = -1;
+    int intValue = 0;
+    decimal decValue = 0;
+}
+
+<script type="text/javascript">
+    $(function () {
+        $("#params").accordion({
+            collapsible: true,
+            active: -1
+        });
+    });
+</script>
+
+<div id="params" style="padding-bottom: 12px">
+    <h3>
+        <a href="#">Parameter</a>
+    </h3>
+    <div>
+        @using (Html.BeginForm()) {
+            <table class="edit">
+                <tr style="background-color: #ddd">
+                    <td colspan="2"><b>FILTER</b></td>
+                </tr>
+                <tr>
+                    <td>Lokasi</td>
+                    <td>@Html.DropDownListFor(m => m.Param.PosId, Model.Param.PosList, "")</td>
+                </tr>
+                <tr>
+                    <td>Cabang</td>
+                    <td>@Html.DropDownListFor(m => m.Param.BranchId, Model.Param.Branches, "")</td>
+                </tr>
+                <tr>
+                    <td>Tanggal</td>
+                    <td>@Html.EditorFor(m => m.Param.ReportDate) @Utils.GetDatePattern()</td>
+                </tr>
+                <tr>
+                    <td>Approved?</td>
+                    <td>
+                        @Html.CheckBoxFor(m => m.Param.IsApproved)
+                        @Html.ValidationMessageFor(m => m.Param.IsApproved)
+                    </td>
+                </tr>
+                <tr style="background-color: #ddd">
+                    <td colspan="2"><b>TAMPILAN</b></td>
+                </tr>
+                <tr>
+                    <td>Data</td>
+                    <td>@Html.DropDownListFor(m => m.Param.DataTypeId, Model.Param.DataTypes)</td>
+                </tr>
+                <tr>
+                    <td>Baris</td>
+                    <td>@Html.DropDownListFor(m => m.Param.RowGroupId, Model.Param.RowGroups)</td>
+                </tr>
+                <tr>
+                    <td>Kolom</td>
+                    <td>@Html.DropDownListFor(m => m.Param.ColGroupId, Model.Param.ColGroups)</td>
+                </tr>
+            </table>
+        
+            <div style="padding-top: 12px">
+                <input type="submit" value="Refresh" />
+            </div>
+        }
+    </div>
+</div>
+
+<div style="padding-bottom: 12px; font-size: 1.2em">
+    Data: @ViewBag.DataTypeText
+</div>
+
+<table class="list">
+    @if (Model.Param.ColCount > 1)
+    { 
+    <tr>
+        <th rowspan="2" style="text-align: center">@Model.Param.RowHeader</th>
+        <th colspan="@Model.Param.ColCount" style="text-align: center">@Model.Param.ColHeader</th>
+        @*<th rowspan="2" style="text-align: center">Total</th>*@
+    </tr>
+    }
+    <tr>
+    @if (Model.Param.ColCount == 1)
+    { 
+        <th rowspan="1" style="text-align: center">@Model.Param.RowHeader</th>
+    }
+    @for (var i = 0; i < Model.Param.ColCount; i++)
+    {
+        <th style="text-align: center">
+        @Model.Param.ColLabels[i]
+        </th>
+    }
+    </tr>
+
+    @for (var i = 0; i < Model.Param.RowCount; i++)
+    { 
+        <tr>
+            <td style="background-color: #eee; font-weight: bold">@Model.Param.RowLabels[i]</td>
+            @for (var j = 0; j < Model.Param.ColCount; j++)
+            {
+                <td align="right">
+                    @{
+                        rowId = Model.Param.RowIds[i];
+                        colId = Model.Param.ColIds[j];
+                        index = RiskTableViewModel.GetCellDataIndex(rowId, colId, Model.CellList);
+                        if (index >= 0)
+                        {
+                            if (Model.Param.DataTypeId == 1)
+                            {
+                                intValue = Model.CellList[index].Count;
+                                if (intValue > 0)
+                                { 
+                                    @intValue
+                                }
+                            }
+                            else
+                            {
+                                if (Model.CellList[index].Count > 0)
+                                {
+                                    decValue = Model.CellList[index].Values / Model.CellList[index].Count;
+                                    if (decValue > 0)
+                                    { 
+                                        @string.Format("{0:#,##0.##}", decValue)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                </td>
+            }
+            @*@if (Model.Param.ColCount > 1)
+            { 
+                <td align="right">[jumlah baris]</td>
+            }*@
+        </tr>
+    }
+    @*@if (Model.Param.RowCount > 1)
+    { 
+        <tr>
+            <td style="background-color: #eee; font-weight: bold">Total</td>
+            @for (var j = 0; j < Model.Param.ColCount; j++)
+            {
+                <td align="right">[jumlah kolom]</td>
+            }
+            @if (Model.Param.ColCount > 1)
+            { 
+                <td align="right">[jumlah total]</td>
+            }
+        </tr>
+    }*@
+</table>
+
+<div style="padding-top: 12px">
+    @Html.ActionLink("Ekspor ke Excel", "ExportToExcel", 
+        new { posId = Model.Param.PosId,
+        branchId = Model.Param.BranchId,
+        reportDate = Model.Param.ReportDate,
+        isApproved = Model.Param.IsApproved,
+        dataTypeId = Model.Param.DataTypeId,
+        rowGroupId = Model.Param.RowGroupId,
+        colGroupId = Model.Param.ColGroupId
+        }, null)
+</div>

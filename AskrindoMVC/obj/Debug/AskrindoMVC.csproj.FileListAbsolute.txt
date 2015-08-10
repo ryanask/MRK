@@ -1,0 +1,16 @@
+E:\Askrindo\Source Code Program MR Berbasis Web\Askrindo.Web.2012.01.03\Source Code\AskrindoMVC\AskrindoMVC\bin\AskrindoMVC.dll
+E:\Askrindo\Source Code Program MR Berbasis Web\Askrindo.Web.2012.01.03\Source Code\AskrindoMVC\AskrindoMVC\bin\AskrindoMVC.pdb
+E:\Askrindo\Source Code Program MR Berbasis Web\Askrindo.Web.2012.01.03\Source Code\AskrindoMVC\AskrindoMVC\bin\EntityFramework.dll
+E:\Askrindo\Source Code Program MR Berbasis Web\Askrindo.Web.2012.01.03\Source Code\AskrindoMVC\AskrindoMVC\bin\EntityFramework.SqlServer.dll
+E:\Askrindo\Source Code Program MR Berbasis Web\Askrindo.Web.2012.01.03\Source Code\AskrindoMVC\AskrindoMVC\bin\EntityFramework.xml
+E:\Askrindo\Source Code Program MR Berbasis Web\Askrindo.Web.2012.01.03\Source Code\AskrindoMVC\AskrindoMVC\bin\EntityFramework.SqlServer.xml
+E:\Askrindo\Source Code Program MR Berbasis Web\Askrindo.Web.2012.01.03\Source Code\AskrindoMVC\AskrindoMVC\obj\Debug\AskrindoMVC.dll
+E:\Askrindo\Source Code Program MR Berbasis Web\Askrindo.Web.2012.01.03\Source Code\AskrindoMVC\AskrindoMVC\obj\Debug\AskrindoMVC.pdb
+D:\Askrindo\Source Code Program MR Berbasis Web\Askrindo.Web.2012.01.03\Source Code\AskrindoMVC\AskrindoMVC\bin\AskrindoMVC.dll
+D:\Askrindo\Source Code Program MR Berbasis Web\Askrindo.Web.2012.01.03\Source Code\AskrindoMVC\AskrindoMVC\bin\AskrindoMVC.pdb
+D:\Askrindo\Source Code Program MR Berbasis Web\Askrindo.Web.2012.01.03\Source Code\AskrindoMVC\AskrindoMVC\bin\EntityFramework.dll
+D:\Askrindo\Source Code Program MR Berbasis Web\Askrindo.Web.2012.01.03\Source Code\AskrindoMVC\AskrindoMVC\bin\EntityFramework.SqlServer.dll
+D:\Askrindo\Source Code Program MR Berbasis Web\Askrindo.Web.2012.01.03\Source Code\AskrindoMVC\AskrindoMVC\bin\EntityFramework.xml
+D:\Askrindo\Source Code Program MR Berbasis Web\Askrindo.Web.2012.01.03\Source Code\AskrindoMVC\AskrindoMVC\bin\EntityFramework.SqlServer.xml
+D:\Askrindo\Source Code Program MR Berbasis Web\Askrindo.Web.2012.01.03\Source Code\AskrindoMVC\AskrindoMVC\obj\Debug\AskrindoMVC.dll
+D:\Askrindo\Source Code Program MR Berbasis Web\Askrindo.Web.2012.01.03\Source Code\AskrindoMVC\AskrindoMVC\obj\Debug\AskrindoMVC.pdb

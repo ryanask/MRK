@@ -1,0 +1,308 @@
+﻿@model AskrindoMVC.Areas.Admin.Models.UserMgr.EditUserModelNew
+
+@{
+    ViewBag.Title = "UserEditNew";
+    Layout = "~/Areas/Admin/Views/Shared/_UserMgr.cshtml";
+
+    var orgList = ViewBag.OrgList as List<KeyValuePair<string, string>>;
+}
+
+<h2>Edit User</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery-1.4.4.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery-ui.js")" type="text/javascript"></script>
+<link href="@Url.Content("~/Content/themes/base/jquery-ui.css")" rel="stylesheet" type="text/css" />
+
+   <script>
+        $(function () {
+            $("#tabs").tabs();
+        });
+    </script> 
+     
+    <script>
+            function submitform() {
+                $('form').submit();
+            }
+    </script> 
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#ddlDepartment").change(function () {
+                var selectedValue = $(this).val();
+                $.getJSON('@VirtualPathUtility.ToAbsolute("~/UserMgr/Department")', { DeptId: selectedValue }, function (callbackData) {
+                    var select = $("#ddlDivision");
+                    select.empty();
+                    select.append($("<option/>", {
+                        value: "",
+                        text: ""
+                    }));
+                    $.each(callbackData, function (index, itemData) {
+                        select.append($("<option/>", {
+                            value: itemData.Value,
+                            text: itemData.Text
+                        }));
+                    });
+
+                    var select = $("#ddlSubDiv");
+                    select.empty();
+                    select.append($("<option/>", {
+                        value: "",
+                        text: ""
+                    }));
+                });
+            });
+
+            $("#ddlDivision").change(function () {
+                var selectedValue = $(this).val();
+                $.getJSON('@VirtualPathUtility.ToAbsolute("~/UserMgr/Division")', { DivId: selectedValue }, function (callbackData) {
+                    var select = $("#ddlSubDiv");
+                    select.empty();
+                    select.append($("<option/>", {
+                        value: "",
+                        text: ""
+                    }));
+                    $.each(callbackData, function (index, itemData) {
+                        select.append($("<option/>", {
+                            value: itemData.Value,
+                            text: itemData.Text
+                        }));
+                    });
+                });
+            });
+
+            $("#ddlBranch").change(function () {
+                var selectedValue = $(this).val();
+                $.getJSON('@VirtualPathUtility.ToAbsolute("~/UserMgr/Branch")', { BranchId: selectedValue }, function (callbackData) {
+                    var select = $("#ddlSubBranch");
+                    select.empty();
+                    select.append($("<option/>", {
+                        value: "",
+                        text: ""
+                    }));
+                    $.each(callbackData, function (index, itemData) {
+                        select.append($("<option/>", {
+                            value: itemData.Value,
+                            text: itemData.Text
+                        }));
+                    });
+                });
+            });
+
+            $("#ddlBranch").change(function () {
+                var selectedValue = $(this).val();
+                $.getJSON('@VirtualPathUtility.ToAbsolute("~/UserMgr/Unit")', { BranchId: selectedValue }, function (callbackData) {
+                    var select = $("#ddlUnit");
+                    select.empty();
+                    select.append($("<option/>", {
+                        value: "",
+                        text: ""
+                    }));
+                    $.each(callbackData, function (index, itemData) {
+                        select.append($("<option/>", {
+                            value: itemData.Value,
+                            text: itemData.Text
+                        }));
+                    });
+                });
+            });
+
+        });
+    </script>
+
+@*<div style="padding-bottom: 12px">
+    @Html.ActionLink("Ubah Password", "ChangeUserPassword", new { userId = Request.QueryString["userId"] }, null)
+</div>*@
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.UserName)
+    <table class="edit">
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.UserName)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.UserName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.FullName)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.FullName)
+                @Html.ValidationMessageFor(model => model.FullName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.JobTitle)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.JobTitle)
+                @Html.ValidationMessageFor(model => model.JobTitle)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Email)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Email)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.IsRCP)
+            </td>
+            <td>
+                @Html.CheckBoxFor(model => model.param.IsRCP)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.GroupMenu)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.GroupMenu)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.GroupUser)
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.param.UserGroupID, Model.param.UserGroup)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Password)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Password)
+                @Html.ValidationMessageFor(model => model.Password)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.KonfirmasiPassword)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.KonfirmasiPassword)
+                @Html.ValidationMessageFor(model => model.KonfirmasiPassword)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Kantor)
+            </td>
+            <td>
+                @Html.DropDownListFor(m => m.param.posID, Model.param.Kantor, new { required = "required", @onchange = "submitform();" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+               @Html.LabelFor(model => model.Direktur)
+            </td>
+            <td>
+               @Html.DropDownListFor(m => m.param.DeptID, Model.param.Direktorat, new { required = "required", @onchange = "submitform();" })
+            </td>
+        </tr>
+        <tr>
+            <td colspan = 2>
+                <div id="tabs">
+                    <ul>
+                        @if (Model.param.posID == 1)
+                        {
+                            <li><a href="#tab-1">Pusat</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="#tab-2">Cabang</a></li>
+                        }
+                    </ul>
+                    @if (Model.param.posID == 1)
+                    {
+                        <div id="tab-1">
+                        <table class="edit">
+                            <tr>
+                                <td>
+                                    @Html.LabelFor(model => model.Direktur)
+                                </td>
+                                <td>
+                                    @Html.DropDownListFor(m => m.param.DeptID, Model.param.Direktorat, "",
+                                    new { id = "ddlDepartment", style = "width: 250px "})
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.LabelFor(model => model.Divisi)
+                                </td>
+                                <td>
+                                     @Html.DropDownListFor(m => m.param.DivisionID, Model.param.Divisi, "",
+                                    new { id = "ddlDivision", style = "width: 250px" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.LabelFor(model => model.Bagian)
+                                </td>
+                                <td>
+                                    @Html.DropDownListFor(m => m.param.SubDivID, Model.param.Bagian, "" ,
+                                    new { id = "ddlSubDiv", style = "width: 250px" })
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    }
+                    else
+                    {
+                        <div id="tab-2">
+                        <table class="edit">
+                            <tr>
+                                <td>
+                                    @Html.LabelFor(model => model.Cabang)
+                                </td>
+                                <td>
+                                    @Html.DropDownListFor(m => m.param.BranchID, Model.param.Cabang,"",
+                                    new { id = "ddlBranch", style = "width: 250px"})
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.LabelFor(model => model.Bagian)
+                                </td>
+                                <td>
+                                    @Html.DropDownListFor(m => m.param.SubBranchID, Model.param.SubCabang, "",
+                                    new { id = "ddlSubBranch", style = "width: 250px" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.LabelFor(model => model.Unit)
+                                </td>
+                                <td>
+                                    @Html.DropDownListFor(m => m.param.BizUnitID, Model.param.Unit, "",
+                                    new { id = "ddlUnit", style = "width: 250px" })
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                    }
+                                    
+                </div>
+            </td>
+        </tr>
+    </table>
+   
+    <div style="padding-top: 12px">
+        <input type="submit" value="Update" name="btn"/> |
+        @Html.ActionLink("Batal", "Index")
+    </div>
+}

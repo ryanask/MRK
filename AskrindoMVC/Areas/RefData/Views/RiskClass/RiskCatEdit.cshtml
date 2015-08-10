@@ -1,0 +1,38 @@
+﻿@model AskrindoMVC.Models.RiskCat
+
+@{
+    ViewBag.Title = "RiskCatEdit";
+    Layout = "~/Areas/RefData/Views/Shared/_RiskClass.cshtml";
+}
+
+<h3>Edit Kategori Risiko</h3>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.RiskCatId)
+    <table class="edit">
+        <tr>
+            <td>ID</td>
+            <td>
+                @Html.DisplayFor(model => model.RiskCatId)
+            </td>
+        </tr>
+        <tr>
+            <td>Nama Kategori Risiko</td>
+            <td>
+                @Html.EditorFor(model => model.RiskCatName)
+                @Html.ValidationMessageFor(model => model.RiskCatName)
+            </td>
+        </tr>
+    </table>
+    
+    <div style="padding-top: 12px">
+        <input type="submit" value="Simpan" />
+    </div>    
+}
+
+@Html.Partial("_Link_RiskCatList")

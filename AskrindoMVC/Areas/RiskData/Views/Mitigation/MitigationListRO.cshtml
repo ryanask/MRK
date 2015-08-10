@@ -1,0 +1,92 @@
+﻿@model IEnumerable<AskrindoMVC.Models.RiskMitigation>
+
+@{
+    ViewBag.Title = "MitigationListRO";
+    Layout = "~/Areas/RiskData/Views/Shared/_MitigationList.cshtml";
+
+    var status = Request.QueryString["status"];
+    if (!string.IsNullOrEmpty(status))
+    {
+        status = status.ToLower();
+    }
+    var approved = Convert.ToBoolean(Request.QueryString["approved"]);
+    var grid = new WebGrid(Model, canSort: false);
+}
+
+<table cellpadding="0" cellspacing="0" class="layout" width="100%">
+    <tr>
+        <td>
+            <h3 style="margin-top: 0">Daftar Mitigasi</h3>
+        </td>
+        <td align="right" valign="top">
+            Status:
+            @if (string.IsNullOrEmpty(status))
+            { 
+                <b>Belum di-approve</b>
+            }
+            else
+            { 
+            @Html.ActionLink("Belum di-approve", "MitigationListRO")
+            }
+            |
+            @if (status == "readonly")
+            { 
+                <b>Read only</b>
+            }
+            else
+            { 
+            @Html.ActionLink("Read only", "MitigationListRO", new { status = "readonly" }, null)
+            }
+            |
+            @if (status == "approved")
+            {
+                <b>Approved</b>
+            }
+            else
+            { 
+            @Html.ActionLink("Approved", "MitigationListRO", new { status = "approved" }, null)
+            }
+        </td>
+    </tr>
+    @*<tr>
+    @if (approved)
+    { 
+        <td><h3 style="margin-top: 0">Daftar Mitigasi yang Sudah di-Approve</h3></td>
+        <td align="right" valign="top">@Html.ActionLink("Tampilkan mitigasi yang belum di-approve", "MitigationListRO", new { approved = false }, null)</td>
+    }
+    else
+    { 
+        <td><h3 style="margin-top: 0">Daftar Mitigasi yang Belum di-Approve</h3></td>
+        <td align="right" valign="top">@Html.ActionLink("Tampilkan mitigasi yang sudah di-approve", "MitigationListRO", new { approved = true }, null)</td>
+    }
+    </tr>*@
+</table>
+
+@if (!string.IsNullOrEmpty(status))
+{ 
+@grid.GetHtml(tableStyle: "list",
+columns: grid.Columns(
+    grid.Column(header: "Kode Mitigasi", format: (item) => @Html.ActionLink((string)item.MitigationCode, "Detail", new { id = item.MitigationId }, null)),
+    grid.Column("MitigationName", header: "Uraian"),
+    grid.Column("MitigationDate", header: "Tanggal", format: (item) => string.Format("{0:dd-MM-yyyy}", item.MitigationDate)),
+    grid.Column("ProbLevelId", header: "Tk. Prob", style: "text-align-center"),
+    grid.Column("ImpactLevelId", header: "Tk. Dampak", style: "text-align-center"),
+    grid.Column("RiskLevel", header: "Tk. Risiko", style: "text-align-center"),
+    grid.Column("Risk.RiskCode", header: "Kode Risiko", format: (item) => @Html.ActionLink((string)item.Risk.RiskCode, "Details", new { id = item.RiskId, controller = "RiskInfo", area = "" }, new { target = "_blank" }))
+))
+}
+else
+{ 
+@grid.GetHtml(tableStyle: "list",
+columns: grid.Columns(
+    grid.Column(header: "Kode Mitigasi", format: (item) => @Html.ActionLink((string)item.MitigationCode, "Detail", new { id = item.MitigationId }, null)),
+    grid.Column("MitigationName", header: "Uraian"),
+    grid.Column("MitigationDate", header: "Tanggal", format: (item) => string.Format("{0:dd-MM-yyyy}", item.MitigationDate)),
+    grid.Column("ProbLevelId", header: "Tk. Prob", style: "text-align-center"),
+    grid.Column("ImpactLevelId", header: "Tk. Dampak", style: "text-align-center"),
+    grid.Column("RiskLevel", header: "Tk. Risiko", style: "text-align-center"),
+    grid.Column("Risk.RiskCode", header: "Kode Risiko", format: (item) => @Html.ActionLink((string)item.Risk.RiskCode, "Details", new { id = item.RiskId, controller = "RiskInfo", area = "" }, new { target = "_blank" })),
+    grid.Column(format: (item) => @Html.ActionLink("Edit", "Edit", new { id = item.MitigationId }, null)),
+    grid.Column(format: (item) => @Html.ActionLink("Hapus", "Delete", new { id = item.MitigationId }, null))
+))
+}
